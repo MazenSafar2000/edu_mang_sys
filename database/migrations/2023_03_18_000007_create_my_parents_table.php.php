@@ -23,12 +23,6 @@ class CreateMyParentsTable extends Migration
             $table->string('Phone_Father');
             $table->string('Job_Father');
             $table->string('Address_Father');
-
-            //Mother information
-            $table->string('Name_Mother');
-            $table->string('Phone_Mother');
-            $table->string('Job_Mother');
-            $table->string('Address_Mother');
             $table->timestamps();
 
         });

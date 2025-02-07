@@ -23,10 +23,6 @@ class ParentsTableSeeder extends Seeder
             $my_parents->Phone_Father = '1234567810';
             $my_parents->Job_Father = ['en' => 'programmer', 'ar' => 'مبرمج'];
             $my_parents->Address_Father ='القاهرة';
-            $my_parents->Name_Mother = ['en' => 'SS', 'ar' => 'سس'];
-            $my_parents->Phone_Mother = '1234567810';
-            $my_parents->Job_Mother = ['en' => 'Teacher', 'ar' => 'معلمة'];
-            $my_parents->Address_Mother ='القاهرة';
             $my_parents->save();
 
     }

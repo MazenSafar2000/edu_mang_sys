@@ -14,7 +14,7 @@ class AddParent extends Component
 
     public $successMessage = '';
 
-    public $catchError,$updateMode = false,$photos,$show_table = true,$Parent_id;
+    public $catchError, $updateMode = false, $photos, $show_table = true, $Parent_id;
 
     public $currentStep = 1,
 
@@ -30,7 +30,6 @@ class AddParent extends Component
         $this->validateOnly($propertyName, [
             'Email' => 'required|email',
             'Phone_Father' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
-            'Phone_Mother' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10'
         ]);
     }
 
@@ -40,10 +39,10 @@ class AddParent extends Component
         return view('livewire.add-parent', [
             'my_parents' => My_Parent::all(),
         ]);
-
     }
 
-    public function showformadd(){
+    public function showformadd()
+    {
         $this->show_table = false;
     }
 
@@ -52,8 +51,8 @@ class AddParent extends Component
     //firstStepSubmit
     public function firstStepSubmit()
     {
-       $this->validate([
-            'Email' => 'required|unique:my__parents,Email,'.$this->id,
+        $this->validate([
+            'Email' => 'required|unique:my__parents,Email,' . $this->id,
             'Password' => 'required',
             'Name_Father' => 'required',
             'Name_Father_en' => 'required',
@@ -63,26 +62,12 @@ class AddParent extends Component
             'Address_Father' => 'required',
         ]);
 
-        $this->currentStep = 2;
+        $this->submitForm();
     }
 
-    //secondStepSubmit
-    public function secondStepSubmit()
+
+    public function submitForm()
     {
-
-        $this->validate([
-            'Name_Mother' => 'required',
-            'Name_Mother_en' => 'required',
-            'Phone_Mother' => 'required',
-            'Job_Mother' => 'required',
-            'Job_Mother_en' => 'required',
-            'Address_Mother' => 'required',
-        ]);
-
-        $this->currentStep = 3;
-    }
-
-    public function submitForm(){
 
         try {
             $My_Parent = new My_Parent();
@@ -93,32 +78,14 @@ class AddParent extends Component
             $My_Parent->Phone_Father = $this->Phone_Father;
             $My_Parent->Job_Father = ['en' => $this->Job_Father_en, 'ar' => $this->Job_Father];
             $My_Parent->Address_Father = $this->Address_Father;
-
-            // Mother_INPUTS
-            $My_Parent->Name_Mother = ['en' => $this->Name_Mother_en, 'ar' => $this->Name_Mother];
-            $My_Parent->Phone_Mother = $this->Phone_Mother;
-            $My_Parent->Job_Mother = ['en' => $this->Job_Mother_en, 'ar' => $this->Job_Mother];
-            $My_Parent->Address_Mother = $this->Address_Mother;
             $My_Parent->save();
 
-            if (!empty($this->photos)){
-                foreach ($this->photos as $photo) {
-                    $photo->storeAs($this->$photo->getClientOriginalName(), $disk = 'parent_attachments');
-                    ParentAttachment::create([
-                        'file_name' => $photo->getClientOriginalName(),
-                        'parent_id' => My_Parent::latest()->first()->id,
-                    ]);
-                }
-            }
             $this->successMessage = trans('messages.success');
             $this->clearForm();
             $this->currentStep = 1;
-        }
-
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             $this->catchError = $e->getMessage();
         };
-
     }
 
 
@@ -126,7 +93,7 @@ class AddParent extends Component
     {
         $this->show_table = false;
         $this->updateMode = true;
-        $My_Parent = My_Parent::where('id',$id)->first();
+        $My_Parent = My_Parent::where('id', $id)->first();
         $this->Parent_id = $id;
         $this->Email = $My_Parent->Email;
         $this->Password = $My_Parent->Password;
@@ -135,15 +102,14 @@ class AddParent extends Component
         $this->Job_Father = $My_Parent->getTranslation('Job_Father', 'ar');;
         $this->Job_Father_en = $My_Parent->getTranslation('Job_Father', 'en');
         $this->Phone_Father = $My_Parent->Phone_Father;
-        $this->Address_Father =$My_Parent->Address_Father;
+        $this->Address_Father = $My_Parent->Address_Father;
     }
 
     //firstStepSubmit
     public function firstStepSubmit_edit()
     {
         $this->updateMode = true;
-        $this->currentStep = 2;
-
+        $this->currentStep = 3;
     }
 
     //secondStepSubmit_edit
@@ -151,22 +117,28 @@ class AddParent extends Component
     {
         $this->updateMode = true;
         $this->currentStep = 3;
-
     }
 
-    public function submitForm_edit(){
+    public function submitForm_edit()
+    {
 
-        if ($this->Parent_id){
+        if ($this->Parent_id) {
             $parent = My_Parent::find($this->Parent_id);
             $parent->update([
+                'Email' => $this->Email,
+                'Password' => Hash::make($this->Password),
+                'Name_Father' => ['en' => $this->Name_Father_en, 'ar' => $this->Name_Father],
+                'Job_Father' => ['en' => $this->Job_Father_en, 'ar' => $this->Job_Father],
+                'Phone_Father' => $this->Phone_Father,
+                'Address_Father' => $this->Address_Father,
             ]);
-
         }
 
         return redirect()->to('/add_parent');
     }
 
-    public function delete($id){
+    public function delete($id)
+    {
         My_Parent::findOrFail($id)->delete();
         return redirect()->to('/add_parent');
     }
@@ -178,12 +150,11 @@ class AddParent extends Component
         $this->Email = '';
         $this->Password = '';
         $this->Name_Father = '';
+        $this->Name_Father_en = '';
         $this->Job_Father = '';
         $this->Job_Father_en = '';
-        $this->Name_Father_en = '';
         $this->Phone_Father = '';
-        $this->Address_Father ='';
-
+        $this->Address_Father = '';
     }
 
 
@@ -192,5 +163,4 @@ class AddParent extends Component
     {
         $this->currentStep = $step;
     }
-
 }
