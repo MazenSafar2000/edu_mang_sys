@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 
 trait AuthTrait
 {
-    public function chekGuard($request){
+    public function  chekGuard($request){
 
         if($request->type == 'student'){
             $guardName= 'student';

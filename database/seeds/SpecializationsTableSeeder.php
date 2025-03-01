@@ -15,10 +15,17 @@ class SpecializationsTableSeeder extends Seeder
     {
         DB::table('specializations')->delete();
         $specializations = [
-            ['en'=> 'Arabic', 'ar'=> 'عربي'],
-            ['en'=> 'Sciences', 'ar'=> 'علوم'],
-            ['en'=> 'Computer', 'ar'=> 'حاسب الي'],
-            ['en'=> 'English', 'ar'=> 'انجليزي'],
+            ['en'=> 'Arabic Language', 'ar'=> 'لغة عربية'],
+            ['en'=> 'English Language', 'ar'=> 'لغة إنجليزية'],
+            ['en'=> 'Islamic Education', 'ar'=> 'تربية إسلامية'],
+            ['en'=> 'Science and Life', 'ar'=> 'علوم وحياة'],
+            ['en'=> 'Mathematics', 'ar'=> 'رياضيات '],
+            ['en'=> 'Social Studies (Geography)', 'ar'=> 'دراسات اجتماعية (جغرافيا)'],
+            ['en'=> 'Technology', 'ar'=> 'التكنولوجيا'],
+            ['en'=> 'Physics', 'ar'=> 'فيزياء'],
+            ['en'=> 'Chemistry', 'ar'=> 'كيمياء'],
+            ['en'=> 'Biology', 'ar'=> 'أحياء'],
+            ['en'=> 'History', 'ar'=> 'تاريخ'],
         ];
         foreach ($specializations as $S) {
             Specialization::create(['Name' => $S]);

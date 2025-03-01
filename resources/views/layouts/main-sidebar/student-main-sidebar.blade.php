@@ -12,12 +12,17 @@
         <!-- menu title -->
         <li class="mt-10 mb-10 text-muted pl-4 font-medium menu-title">{{trans('main_trans.Programname')}} </li>
 
+        <!-- Subjects -->
+        <li>
+            <a href=""><i class="fas fa-book"></i><span
+                    class="right-nav-text">{{ __('Students_trans.subjects')}}</span></a>
+        </li>
 
         <!-- Exams-->
-        {{-- <li>
+        <li>
             <a href="{{route('student_exams.index')}}"><i class="fas fa-book-open"></i><span
                     class="right-nav-text">{{ __('Students_trans.exams') }}</span></a>
-        </li> --}}
+        </li>
 
         <!-- Revision -->
         <li>
@@ -31,6 +36,9 @@
             <a href="{{route('profile-student.index')}}"><i class="fas fa-id-card-alt"></i><span
                     class="right-nav-text">{{ __('Students_trans.profile')}}</span></a>
         </li>
+
+
+
 
     </ul>
 </div>

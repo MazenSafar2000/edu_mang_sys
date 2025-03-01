@@ -42,5 +42,7 @@ return [
     'inter_degree' => 'enter/exam degree',
     'revision' => 'Revision',
     'welcome' => 'Welcome',
+    'Father_Phone' => 'Father Phone Number',
+    'subjects' => 'Subjects',
 
 ];

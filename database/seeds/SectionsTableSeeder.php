@@ -15,21 +15,38 @@ class SectionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sections')->delete();
+        $classrooms = [
+            // Primary/Elementary Stage
+            ['Grade_id' => 1, 'Class_ids' => [1, 2, 3, 4, 5, 6]],
 
-        $Sections = [
-            ['en' => 'a', 'ar' => 'ا'],
-            ['en' => 'b', 'ar' => 'ب'],
-            ['en' => 'c', 'ar' => 'ت'],
+            // Middle/Preparatory Stage
+            ['Grade_id' => 2, 'Class_ids' => [7, 8, 9]],
+
+            // Secondary/High School Stage
+            ['Grade_id' => 3, 'Class_ids' => [10, 11, 12]],
         ];
 
-        foreach ($Sections as $section) {
-            Section::create([
-                'Name_Section' => $section,
-                'Status' => 1,
-                'Grade_id' => Grade::all()->unique()->random()->id,
-                'Class_id' => ClassRoom::all()->unique()->random()->id
-            ]);
+        foreach ($classrooms as $classroom) {
+            foreach ($classroom['Class_ids'] as $class_id) {
+                // Insert Section A and Section B for each class
+                DB::table('Sections')->insert([
+                    'Name_Section' => json_encode(['en' => 'A', 'ar' => 'أ']),
+                    'Status' => 1, // Assuming 1 means active
+                    'Grade_id' => $classroom['Grade_id'],
+                    'Class_id' => $class_id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+
+                DB::table('Sections')->insert([
+                    'Name_Section' => json_encode(['en' => 'B', 'ar' => 'ب']),
+                    'Status' => 1, // Assuming 1 means active
+                    'Grade_id' => $classroom['Grade_id'],
+                    'Class_id' => $class_id,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
         }
     }
 }

@@ -4,7 +4,7 @@ header start-->
     <!-- logo -->
     <div class="text-left navbar-brand-wrapper">
         <a class="navbar-brand brand-logo" href="{{ url('/dashboard') }}">
-            <img src="{{ URL::asset('assets/images/asset 5.png') }}" alt="logo" width="140px" height="190px"></a>
+            <img src="{{ URL::asset('assets/images/eduspark2.png') }}" alt="logo" width="140px" height="190px"></a>
     </div>
     <!-- Top bar left -->
     <ul class="nav navbar-nav mr-auto">
