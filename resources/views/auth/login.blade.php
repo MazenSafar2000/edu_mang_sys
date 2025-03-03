@@ -87,7 +87,6 @@ login-->
                                             <strong>{{ $message }}</strong>
                                         </span>
                                 @enderror
-
                             </div>
 
                             <div class="section-field mb-20">
@@ -101,7 +100,6 @@ login-->
                                             <strong>{{ $message }}</strong>
                                         </span>
                                 @enderror
-
                             </div>
                             <div class="section-field">
                                 <div class="remember-checkbox mb-30">

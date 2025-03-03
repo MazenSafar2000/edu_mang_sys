@@ -11,11 +11,18 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('auth.selection');
+        return view('auth.loginpage');
     }
 
     public function dashboard()
     {
         return view('dashboard');
     }
+
+    public function about()
+    {
+        return view('auth.aboutus');
+    }
+
+
 }

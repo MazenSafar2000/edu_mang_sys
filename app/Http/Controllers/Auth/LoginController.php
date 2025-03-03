@@ -39,11 +39,22 @@ class LoginController extends Controller
 
     public function login(Request $request){
 
-        if (Auth::guard($this->chekGuard($request))->attempt(['email' => $request->email, 'password' => $request->password])) {
-           return $this->redirect($request);
-        }
-        else{
-            return redirect()->back()->with('message', 'يوجد خطا في كلمة المرور او اسم المستخدم');
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        // Determine the guard dynamically
+        $guard = $this->chekGuard($request);
+
+        // Attempt authentication
+        if (Auth::guard($guard)->attempt([
+            'email' => $request->email,
+            'password' => $request->password
+        ])) {
+            return $this->redirect($request);
+        } else {
+            return redirect()->back()->with('message', 'يوجد خطأ في كلمة المرور أو اسم المستخدم');
         }
 
     }

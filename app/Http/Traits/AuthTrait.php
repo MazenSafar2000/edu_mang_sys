@@ -6,36 +6,27 @@ use App\Providers\RouteServiceProvider;
 
 trait AuthTrait
 {
-    public function  chekGuard($request){
+    public function  chekGuard($request)
+    {
 
-        if($request->type == 'student'){
-            $guardName= 'student';
-        }
-        elseif ($request->type == 'parent'){
-            $guardName= 'parent';
-        }
-        elseif ($request->type == 'teacher'){
-            $guardName= 'teacher';
-        }
-        else{
-            $guardName= 'web';
-        }
-        return $guardName;
+        $type = $request->input('type');
+
+        return match ($type) {
+            'student' => 'student',
+            'parent' => 'parent',
+            'teacher' => 'teacher',
+            default => 'web',
+        };
     }
 
-    public function redirect($request){
+    public function redirect($request)
+    {
 
-        if($request->type == 'student'){
-            return redirect()->intended(RouteServiceProvider::STUDENT);
-        }
-        elseif ($request->type == 'parent'){
-            return redirect()->intended(RouteServiceProvider::PARENT);
-        }
-        elseif ($request->type == 'teacher'){
-            return redirect()->intended(RouteServiceProvider::TEACHER);
-        }
-        else{
-            return redirect()->intended(RouteServiceProvider::HOME);
-        }
+        return match ($request->input('type')) {
+            'student' => redirect()->intended(RouteServiceProvider::STUDENT),
+            'parent' => redirect()->intended(RouteServiceProvider::PARENT),
+            'teacher' => redirect()->intended(RouteServiceProvider::TEACHER),
+            default => redirect()->intended(RouteServiceProvider::HOME),
+        };
     }
 }

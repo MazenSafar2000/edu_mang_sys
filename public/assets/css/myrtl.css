@@ -1,0 +1,742 @@
+:root {
+    --main-color: #589F43;
+    --secondary-color: #072340;
+    ;
+    --white: #fff;
+    --black: #2c3e50;
+    --light-color: #888;
+    --light-bg: #eee;
+    --border: 1rem solid rgba(0, 0, 0, .2);
+    --red: #d35000;
+
+
+}
+
+* {
+
+    font-family: "Cairo", serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+
+}
+
+
+
+*::selection {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+*::-webkit-scrollbar {
+    height: .5rem;
+    width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--main-color);
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: .8rem;
+}
+
+
+body {
+
+    height: 100%;
+    margin: 0;
+    padding-top: 66px;
+    overflow-x: hidden;
+    overflow: auto;
+    /* لتمكين التمرير عند الحاجة */
+
+}
+
+
+
+body.dark {
+
+    --white: #222;
+    --black: #fff;
+    --light-color: #aaa;
+    --light-bg: #333;
+    --border: 1rem solid rgba(255, 255, 255, .2);
+}
+
+
+/*** header starts ***/
+
+.header .flex {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    height: 65px;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header .flex .navbar {
+    display: flex;
+    gap: 2.5rem;
+}
+
+
+.header .flex .logo {
+    font-size: 6rem;
+    color: var(--main-color);
+    font-weight: bolder;
+    margin-right: 2rem;
+}
+
+.header .flex .logo img {
+    width: 7rem;
+    margin-top: 2.5rem;
+    margin-right: 1rem;
+}
+
+
+.header .flex .navbar a {
+    font-size: 1.6rem;
+    color: var(--black);
+    border-radius: .5rem;
+    cursor: pointer;
+    width: 3.5rem;
+    height: 3.5rem;
+    line-height: 3.5rem;
+    text-align: center;
+    margin-left: 1rem;
+}
+
+.header .flex .navbar a:hover {
+    background-color: var(--main-color);
+    color: var(--white);
+    transition: background-color .8s ease-in-out;
+}
+
+.header .flex .navbar a.active {
+    background-color: var(--main-color);
+    color: var(--white);
+}
+
+
+.menu-icon {
+    font-size: 2rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    color: var(--black);
+}
+
+/* تنسيق القائمة المنسدلة */
+.header .navbar {
+    display: flex;
+    gap: 2.5rem;
+}
+
+
+
+
+/*****header ends*******/
+
+
+
+
+/*****login setction starts*******/
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/back.png') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+
+}
+
+.container {
+    display: flex;
+    width: 80%;
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: 5.5rem;
+    border: none;
+}
+
+.left-section {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+
+}
+
+.image-container {
+    display: flex;
+    bottom: 0;
+}
+
+.student-img {
+    width: 28rem;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    margin-left: 16rem;
+}
+
+
+.right-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 30px;
+    height: 33rem;
+    width: 5rem;
+    margin-right: 20rem;
+}
+
+.login-box {
+    text-align: center;
+    width: 100%;
+}
+
+
+.login-box p {
+    margin-top: 1rem;
+}
+
+.login-box h2 {
+    color: var(--main-color);
+    font-size: 2rem;
+    margin-top: 1rem;
+
+}
+
+.input-box {
+    padding: 7px;
+    margin: 10px 0;
+    margin-top: 20px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    text-align: right;
+}
+
+
+.input-box2 {
+    padding: 7px;
+    margin-top: 2px;
+    margin-bottom: 1rem;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: right;
+}
+
+
+.login-btn {
+    background-color: var(--main-color);
+    color: white;
+    padding: 7px;
+    border: none;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+    width: 70%;
+    margin-top: 2px;
+
+}
+
+.login-btn:hover {
+    background-color: var(--secondary-color);
+    transition: .5s linear;
+}
+
+
+.icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.icons img {
+    width: 40px;
+    margin-top: 1rem;
+}
+
+.register-link {
+    color: var(--main-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/***login section ends**/
+
+
+
+
+
+/**about page starts**/
+
+
+/* الخلفية للصف */
+.row {
+    background-image: url(../images/back.png);
+    background-size: cover;
+    background-position: center;
+    padding: 2rem;
+    /* لإعطاء مساحة داخلية */
+}
+
+/* تنسيق صف الـ about */
+.about .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+/* تنسيق الصورة */
+.about .row .image {
+    flex: 0 0 40rem;
+}
+
+.about .row .image img {
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+}
+
+/* تنسيق المحتوى */
+.about .row .content {
+    flex: 0 0 50rem;
+    text-align: right;
+}
+
+.about .row .content h3 {
+    font-size: 2rem;
+    color: var(--black);
+    background-color: var(--white);
+    width: 30%;
+    padding: 0.5rem 1rem;
+    /* اختصار لتحديد padding عمودي وأفقي */
+    margin-left: auto;
+    margin-bottom: 1rem;
+}
+
+.about .row .content p {
+    line-height: 2;
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.3rem;
+    color: var(--white);
+    direction: rtl;
+    text-align: justify;
+    margin-left: auto;
+    margin-bottom: 7rem;
+}
+
+
+
+
+
+.titleWho h3 {
+    font-size: 1.5rem;
+    color: var(--main-color);
+    text-align: right;
+    margin: 2rem 4rem 0rem auto;
+}
+
+.about .box-container {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    /* يسمح بتعدد الصفوف عند ضيق العرض */
+}
+
+.about .box-container .box {
+    flex: 1 1 20rem;
+    /* عرض مرن يبدأ من 250px */
+    display: flex;
+    justify-content: flex-end;
+    /* كل العناصر لأقصى اليمين */
+    align-items: center;
+    gap: 0.5rem;
+    /* مسافة صغيرة بين النص والصورة */
+    background-color: var(--white);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin: 0 2.5rem 2.5rem 2.5rem;
+}
+
+.about .box-container .box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transition: 0.5s;
+}
+
+.about .box-container .box div {
+    text-align: right;
+    /* النص داخل الـ div */
+}
+
+.about .box-container .box h3 {
+    color: var(--main-color);
+    font-size: 2rem;
+    margin: 0 0 0.3rem;
+    /* تعديل هامش بسيط */
+}
+
+.about .box-container .box p {
+    font-size: 1.3rem;
+    color: var(--light-color);
+    margin: 0;
+}
+
+.about .box-container .box img {
+    width: 5rem;
+    height: auto;
+    margin-left: 0;
+    /* إزالة المسافة الإضافية */
+}
+
+/**about page ens**/
+
+
+.footer {
+    position: sticky;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: var(--white);
+    border-top: var(--black);
+    padding: 1rem 2rem;
+    text-align: center;
+    color: var(--black);
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    z-index: 1000;
+
+    height: 5rem;
+
+}
+
+.footer span {
+    color: var(--main-color);
+}
+
+
+
+
+/* Media Queries for Responsiveness */
+
+@media (max-width:1200px) {
+
+    .container {
+        flex-direction: column;
+        height: auto;
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .left-section {
+        display: none;
+    }
+
+
+
+    .right-section {
+        width: 90%;
+        margin-right: 0;
+        height: auto;
+        padding: 15px;
+    }
+
+    .login-box h2 {
+        font-size: 1.5rem;
+        /* تعديل حجم العنوان */
+    }
+
+    .input-box,
+    .input-box2,
+    .login-btn {
+        width: 90%;
+        /* تعديل عرض الحقول والأزرار */
+    }
+
+    .about .row .image {
+        flex: 0 0 100%;
+        margin: 0 auto;
+    }
+
+    .about .row .image img {
+        height: auto;
+    }
+
+    .about .row .content {
+        flex: 0 0 100%;
+        text-align: center;
+    }
+
+    .about .row .content h3 {
+        width: 80%;
+        margin: 0 auto 1rem;
+    }
+
+    .about .row .content p {
+        width: 90%;
+        margin: 1rem auto 0;
+        text-align: justify;
+    }
+
+
+}
+
+
+@media (max-width:991px) {
+    html {
+        font-size: 55%;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+
+    .container {
+        flex-direction: column;
+        height: auto;
+        margin-top: 4rem;
+    }
+
+    .left-section {
+        justify-content: center;
+        margin-bottom: 2rem;
+    }
+
+    .student-img {
+        width: 20rem;
+        /* تغيير حجم الصورة للهواتف أو الأجهزة اللوحية */
+        margin-left: 0;
+    }
+
+    .right-section {
+        width: 90%;
+        margin-right: 0;
+        height: auto;
+        padding: 15px;
+    }
+
+    .login-box h2 {
+        font-size: 1.5rem;
+        /* تعديل حجم العنوان */
+    }
+
+
+    .input-box,
+    .input-box2,
+    .login-btn {
+        width: 90%;
+        /* تعديل عرض الحقول والأزرار */
+    }
+
+
+
+    .flex .logo {
+        font-size: 3rem;
+        /* تصغير حجم الشعار ليصبح مناسبًا للشاشات الصغيرة */
+        margin-right: 0;
+        /* إزالة الهامش الكبير على اليمين */
+        order: 0;
+        /* تعديل حجم الشعار */
+    }
+
+    .flex .icons {
+        justify-content: flex-start;
+        /* تعديل توزيع الأيقونات */
+    }
+
+
+    .menu-icon {
+        display: block;
+        /* إظهار زر الهامبرغر */
+    }
+
+    .header {
+        position: relative;
+        /* تأكد من أن الهيدر هو المرجع للقائمة */
+    }
+
+    .header .navbar {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 32%;
+        background: #fff;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* عند تفعيل القائمة */
+    .header .navbar.active {
+        transform: scaleY(1);
+    }
+
+
+    .about .box-container {
+        gap: 1.5rem;
+    }
+
+    .about .box-container .box {
+        flex: 1 1 45%;
+        padding: 1rem;
+        gap: 0.3rem;
+    }
+
+    .about .box-container .box h3 {
+        font-size: 1.8rem;
+    }
+
+    .about .box-container .box p {
+        font-size: 1.1rem;
+    }
+
+    .about .box-container .box img {
+        width: 4rem;
+    }
+
+    .titleWho h3 {
+        font-size: 1.3rem;
+        margin-right: 0.5rem;
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    html {
+        font-size: 55%;
+    }
+
+
+    .login {
+        height: auto;
+        padding: 20px;
+    }
+
+    .student-img {
+        width: 16rem;
+        /* تغيير حجم الصورة أكثر للأجهزة الصغيرة */
+    }
+
+    .right-section {
+        width: 100%;
+        margin-right: 0;
+        height: auto;
+        padding: 10px;
+    }
+
+    .login-box h2 {
+        font-size: 1.3rem;
+        /* تقليل حجم العنوان */
+    }
+
+    .input-box,
+    .input-box2,
+    .login-btn {
+        width: 90%;
+        /* جعل الأزرار والحقول عرض 100% */
+    }
+
+    .icons img {
+        width: 35px;
+        /* تقليل حجم الأيقونات للأجهزة الصغيرة */
+    }
+
+    .flex .logo {
+        font-size: 1.6rem;
+        /* تقليل حجم الشعار على الشاشات الصغيرة */
+    }
+
+
+    .flex {
+        padding: 10px;
+        /* إضافة بعض الحشو للهيدر */
+    }
+
+
+    .about .row .image img {
+        height: 25rem;
+    }
+
+
+    .about .box-container .box {
+        flex: 1 1 100%;
+        justify-content: space-between;
+        /* لضمان توزيع النص والصورة على كامل عرض الصندوق */
+        padding: 0.8rem;
+    }
+
+    .about .box-container .box h3 {
+        font-size: 1.5rem;
+    }
+
+    .about .box-container .box p {
+        font-size: 1rem;
+    }
+
+    .about .box-container .box img {
+        width: 3.5rem;
+    }
+
+    .titleWho h3 {
+        font-size: 1.2rem;
+        margin: 1rem;
+    }
+
+
+    .about .row {
+        gap: 1rem;
+    }
+
+    .about .row .content h3 {
+        font-size: 1.5rem;
+        width: 90%;
+    }
+
+    .about .row .content p {
+        font-size: 1.1rem;
+        width: 95%;
+    }
+}
