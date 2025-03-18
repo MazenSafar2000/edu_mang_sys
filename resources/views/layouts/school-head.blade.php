@@ -32,11 +32,8 @@
                 <a href="{{ LaravelLocalization::getLocalizedURL(App::getLocale() == 'ar' ? 'en' : 'ar', null, [], true) }}"
                     id="lang-btn" title="تغيير اللغة" class="fas fa-language">
                 </a>
-                <a href="{{ route('aboutUs') }}" id="about-btn" title="من نحن"
-                    class="fas fa-question {{ request()->routeIs('aboutUs') ? 'active' : '' }}"></a>
-                <a href="contact.html" id="contact-btn" title="اتصل بنا" class="fas fa-phone"></a>
             </nav>
-            <a href="{{ route('loginpage') }}" class="logo"><img src="{{ URL::asset('assets/images/spark.png') }}"
+            <a href="{{ route('School_management') }}" class="logo"><img src="{{ URL::asset('assets/images/spark.png') }}"
                     alt="spark education"></a>
         </section>
     </header>
@@ -62,29 +59,8 @@
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.2.0/dist/fullcalendar.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const studentBtn = document.getElementById("student-btn");
-            const parentBtn = document.getElementById("parent-btn");
-            const studentForm = document.getElementById("student-form");
-            const parentForm = document.getElementById("parent-form");
+   
 
-            studentBtn.addEventListener("click", function() {
-                studentForm.style.display = "block";
-                parentForm.style.display = "none";
-                studentBtn.src = "{{ URL::asset('assets/images/std-on.png') }}";
-                parentBtn.src = "{{ URL::asset('assets/images/par-off.png') }}";
-            });
-
-            parentBtn.addEventListener("click", function() {
-                studentForm.style.display = "none";
-                parentForm.style.display = "block";
-                studentBtn.src = "{{ URL::asset('assets/images/std-off.png') }}";
-                parentBtn.src = "{{ URL::asset('assets/images/par-on.png') }}";
-
-            });
-        });
-    </script>
 </body>
 
 </html>

@@ -18,7 +18,6 @@
                         </div>
                     @endif
 
-
                     <form id="student-form" method="POST" action="{{ route('login') }}">
                         @csrf
                         <h2> {{ trans('main_trans.Student_Login') }} </h2>

@@ -40,7 +40,6 @@ return [
     'start_date' => 'start from',
     'end_date' => 'end in',
     'name' => 'Name',
-    'fee_type' => 'Fee type',
     'amount' => 'Amount',
     'Statement' => 'Statement',
     'date' => 'Date',
@@ -51,7 +50,7 @@ return [
     'profile' => 'profile',
     'welcome' => 'Welcome',
 
-    
+
 
 
 

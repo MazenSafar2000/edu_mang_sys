@@ -22,9 +22,9 @@
 
         <!--================================= preloader -->
 
-        <div id="pre-loader">
+        {{-- <div id="pre-loader">
             <img src="{{ URL::asset('assets/images/pre-loader/loader-01.png') }}" alt="">
-        </div>
+        </div> --}}
 
         <!--================================= preloader -->
 
@@ -38,7 +38,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">{{ __('Parent_trans.welcome')}}
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">{{ __('Parent_trans.welcome') }}
                             {{ auth()->user()->Name_Father }}</h4>
                     </div><br><br>
                     <div class="col-sm-6">

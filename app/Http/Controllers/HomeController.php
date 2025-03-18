@@ -11,7 +11,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('auth.loginpage');
+        return view('auth.student-parent-login');
     }
 
     public function dashboard()
@@ -22,6 +22,11 @@ class HomeController extends Controller
     public function about()
     {
         return view('auth.aboutus');
+    }
+
+    public function SchoolMangLogin()
+    {
+        return view('auth.schoolMangLogin');
     }
 
 

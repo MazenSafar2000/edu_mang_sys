@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 @section('title')
-{{trans('main_trans.Main_title')}}
+    {{ trans('main_trans.Main_title') }}
 @stop
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,9 +23,9 @@
         <!--=================================
  preloader -->
 
- <div id="pre-loader">
+        {{-- <div id="pre-loader">
      <img src="{{ URL::asset('assets/images/pre-loader/loader-01.png') }}" alt="">
- </div>
+ </div> --}}
 
         <!--=================================
  preloader -->
@@ -37,10 +38,11 @@
  Main content -->
         <!-- main-content -->
         <div class="content-wrapper">
-            <div class="page-title" >
+            <div class="page-title">
                 <div class="row">
-                    <div class="col-sm-6" >
-                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">{{ __('Students_trans.welcome')}}: {{auth()->user()->name}}</h4>
+                    <div class="col-sm-6">
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">{{ __('Students_trans.welcome') }}:
+                            {{ auth()->user()->name }}</h4>
                     </div><br><br>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -68,7 +70,7 @@
     @include('layouts.footer-scripts')
     @livewireScripts
     @stack('scripts')
-    
+
 </body>
 
 </html>

@@ -18,9 +18,9 @@
         <!--=================================
  preloader -->
 
-        <div id="pre-loader">
+        {{-- <div id="pre-loader">
             <img src="{{ URL::asset('assets/images/pre-loader/loader-01.png') }}" alt="">
-        </div>
+        </div> --}}
 
         <!--=================================
  preloader -->

@@ -1,6 +1,6 @@
 <div class="scrollbar side-menu-bg" style="overflow: scroll">
     <ul class="nav navbar-nav side-menu" id="sidebarnav">
-        
+
         <!-- menu item Dashboard-->
         <li>
             <a href="{{ url('/dashboard') }}">
@@ -110,23 +110,6 @@
             </a>
             <ul id="Parents-menu" class="collapse" data-parent="#sidebarnav">
                 <li> <a href="{{url('add_parent')}}">{{trans('main_trans.List_Parents')}}</a> </li>
-            </ul>
-        </li>
-
-        <!-- Accounts-->
-        <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Accounts-menu">
-                <div class="pull-left"><i class="fas fa-money-bill-wave-alt"></i><span
-                        class="right-nav-text">{{trans('main_trans.Accounts')}}</span></div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
-                <div class="clearfix"></div>
-            </a>
-            <ul id="Accounts-menu" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="{{route('Fees.index')}}">الرسوم الدراسية</a> </li>
-                <li> <a href="{{route('Fees_Invoices.index')}}">الفواتير</a> </li>
-                <li> <a href="{{route('receipt_students.index')}}">سندات القبض</a> </li>
-                <li> <a href="{{route('ProcessingFee.index')}}">استبعاد رسوم</a> </li>
-                <li> <a href="{{route('Payment_students.index')}}">سندت الصرف</a> </li>
             </ul>
         </li>
 

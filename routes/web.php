@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
@@ -18,7 +19,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Auth::routes();
 
 Route::group(['namespace' => 'Auth'], function () {
-
     Route::get('/login/{type}', 'LoginController@loginForm')->middleware('guest')->name('login.show');
     Route::post('/login', 'LoginController@login')->name('login');
     Route::get('/logout/{type}', 'LoginController@logout')->name('logout');
@@ -34,6 +34,7 @@ Route::group(
 
         Route::get('/', 'HomeController@index')->name('loginpage');
         Route::get('aboutUs', 'HomeController@about')->name('aboutUs');
+        Route::get('school', 'HomeController@SchoolMangLogin')->name('School_management');
 
         Route::group(['middleware' => ['auth']], function () {
             //==============================dashboard============================
@@ -80,11 +81,6 @@ Route::group(
                 Route::post('indirect_admin', 'OnlineClasseController@storeIndirect')->name('indirect.store.admin');
                 Route::resource('Graduated', 'GraduatedController');
                 Route::resource('Promotion', 'PromotionController');
-                Route::resource('Fees_Invoices', 'FeesInvoicesController');
-                Route::resource('Fees', 'FeesController');
-                Route::resource('receipt_students', 'ReceiptStudentsController');
-                Route::resource('ProcessingFee', 'ProcessingFeeController');
-                Route::resource('Payment_students', 'PaymentController');
                 Route::resource('Attendance', 'AttendanceController');
                 Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
                 Route::resource('library', 'LibraryController');

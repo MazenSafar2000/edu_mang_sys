@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 @section('title')
-{{trans('main_trans.Main_title')}}
+    {{ trans('main_trans.Main_title') }}
 @stop
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,9 +24,9 @@
         <!--=================================
  preloader -->
 
- <div id="pre-loader">
+        {{-- <div id="pre-loader">
      <img src="{{ URL::asset('assets/images/pre-loader/loader-01.svg') }}" alt="" width="100%">
- </div>
+ </div> --}}
 
         <!--=================================
  preloader -->
@@ -38,10 +39,11 @@
  Main content -->
         <!-- main-content -->
         <div class="content-wrapper">
-            <div class="page-title" >
+            <div class="page-title">
                 <div class="row">
-                    <div class="col-sm-6" >
-                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">مرحبا بك : {{auth()->user()->Name}}</h4>
+                    <div class="col-sm-6">
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">مرحبا بك :
+                            {{ auth()->user()->Name }}</h4>
                     </div><br><br>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -50,7 +52,7 @@
                 </div>
             </div>
             <!-- widgets -->
-            <div class="row" >
+            <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
@@ -62,11 +64,13 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <p class="card-text text-dark">عدد الطلاب</p>
-                                    <h4>{{$count_students}}</h4>
+                                    <h4>{{ $count_students }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('student.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
+                                    href="{{ route('student.index') }}" target="_blank"><span class="text-danger">عرض
+                                        البيانات</span></a>
                             </p>
                         </div>
                     </div>
@@ -82,11 +86,13 @@
                                 </div>
                                 <div class="float-right text-right">
                                     <p class="card-text text-dark">عدد الاقسام</p>
-                                    <h4>{{$count_sections}}</h4>
+                                    <h4>{{ $count_sections }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
-                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('sections')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+                                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
+                                    href="{{ route('sections') }}" target="_blank"><span class="text-danger">عرض
+                                        البيانات</span></a>
                             </p>
                         </div>
                     </div>

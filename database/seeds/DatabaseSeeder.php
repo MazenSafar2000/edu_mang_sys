@@ -1,6 +1,17 @@
 <?php
 
+namespace Database\Seeders;
+
 use Illuminate\Database\Seeder;
+use UserSeeder;
+use GradeSeeder;
+use ClassroomTableSeeder;
+use SectionsTableSeeder;
+use SpecializationsTableSeeder;
+use GenderTableSeeder;
+use ParentsTableSeeder;
+use StudentsTableSeeder;
+use SettingsTableSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,5 +31,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ParentsTableSeeder::class);
         $this->call(StudentsTableSeeder::class);
         $this->call(SettingsTableSeeder::class);
+        $this->call(TeachersTableSeeder::class);
     }
 }

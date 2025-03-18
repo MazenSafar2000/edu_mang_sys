@@ -26,32 +26,16 @@
                                         <thead>
                                             <tr class="alert-success">
                                                 <th>#</th>
-                                                <th>{{ __('Parent_trans.name')}}</th>
-                                                <th>{{ __('Parent_trans.fee_type')}}</th>
-                                                <th>{{ __('Parent_trans.amount')}}</th>
-                                                <th>{{ __('Parent_trans.grade')}}</th>
-                                                <th>{{ __('Parent_trans.class_room')}}</th>
-                                                <th>{{ __('Parent_trans.Statement')}}</th>
-                                                <th>{{ __('Parent_trans.operations')}}</th>
+                                                <th>{{ __('Parent_trans.name') }}</th>
+                                                <th>{{ __('Parent_trans.fee_type') }}</th>
+                                                <th>{{ __('Parent_trans.amount') }}</th>
+                                                <th>{{ __('Parent_trans.grade') }}</th>
+                                                <th>{{ __('Parent_trans.class_room') }}</th>
+                                                <th>{{ __('Parent_trans.Statement') }}</th>
+                                                <th>{{ __('Parent_trans.operations') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($Fee_invoices as $Fee_invoice)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $Fee_invoice->student->name }}</td>
-                                                    <td>{{ $Fee_invoice->fees->title }}</td>
-                                                    <td>{{ number_format($Fee_invoice->amount, 2) }}</td>
-                                                    <td>{{ $Fee_invoice->grade->Name }}</td>
-                                                    <td>{{ $Fee_invoice->classroom->Name_Class }}</td>
-                                                    <td>{{ $Fee_invoice->description }}</td>
-                                                    <td>
-                                                        <a href="{{ route('sons.receipt', $Fee_invoice->student_id) }}"
-                                                            title="المدفوعات" class="btn btn-info btn-sm" role="button"
-                                                            aria-pressed="true"><i class="fa fa-edit"></i></a>
-                                                    </td>
-                                                </tr>
-                                            @endforeach
                                     </table>
                                 </div>
                             </div>

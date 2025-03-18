@@ -24,13 +24,6 @@
                     class="right-nav-text">{{ __('Parent_trans.attendance_report')}}</span></a>
         </li>
 
-        <!-- تقرير المالية-->
-        <li>
-            <a href="{{route('sons.fees')}}"><i class="fas fa-book-open"></i><span
-                    class="right-nav-text">{{ __('Parent_trans.financial_report')}}</span></a>
-        </li>
-
-
         <!-- Profile-->
         <li>
             <a href="{{route('profile.show.parent')}}"><i class="fas fa-id-card-alt"></i><span

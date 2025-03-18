@@ -23,9 +23,9 @@
 
         <!--================================= preloader -->
 
-        <div id="pre-loader">
+        {{-- <div id="pre-loader">
             <img src="{{ URL::asset('assets/images/pre-loader/loader-01.png') }}" alt="">
-        </div>
+        </div> --}}
 
         <!--================================= preloader -->
 
@@ -39,7 +39,8 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">{{ trans('main_trans.Admin_dashboard') }}</h4>
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">
+                            {{ trans('main_trans.Admin_dashboard') }}</h4>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
@@ -65,7 +66,8 @@
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
                                 <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
-                                    href="{{ route('Students.index') }}" target="_blank"><span class="text-danger">{{ trans('main_trans.View_data') }}</span></span></a>
+                                    href="{{ route('Students.index') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.View_data') }}</span></span></a>
                             </p>
                         </div>
                     </div>
@@ -86,7 +88,8 @@
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
                                 <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
-                                    href="{{ route('Teachers.index') }}" target="_blank"><span class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
+                                    href="{{ route('Teachers.index') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
                             </p>
                         </div>
                     </div>
@@ -107,7 +110,8 @@
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
                                 <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
-                                    href="{{ route('add_parent') }}" target="_blank"><span class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
+                                    href="{{ route('add_parent') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
                             </p>
                         </div>
                     </div>
@@ -128,7 +132,8 @@
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
                                 <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
-                                    href="{{ route('Sections.index') }}" target="_blank"><span class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
+                                    href="{{ route('Sections.index') }}" target="_blank"><span
+                                        class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
                             </p>
                         </div>
                     </div>
@@ -145,7 +150,8 @@
                             <div class="tab nav-border" style="position: relative;">
                                 <div class="d-block d-md-flex justify-content-between">
                                     <div class="d-block w-100">
-                                        <h5 style="font-family: 'Cairo', sans-serif" class="card-title">{{ trans('main_trans.Last_ope_sys') }}</h5>
+                                        <h5 style="font-family: 'Cairo', sans-serif" class="card-title">
+                                            {{ trans('main_trans.Last_ope_sys') }}</h5>
                                     </div>
                                     <div class="d-block d-md-flex nav-tabs-custom">
                                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -167,13 +173,6 @@
                                                     href="#parents" role="tab" aria-controls="parents"
                                                     aria-selected="false">{{ trans('main_trans.Parents') }}</a>
                                             </li>
-
-                                            <li class="nav-item">
-                                                <a class="nav-link" id="fee_invoices-tab" data-toggle="tab"
-                                                    href="#fee_invoices" role="tab" aria-controls="fee_invoices"
-                                                    aria-selected="false">{{ trans('main_trans.Invoices') }}</a>
-                                            </li>
-
                                         </ul>
                                     </div>
                                 </div>
@@ -230,7 +229,8 @@
                                                         <th>{{ trans('Students_trans.gender') }}</th>
                                                         <th>تاريخ التعين</th>
                                                         <th>التخصص</th>
-                                                        <th><{{ trans('Students_trans.created_at') }}/th>
+                                                        <th>
+                                                            <{{ trans('Students_trans.created_at') }} /th>
                                                     </tr>
                                                 </thead>
 
@@ -284,44 +284,6 @@
                                             </table>
                                         </div>
                                     </div>
-
-                                    {{-- sections Table --}}
-                                    <div class="tab-pane fade" id="fee_invoices" role="tabpanel"
-                                        aria-labelledby="fee_invoices-tab">
-                                        <div class="table-responsive mt-15">
-                                            <table style="text-align: center"
-                                                class="table center-aligned-table table-hover mb-0">
-                                                <thead>
-                                                    <tr class="table-info text-danger">
-                                                        <th>#</th>
-                                                        <th>تاريخ الفاتورة</th>
-                                                        <th>{{ trans('Students_trans.student_name') }}</th>
-                                                        <th>{{ trans('Students_trans.Grade') }}</th>
-                                                        <th>{{ trans('Students_trans.classrooms') }}</th>
-                                                        <th>{{ trans('Students_trans.section') }}</th>
-                                                        <th>نوع الرسوم</th>
-                                                        <th>المبلغ</th>
-                                                        <th>{{ trans('Students_trans.created_at') }}</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @forelse(\App\Models\Fee_invoice::latest()->take(10)->get() as $section)
-                                                        <tr>
-                                                            <td>{{ $loop->iteration }}</td>
-                                                            <td>{{ $section->invoice_date }}</td>
-                                                            <td>{{ $section->My_classs->Name_Class }}</td>
-                                                            <td class="text-success">{{ $section->created_at }}</td>
-                                                        </tr>
-                                                    @empty
-                                                        <tr>
-                                                            <td class="alert-danger" colspan="9">لاتوجد بيانات</td>
-                                                        </tr>
-                                                    @endforelse
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
                                 </div>
 
                             </div>

@@ -64,8 +64,6 @@ header start-->
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">New registered user <small
                         class="float-right text-muted time">Just now</small> </a>
-                <a href="#" class="dropdown-item">New invoice received <small
-                        class="float-right text-muted time">22 mins</small> </a>
                 <a href="#" class="dropdown-item">Server error report<small class="float-right text-muted time">7
                         hrs</small> </a>
                 <a href="#" class="dropdown-item">Database report<small class="float-right text-muted time">1

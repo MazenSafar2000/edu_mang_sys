@@ -1,9 +1,5 @@
 <?php
 
-use App\Models\Classroom;
-use App\Models\Grade;
-use App\Models\My_Parent;
-use App\Models\Section;
 use App\Models\Student;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

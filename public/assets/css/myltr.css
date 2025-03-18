@@ -1,15 +1,15 @@
-:root{
-    --main-color:#589F43 ;
-    --secondary-color:#072340;
-    --white:#fff;
-    --black:#2c3e50;
-    --light-color:#888;
-    --light-bg:#eee;
-    --border:1rem solid rgba(0,0,0,.2);
-    --red:#d35000;
+:root {
+    --main-color: #589F43;
+    --secondary-color: #072340;
+    --white: #fff;
+    --black: #2c3e50;
+    --light-color: #888;
+    --light-bg: #eee;
+    --border: 1rem solid rgba(0, 0, 0, .2);
+    --red: #d35000;
 }
 
-*{
+* {
     font-family: "Cairo", serif;
     margin: 0;
     padding: 0;
@@ -19,27 +19,27 @@
     text-decoration: none;
 }
 
-*::selection{
+*::selection {
     background-color: var(--main-color);
     color: #fff;
 }
 
-*::-webkit-scrollbar{
+*::-webkit-scrollbar {
     height: .5rem;
     width: 1rem;
 }
 
-*::-webkit-scrollbar-track{
+*::-webkit-scrollbar-track {
     background-color: transparent;
 }
 
-*::-webkit-scrollbar-thumb{
+*::-webkit-scrollbar-thumb {
     background-color: var(--main-color);
 }
 
-html{
+html {
     font-size: 62.5%;
-    overflow-x:hidden;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     scroll-padding-top: .8rem;
 }
@@ -79,20 +79,20 @@ body {
 
 }
 
-.header .flex .logo{
+.header .flex .logo {
     font-size: 6rem;
     color: var(--main-color);
     font-weight: bolder;
     margin-left: 2rem;
 }
 
-.header .flex .logo img{
+.header .flex .logo img {
     width: 7rem;
-    margin-top:2.5rem;
+    margin-top: 2.5rem;
     margin-left: 1rem;
 }
 
-.header .flex .navbar a{
+.header .flex .navbar a {
     font-size: 1.6rem;
     color: var(--black);
     border-radius: .5rem;
@@ -104,7 +104,7 @@ body {
     margin-right: 1rem;
 }
 
-.header .flex .navbar a:hover{
+.header .flex .navbar a:hover {
     background-color: var(--main-color);
     color: var(--white);
     transition: background-color .8s ease-in-out;
@@ -130,7 +130,7 @@ body {
 }
 
 /*** login section starts ***/
-.login{
+.login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -187,7 +187,7 @@ body {
     width: 100%;
 }
 
-.login-box h2{
+.login-box h2 {
     color: var(--main-color);
     font-size: 2rem;
     margin-top: 1rem;
@@ -196,7 +196,7 @@ body {
 .input-box {
     padding: 7px;
     margin: 10px 0;
-    margin-top:20px ;
+    margin-top: 20px;
     width: 70%;
     border: 1px solid #ccc;
     border-top-left-radius: 20px;
@@ -206,7 +206,7 @@ body {
 
 .input-box2 {
     padding: 7px;
-    margin-top:2px;
+    margin-top: 2px;
     margin-bottom: 1rem;
     width: 70%;
     border: 1px solid #ccc;
@@ -225,13 +225,13 @@ body {
     border-top-left-radius: 20px;
     cursor: pointer;
     width: 70%;
-    margin-top:2px;
+    margin-top: 2px;
 
 }
 
 
 
-.login-btn:hover{
+.login-btn:hover {
     background-color: var(--secondary-color);
     transition: .5s linear;
 }
@@ -243,10 +243,12 @@ body {
     justify-content: center;
     gap: 10px;
 }
+
 .icons img {
     width: 40px;
     margin-top: 1rem;
 }
+
 .register-link {
     color: var(--main-color);
     text-decoration: none;
@@ -265,7 +267,8 @@ body {
     background-image: url(../images/back.png);
     background-size: cover;
     background-position: center;
-    padding: 2rem; /* لإعطاء مساحة داخلية */
+    padding: 2rem;
+    /* لإعطاء مساحة داخلية */
 }
 
 /* تنسيق صف الـ about */
@@ -300,7 +303,8 @@ body {
     color: var(--black);
     background-color: var(--white);
     width: 30%;
-    padding: 0.5rem 1rem; /* اختصار لتحديد padding عمودي وأفقي */
+    padding: 0.5rem 1rem;
+    /* اختصار لتحديد padding عمودي وأفقي */
     margin-right: auto;
     margin-bottom: 1rem;
     text-align: left;
@@ -332,16 +336,20 @@ body {
 .about .box-container {
     margin-top: 1.5rem;
     display: flex;
-    flex-wrap: wrap;  /* يسمح بتعدد الصفوف عند ضيق العرض */
+    flex-wrap: wrap;
+    /* يسمح بتعدد الصفوف عند ضيق العرض */
     flex-direction: row-reverse;
 }
 
 .about .box-container .box {
-    flex: 1 1 20rem; /* عرض مرن يبدأ من 250px */
+    flex: 1 1 20rem;
+    /* عرض مرن يبدأ من 250px */
     display: flex;
-    justify-content: flex-end; /* كل العناصر لأقصى اليمين */
+    justify-content: flex-end;
+    /* كل العناصر لأقصى اليمين */
     align-items: center;
-    gap: 0.5rem; /* مسافة صغيرة بين النص والصورة */
+    gap: 0.5rem;
+    /* مسافة صغيرة بين النص والصورة */
     background-color: var(--white);
     border-radius: 0.5rem;
     padding: 1.5rem;
@@ -358,7 +366,8 @@ body {
 }
 
 .about .box-container .box div {
-    text-align: left; /* النص داخل الـ div */
+    text-align: left;
+    /* النص داخل الـ div */
 }
 
 .about .box-container .box h3 {
@@ -375,7 +384,8 @@ body {
 .about .box-container .box img {
     width: 5rem;
     height: auto;
-    margin-right: auto; /* إزالة المسافة الإضافية */
+    margin-right: auto;
+    /* إزالة المسافة الإضافية */
 }
 
 /**about page ens**/
@@ -386,9 +396,11 @@ body {
 /***footer start***/
 
 
-.footer{
+.footer {
     position: sticky;
-    bottom: 0; right: 0; left: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     background-color: var(--white);
     border-top: var(--black);
     padding: 1rem 2rem;
@@ -400,18 +412,256 @@ body {
     z-index: 1000;
 }
 
-.footer span{
+.footer span {
     color: var(--main-color);
+}
+
+/***footer end**/
+
+/**login page teacher starts**/
+
+.login0 {
+    padding: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../images/back.png') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+}
+
+.form-container3 {
+
+    justify-content: center;
+    /* يضع المحتوى في المنتصف أفقيًا */
+    align-items: center;
+    background-color: var(--white);
+    width: 45rem;
+    height: 33rem;
+    border-radius: 30px;
+    padding: 30px;
+    margin: auto
+}
+
+.form-container3 .form h3 {
+    color: var(--main-color);
+    font-size: 2rem;
+    margin-top: 1rem;
+    text-align: center;
+
+}
+
+.input-box-teacher {
+    padding: 7px;
+    margin: 7px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    text-align: left;
+    margin-top: 20px;
+}
+
+.input-box-teacher2 {
+    padding: 7px;
+    margin-top: 2px;
+    margin-bottom: 1rem;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    text-align: left;
+}
+
+.login-btn-teacher {
+
+    background-color: var(--main-color);
+    color: white;
+    padding: 7px;
+    border: none;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 2px;
+
+}
+
+.login-btn-teacher:hover {
+    background-color: var(--secondary-color);
+    transition: .5s linear;
 }
 
 
 
-/***footer end**/
+/* تأثير الانتقال بين النماذج */
+.form {
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
 
+.form.active-form {
+    display: block;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* تحسين الأيقونات عند التبديل */
+.icon {
+    opacity: 0.6;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.icon.active-icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/**login page teacher ends**/
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.alert-heading {
+    color: inherit;
+}
+
+.alert-link {
+    font-weight: 700;
+}
+
+.alert-dismissible {
+    padding-right: 4rem;
+}
+
+.alert-dismissible .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: .75rem 1.25rem;
+    color: inherit;
+}
+
+.alert-primary {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}
+
+.alert-primary hr {
+    border-top-color: #9fcdff;
+}
+
+.alert-primary .alert-link {
+    color: #002752;
+}
+
+.alert-secondary {
+    color: #383d41;
+    background-color: #e2e3e5;
+    border-color: #d6d8db;
+}
+
+.alert-secondary hr {
+    border-top-color: #c8cbcf;
+}
+
+.alert-secondary .alert-link {
+    color: #202326;
+}
+
+.alert-success {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert-success hr {
+    border-top-color: #b1dfbb;
+}
+
+.alert-success .alert-link {
+    color: #0b2e13;
+}
+
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+
+.alert-info hr {
+    border-top-color: #abdde5;
+}
+
+.alert-info .alert-link {
+    color: #062c33;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+
+.alert-warning hr {
+    border-top-color: #ffe8a1;
+}
+
+.alert-warning .alert-link {
+    color: #533f03;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-danger hr {
+    border-top-color: #f1b0b7;
+}
+
+.alert-danger .alert-link {
+    color: #491217;
+}
+
+.alert-light {
+    color: #818182;
+    background-color: #fefefe;
+    border-color: #fdfdfe;
+}
+
+.alert-light hr {
+    border-top-color: #ececf6;
+}
+
+.alert-light .alert-link {
+    color: #686868;
+}
+
+.alert-dark {
+    color: #1b1e21;
+    background-color: #d6d8d9;
+    border-color: #c6c8ca;
+}
+
+.alert-dark hr {
+    border-top-color: #b9bbbe;
+}
+
+.alert-dark .alert-link {
+    color: #040505;
+}
 
 /* Media Queries for Responsiveness */
 
-@media (max-width:1200px){
+@media (max-width:1200px) {
 
     .container {
         flex-direction: column;
@@ -434,13 +684,15 @@ body {
     }
 
     .login-box h2 {
-        font-size: 1.5rem; /* تعديل حجم العنوان */
+        font-size: 1.5rem;
+        /* تعديل حجم العنوان */
     }
 
     .input-box,
     .input-box2,
     .login-btn {
-        width: 90%;  /* تعديل عرض الحقول والأزرار */
+        width: 90%;
+        /* تعديل عرض الحقول والأزرار */
     }
 
 
@@ -448,18 +700,22 @@ body {
         flex: 0 0 100%;
         margin: 0 auto;
     }
+
     .about .row .image img {
         height: auto;
     }
+
     .about .row .content {
         flex: 0 0 100%;
         text-align: center;
     }
+
     .about .row .content h3 {
         width: 90%;
         margin: 0 auto 1rem;
 
     }
+
     .about .row .content p {
         width: 90%;
         margin: 1rem auto 0;
@@ -469,7 +725,7 @@ body {
 
 
 @media (max-width:991px) {
-    html{
+    html {
         font-size: 55%;
     }
 
@@ -495,7 +751,8 @@ body {
     }
 
     .student-img {
-        width: 20rem;  /* تغيير حجم الصورة للهواتف أو الأجهزة اللوحية */
+        width: 20rem;
+        /* تغيير حجم الصورة للهواتف أو الأجهزة اللوحية */
         margin-left: 0;
     }
 
@@ -507,35 +764,43 @@ body {
     }
 
     .login-box h2 {
-        font-size: 1.5rem; /* تعديل حجم العنوان */
+        font-size: 1.5rem;
+        /* تعديل حجم العنوان */
     }
 
 
     .input-box,
     .input-box2,
     .login-btn {
-        width: 90%;  /* تعديل عرض الحقول والأزرار */
+        width: 90%;
+        /* تعديل عرض الحقول والأزرار */
     }
 
 
 
     .flex .logo {
-        font-size: 3rem;  /* تصغير حجم الشعار ليصبح مناسبًا للشاشات الصغيرة */
-        margin-right: 0;  /* إزالة الهامش الكبير على اليمين */
-        order: 0; /* تعديل حجم الشعار */
+        font-size: 3rem;
+        /* تصغير حجم الشعار ليصبح مناسبًا للشاشات الصغيرة */
+        margin-right: 0;
+        /* إزالة الهامش الكبير على اليمين */
+        order: 0;
+        /* تعديل حجم الشعار */
     }
 
     .flex .icons {
-        justify-content: flex-start;  /* تعديل توزيع الأيقونات */
+        justify-content: flex-start;
+        /* تعديل توزيع الأيقونات */
     }
 
 
-     .menu-icon {
-        display: block; /* إظهار زر الهامبرغر */
+    .menu-icon {
+        display: block;
+        /* إظهار زر الهامبرغر */
     }
 
     .header {
-        position: relative; /* تأكد من أن الهيدر هو المرجع للقائمة */
+        position: relative;
+        /* تأكد من أن الهيدر هو المرجع للقائمة */
     }
 
     .header .navbar {
@@ -559,27 +824,32 @@ body {
     }
 
     .titleWho h3 {
-        text-align: left; /* توسيط العنوان */
+        text-align: left;
+        /* توسيط العنوان */
         font-size: 2rem;
         margin-left: 3.5rem;
     }
 
     .about .box-container {
-        flex-direction: column; /* ترتيب الصناديق عموديًا */
+        flex-direction: column;
+        /* ترتيب الصناديق عموديًا */
         align-items: center;
         gap: 1rem;
     }
 
     .about .box-container .box {
-        width: 85%; /* جعل الصناديق تمتد بعرض أكبر */
-        flex-direction: column; /* ترتيب المحتوى داخل الصندوق عموديًا */
+        width: 85%;
+        /* جعل الصناديق تمتد بعرض أكبر */
+        flex-direction: column;
+        /* ترتيب المحتوى داخل الصندوق عموديًا */
         text-align: center;
         justify-content: center;
         padding: 1rem;
     }
 
     .about .box-container .box img {
-        width: 6rem; /* تقليل حجم الصورة */
+        width: 6rem;
+        /* تقليل حجم الصورة */
         margin: 0 auto 1rem;
     }
 
@@ -596,7 +866,7 @@ body {
 
 @media (max-width: 450px) {
 
-    html{
+    html {
         font-size: 55%;
     }
 
@@ -607,7 +877,8 @@ body {
     }
 
     .student-img {
-        width: 16rem;  /* تغيير حجم الصورة أكثر للأجهزة الصغيرة */
+        width: 16rem;
+        /* تغيير حجم الصورة أكثر للأجهزة الصغيرة */
     }
 
     .right-section {
@@ -618,66 +889,74 @@ body {
     }
 
     .login-box h2 {
-        font-size: 1.3rem;  /* تقليل حجم العنوان */
+        font-size: 1.3rem;
+        /* تقليل حجم العنوان */
     }
 
     .input-box,
     .input-box2,
     .login-btn {
-        width:90%;  /* جعل الأزرار والحقول عرض 100% */
+        width: 90%;
+        /* جعل الأزرار والحقول عرض 100% */
     }
 
     .icons img {
-        width: 35px;  /* تقليل حجم الأيقونات للأجهزة الصغيرة */
+        width: 35px;
+        /* تقليل حجم الأيقونات للأجهزة الصغيرة */
     }
 
     .flex .logo {
-        font-size: 1.6rem;  /* تقليل حجم الشعار على الشاشات الصغيرة */
+        font-size: 1.6rem;
+        /* تقليل حجم الشعار على الشاشات الصغيرة */
     }
 
 
     .flex {
-        padding: 10px;  /* إضافة بعض الحشو للهيدر */
+        padding: 10px;
+        /* إضافة بعض الحشو للهيدر */
     }
 
-    .about .row .image img{
+    .about .row .image img {
         height: 25rem;
-     }
+    }
 
 
-     .about .box-container .box {
-         flex: 1 1 100%;
-         justify-content: space-between; /* لضمان توزيع النص والصورة على كامل عرض الصندوق */
-         padding: 0.8rem;
-     }
+    .about .box-container .box {
+        flex: 1 1 100%;
+        justify-content: space-between;
+        /* لضمان توزيع النص والصورة على كامل عرض الصندوق */
+        padding: 0.8rem;
+    }
 
-     .about .box-container .box h3 {
-         font-size: 1.5rem;
-     }
+    .about .box-container .box h3 {
+        font-size: 1.5rem;
+    }
 
-     .about .box-container .box p {
-         font-size: 1rem;
-     }
+    .about .box-container .box p {
+        font-size: 1rem;
+    }
 
-     .about .box-container .box img {
-         width: 3.5rem;
-     }
+    .about .box-container .box img {
+        width: 3.5rem;
+    }
 
-     .titleWho h3 {
-         font-size: 1.2rem;
-         margin: 1rem;
-     }
+    .titleWho h3 {
+        font-size: 1.2rem;
+        margin: 1rem;
+    }
 
 
-     .about .row {
-         gap: 1rem;
-     }
-     .about .row .content h3 {
-         font-size: 1.5rem;
-         width: 100%;
-     }
-     .about .row .content p {
-         font-size: 1.1rem;
-         width: 95%;
-     }
+    .about .row {
+        gap: 1rem;
+    }
+
+    .about .row .content h3 {
+        font-size: 1.5rem;
+        width: 100%;
+    }
+
+    .about .row .content p {
+        font-size: 1.1rem;
+        width: 95%;
+    }
 }

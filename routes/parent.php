@@ -3,6 +3,7 @@
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,6 @@ Route::group(
         Route::get('results/{id}', 'ChildrenController@results')->name('sons.results');
         Route::get('attendances', 'ChildrenController@attendances')->name('sons.attendances');
         Route::post('attendances','ChildrenController@attendanceSearch')->name('sons.attendance.search');
-        Route::get('fees', 'ChildrenController@fees')->name('sons.fees');
-        Route::get('receipt/{id}', 'ChildrenController@receiptStudent')->name('sons.receipt');
         Route::get('profile/parent', 'ChildrenController@profile')->name('profile.show.parent');
         Route::post('profile/parent/{id}', 'ChildrenController@update')->name('profile.update.parent');
     });
