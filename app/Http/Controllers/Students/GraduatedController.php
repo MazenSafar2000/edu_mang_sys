@@ -39,4 +39,9 @@ class GraduatedController extends Controller
     {
        return $this->Graduated->destroy($request);
     }
+
+    public function graduateOne(Request $request)
+    {
+        return $this->Graduated->graduateOne($request);
+    }
 }

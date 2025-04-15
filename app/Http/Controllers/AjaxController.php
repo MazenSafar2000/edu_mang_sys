@@ -12,6 +12,7 @@ class AjaxController extends Controller
     public function getClassrooms($id)
     {
         return Classroom::where("Grade_id", $id)->pluck("Name_Class", "id");
+        return response()->json($classrooms);
 
     }
 
@@ -19,6 +20,7 @@ class AjaxController extends Controller
     public function Get_Sections($id){
 
         return Section::where("Class_id", $id)->pluck("Name_Section", "id");
+        return response()->json($sections);
 
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Students;
 use App\Http\Controllers\Controller;
 use App\Repository\LibraryRepositoryInterface;
 use Illuminate\Http\Request;
+use Laravel\Ui\Presets\React;
 
 class LibraryController extends Controller
 {
@@ -43,9 +44,9 @@ class LibraryController extends Controller
     }
 
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, $id)
     {
-        return $this->library->destroy($request);
+        return $this->library->destroy($request, $id);
     }
 
     public function downloadAttachment($filename)

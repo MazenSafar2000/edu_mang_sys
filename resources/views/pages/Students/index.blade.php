@@ -59,17 +59,18 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('Students.show', $student->id) }}"><i
                                                                     style="color: #ffc107"
-                                                                    class="far fa-eye "></i>&nbsp; عرض بيانات الطالب</a>
+                                                                    class="far fa-eye "></i>&nbsp;
+                                                                {{ trans('main_trans.View_student_data') }} </a>
                                                             <a class="dropdown-item"
                                                                 href="{{ route('Students.edit', $student->id) }}"><i
                                                                     style="color:green" class="fa fa-edit"></i>&nbsp;
-                                                                تعديل بيانات الطالب</a>
+                                                                {{ trans('main_trans.Modify_student_data') }} </a>
                                                             <a class="dropdown-item"
                                                                 data-target="#Delete_Student{{ $student->id }}"
                                                                 data-toggle="modal"
                                                                 href="##Delete_Student{{ $student->id }}"><i
                                                                     style="color: red" class="fa fa-trash"></i>&nbsp;
-                                                                حذف بيانات الطالب</a>
+                                                                {{ trans('main_trans.Delete_student_data') }} </a>
                                                         </div>
                                                     </div>
                                                 </td>

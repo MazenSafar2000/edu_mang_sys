@@ -13,25 +13,25 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
     public function index()
     {
         $students = Student::onlyTrashed()->get();
-        return view('pages.Students.Graduated.index',compact('students'));
+        return view('pages.Students.Graduated.index', compact('students'));
     }
 
     public function create()
     {
         $Grades = Grade::all();
-        return view('pages.Students.Graduated.create',compact('Grades'));
+        return view('pages.Students.Graduated.create', compact('Grades'));
     }
 
     public function SoftDelete($request)
     {
-        $students = student::where('Grade_id',$request->Grade_id)->where('Classroom_id',$request->Classroom_id)->where('section_id',$request->section_id)->get();
+        $students = student::where('Grade_id', $request->Grade_id)->where('Classroom_id', $request->Classroom_id)->where('section_id', $request->section_id)->get();
 
-        if($students->count() < 1){
+        if ($students->count() < 1) {
             return redirect()->back()->with('error_Graduated', __('لاتوجد بيانات في جدول الطلاب'));
         }
 
-        foreach ($students as $student){
-            $ids = explode(',',$student->id);
+        foreach ($students as $student) {
+            $ids = explode(',', $student->id);
             student::whereIn('id', $ids)->Delete();
         }
 
@@ -53,5 +53,17 @@ class StudentGraduatedRepository implements StudentGraduatedRepositoryInterface
         return redirect()->back();
     }
 
+    public function graduateOne($request)
+    {
+        $student = Student::find($request->id);
 
+        if (!$student) {
+            toastr()->error('Student not found.');
+            return redirect()->back();
+        }
+
+        $student->delete();
+        toastr()->success('Student has been graduated successfully.');
+        return redirect()->back();
+    }
 }

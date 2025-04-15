@@ -11,7 +11,7 @@ return [
     'Name_Father_en' => 'Father Name English',
     'Job_Father' => 'Job Title Arabic',
     'Job_Father_en' => 'Job Title English',
-    'Phone_Father' => 'Telephone Number',
+    'Phone_Father' => 'Phone Number',
     'Address_Father' => 'Address Father',
 
     'Next' => 'Next',
@@ -49,6 +49,7 @@ return [
     'show_password' => 'show password',
     'profile' => 'profile',
     'welcome' => 'Welcome',
+    'ID'=>'ID Number',
 
 
 

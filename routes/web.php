@@ -60,7 +60,8 @@ Route::group(
 
                 Route::resource('Sections', 'SectionController');
 
-                Route::get('/classes/{id}', 'SectionController@getclasses');
+                // Route::get('/grades/{id}/classes', 'SectionController@getClasses');
+                // Route::get('/classes/{id}/sections', 'SectionController@getSections');
             });
 
             //==============================parents============================
@@ -80,6 +81,7 @@ Route::group(
                 Route::get('indirect_admin', 'OnlineClasseController@indirectCreate')->name('indirect.create.admin');
                 Route::post('indirect_admin', 'OnlineClasseController@storeIndirect')->name('indirect.store.admin');
                 Route::resource('Graduated', 'GraduatedController');
+                Route::post('/Graduated/one', 'GraduatedController@graduateOne')->name('Graduated.one');
                 Route::resource('Promotion', 'PromotionController');
                 Route::resource('Attendance', 'AttendanceController');
                 Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');

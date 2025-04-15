@@ -7,7 +7,7 @@ return [
     'add_Grade' => 'Add Grade',
     'edit_Grade'=> 'edit_Grade',
     'delete_Grade'=> 'delete_Grade',
-    'Warning_Grade'=> 'Are Sure Of The Deleting Process ?',
+    'Warning_Grade'=> 'Are You Sure Of The Deleting Process ?',
     'stage_name_ar' => 'stage_name_ar',
     'stage_name_en' => 'stage_name_en',
     'Notes' => 'Notes',

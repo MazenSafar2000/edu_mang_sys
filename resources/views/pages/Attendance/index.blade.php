@@ -35,7 +35,7 @@
 
 
 
-    <h5 style="font-family: 'Cairo', sans-serif;color: red"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
+    <h5 style="font-family: 'Cairo', sans-serif;color: red"> {{ trans('Teacher_trans.Today_date') }} : {{ date('Y-m-d') }}</h5>
     <form method="post" action="{{ route('Attendance.store') }}">
 
         @csrf

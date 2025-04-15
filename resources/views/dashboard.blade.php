@@ -208,7 +208,7 @@
                                                             <td>{{ $student->section->Name_Section }}</td>
                                                             <td class="text-success">{{ $student->created_at }}</td>
                                                         @empty
-                                                            <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
+                                                            <td class="alert-danger" colspan="8">{{ trans('main_trans.no_data') }}</td>
                                                         </tr>
                                                     @endforelse
                                                 </tbody>
@@ -225,13 +225,11 @@
                                                 <thead>
                                                     <tr class="table-info text-danger">
                                                         <th>#</th>
-                                                        <th>اسم المعلم</th>
+                                                        <th>{{ trans('main_trans.Number_of_teachers') }}</th>
                                                         <th>{{ trans('Students_trans.gender') }}</th>
-                                                        <th>تاريخ التعين</th>
-                                                        <th>التخصص</th>
-                                                        <th>
-                                                            <{{ trans('Students_trans.created_at') }} /th>
-                                                    </tr>
+                                                        <th>{{ trans('main_trans.Date_of_appointment') }}</th>
+                                                        <th>{{ trans('main_trans.specialization') }}</th>
+                                                        <th>{{ trans('Students_trans.created_at') }}</tr>
                                                 </thead>
 
                                                 @forelse(\App\Models\Teacher::latest()->take(5)->get() as $teacher)
@@ -244,7 +242,7 @@
                                                             <td>{{ $teacher->specializations->Name }}</td>
                                                             <td class="text-success">{{ $teacher->created_at }}</td>
                                                         @empty
-                                                            <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
+                                                            <td class="alert-danger" colspan="8">{{ trans('main_trans.no_data') }}</td>
                                                         </tr>
                                                     </tbody>
                                                 @endforelse
@@ -261,10 +259,10 @@
                                                 <thead>
                                                     <tr class="table-info text-danger">
                                                         <th>#</th>
-                                                        <th>اسم ولي الامر</th>
+                                                        <th>{{ trans('Parent_trans.Name_Father') }}</th>
                                                         <th>{{ trans('Students_trans.email') }}</th>
-                                                        <th>رقم الهوية</th>
-                                                        <th>رقم الهاتف</th>
+                                                        {{-- <th>{{ trans('Parent_trans.ID') }}</th> --}}
+                                                        <th>{{ trans('Parent_trans.Phone_Father') }}</th>
                                                         <th>{{ trans('Students_trans.created_at') }}</th>
                                                     </tr>
                                                 </thead>
@@ -274,10 +272,11 @@
                                                             <td>{{ $loop->iteration }}</td>
                                                             <td>{{ $parent->Name_Father }}</td>
                                                             <td>{{ $parent->email }}</td>
+                                                            {{-- <td> {{ $parent->id}} </td> --}}
                                                             <td>{{ $parent->Phone_Father }}</td>
                                                             <td class="text-success">{{ $parent->created_at }}</td>
                                                         @empty
-                                                            <td class="alert-danger" colspan="8">لاتوجد بيانات</td>
+                                                            <td class="alert-danger" colspan="8">{{ trans('main_trans.no_data') }}</td>
                                                         </tr>
                                                     @endforelse
                                                 </tbody>

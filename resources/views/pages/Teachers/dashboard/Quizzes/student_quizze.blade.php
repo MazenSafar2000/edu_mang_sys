@@ -29,7 +29,6 @@
                                         <tr>
                                             <th>#</th>
                                             <th>{{ trans('Students_trans.student_name') }}</th>
-                                            <th>اخر سؤال</th>
                                             <th>الدرجة</th>
                                             <th>تلاعب</th>
                                             <th>تاريخ اجراء الاختبار</th>
@@ -41,7 +40,6 @@
                                             <tr>
                                                 <td>{{ $loop->iteration}}</td>
                                                 <td>{{$degree->student->name}}</td>
-                                                <td>{{$degree->question_id}}</td>
                                                 <td>{{$degree->score}}</td>
                                                 @if($degree->abuse == 0)
                                                     <td style="color: green">لا يوجد تلاعب</td>

@@ -42,7 +42,7 @@
             <div class="page-title">
                 <div class="row">
                     <div class="col-sm-6">
-                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">مرحبا بك :
+                        <h4 class="mb-0" style="font-family: 'Cairo', sans-serif"> {{ trans('main_trans.Welcome') }}:
                             {{ auth()->user()->Name }}</h4>
                     </div><br><br>
                     <div class="col-sm-6">
@@ -63,14 +63,13 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">عدد الطلاب</p>
+                                    <p class="card-text text-dark">{{ trans('main_trans.Number_of_students') }}</p>
                                     <h4>{{ $count_students }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
                                 <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
-                                    href="{{ route('student.index') }}" target="_blank"><span class="text-danger">عرض
-                                        البيانات</span></a>
+                                    href="{{ route('student.index') }}" target="_blank"><span class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
                             </p>
                         </div>
                     </div>
@@ -85,14 +84,13 @@
                                     </span>
                                 </div>
                                 <div class="float-right text-right">
-                                    <p class="card-text text-dark">عدد الاقسام</p>
+                                    <p class="card-text text-dark">{{ trans('main_trans.Number_sections') }}</p>
                                     <h4>{{ $count_sections }}</h4>
                                 </div>
                             </div>
                             <p class="text-muted pt-3 mb-0 mt-2 border-top">
                                 <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a
-                                    href="{{ route('sections') }}" target="_blank"><span class="text-danger">عرض
-                                        البيانات</span></a>
+                                    href="{{ route('sections') }}" target="_blank"><span class="text-danger">{{ trans('main_trans.View_data') }}</span></a>
                             </p>
                         </div>
                     </div>

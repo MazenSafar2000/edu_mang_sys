@@ -20,6 +20,7 @@ return [
                     هدفنا هو بناء مستقبل تعليمي رقمي مستدام يتيح الفرص للجميع دون قيود جغرافية أو تقنية.',
     'teacher-login' => 'تسجيل دخول المعلم',
     'manager-login' => 'تسجيل دخول المدير',
+    'Welcome' => 'مرحبا بك',
 
 
     'System_users' => 'من هم مستخدمو النظام ؟',
@@ -41,6 +42,7 @@ return [
     'List_classes' => 'قائمة الصفوف الدراسية',
     'sections' => 'الاقسام',
     'List_sections' => 'قائمة الاقسام الدراسية',
+    'Number_sections' => 'عدد الاقسام',
     'Students' => 'الطلاب',
     'Student_information' => 'معلومات الطلاب',
     'add_student' => 'اضافة طالب جديد',
@@ -65,5 +67,36 @@ return [
     'Users' => 'المستخدمين',
     'Copyright' => 'جميع الحقوق محفوظة ',
     'Name_Programer' => 'مازن ابو صفر',
+
+    'Reports' => 'التقارير',
+    'exam_reports' => 'تقرير الامتحانات',
+    'profile' => 'الملف الشخصي',
+    'Date_of_appointment'=> 'تاريخ التعين',
+    'specialization'=>'التخصص',
+    'no_data'=>'لاتوجد بيانات',
+    'View_student_data' => 'عرض بيانات الطالب',
+    'Modify_student_data' => 'تعديل بيانات الطالب',
+    'Delete_student_data' => 'حذف بيانات الطالب',
+    'Old_school_stage' => 'المرحلة الدراسية القديمة',
+    'New_academic_stage' => 'المرحلة الدراسية الجديدة',
+    'rollback_all' => 'تراجع الكل',
+    'academic_year' => 'السنة الدراسية',
+    'old_academic_year' => 'السنة الدراسية السابقة',
+    'old_classroom' => 'الصف الدراسي السابق',
+    'old_section' => 'القسم السابق',
+    'current_grade' => 'المرحلة الدراسية الحالي',
+    'current_academic_year' => 'السنة الدراسية الحالية',
+    'current_classroom' => 'الصف الدراسي الحالي',
+    'current_section' => 'القسم الدراسي الحالي',
+    'rollback_student' => 'ارجاع الطالب',
+    'graduate_student' => 'تخرج الطالب',
+    'sure_rollback_all' => 'هل انت متأكد من عملية تراجع كافة الطلاب ؟',
+    'sure_rollback_this_std' => 'هل انت متاكد من عملية تراجع هذا الطالب ؟ ',
+    'sure_graduate_this_std' => 'هل انت متأكد من عملية تخرج هذا الطالب ؟',
+    'gradate_one' => 'تخريج طالب',
+
+
+
+
 
 ];

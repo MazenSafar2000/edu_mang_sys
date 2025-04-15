@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{ trans('Teacher_trans.add_new_quizz') }}
+    اضافة كتاب جديد
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    {{ trans('Teacher_trans.add_new_quizz') }}
+    اضافة كتاب جديد
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -27,49 +27,26 @@
                         </button>
                     </div>
                 @endif
+
                 <div class="col-xs-12">
                     <div class="col-md-12">
                         <br>
-                        <form action="{{ route('quizzes.store') }}" method="post" autocomplete="off">
+                        <form action="{{ route('library.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
-
                             <div class="form-row">
-                                <div class="col">
-                                    <label for="title">{{ trans('Teacher_trans.quizz_name_ar') }}
-                                    </label>
-                                    <input type="text" name="Name_ar" class="form-control">
-                                </div>
 
                                 <div class="col">
-                                    <label for="title">{{ trans('Teacher_trans.quizz_name_en') }}</label>
-                                    <input type="text" name="Name_en" class="form-control">
+                                    <label for="title">اسم الكتاب</label>
+                                    <input type="text" name="title" class="form-control">
                                 </div>
+
                             </div>
                             <br>
 
                             <div class="form-row">
-
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="Grade_id"> {{ trans('Teacher_trans.subject') }} : <span
-                                                class="text-danger">*</span></label>
-                                        <select class="custom-select mr-sm-2" name="subject_id">
-                                            <option selected disabled>{{ trans('Teacher_trans.select_subject') }}
-                                            </option>
-                                            @foreach ($subjects as $subject)
-                                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <div class="form-row">
-
-                                <div class="col">
-                                    <div class="form-group">
-                                        <label for="Grade_id">{{ trans('Teacher_trans.grade') }} : <span
+                                        <label for="Grade_id">{{ trans('Students_trans.Grade') }} : <span
                                                 class="text-danger">*</span></label>
                                         <select class="custom-select mr-sm-2" name="Grade_id">
                                             <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
@@ -92,27 +69,35 @@
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="section_id">{{ trans('Students_trans.section') }} : </label>
+                                        <label for="section_id">{{trans('Students_trans.section')}} : <span class="text-danger">*</span></label>
                                         <select class="custom-select mr-sm-2" name="section_id">
 
                                         </select>
                                     </div>
                                 </div>
-                            </div>
 
+                            </div><br>
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="duration">{{ trans('Teacher_trans.duration_minute') }} <span
-                                            class="text-danger">*</span></label>
-                                    <input type="number" name="duration" class="form-control" min="1"
-                                        placeholder="{{ trans('Teacher_trans.enter_test_duration') }}" required>
+                                    <div class="form-group">
+                                        <label for="file_name">المرفقات : <span class="text-danger">*</span></label>
+                                        <input type="file" accept="application/pdf" name="file_name" required>
+                                    </div>
                                 </div>
                             </div>
 
-                            <br>
+                            <div class="form-row" hidden>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="teacher_name"></label>
+                                        <input type="text" name="teacher_name"
+                                            value="{{ Auth::user()->getTranslation('Name', 'en') }}">
+                                    </div>
+                                </div>
+                            </div>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right"
-                                type="submit">{{ trans('Teacher_trans.save_data') }}</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">حفظ
+                                البيانات</button>
                         </form>
                     </div>
                 </div>
@@ -120,10 +105,9 @@
         </div>
     </div>
 </div>
-<!-- row closed -->
+
 @endsection
 @section('js')
 @toastr_js
 @toastr_render
-
 @endsection

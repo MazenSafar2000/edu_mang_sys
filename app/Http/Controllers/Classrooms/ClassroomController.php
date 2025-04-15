@@ -23,7 +23,6 @@ class ClassroomController extends Controller
         $My_Classes = Classroom::all();
         $Grades = Grade::all();
         return view('pages.My_Classes.My_Classes', compact('My_Classes', 'Grades'));
-
     }
 
     /**
@@ -31,10 +30,7 @@ class ClassroomController extends Controller
      *
      * @return Response
      */
-    public function create()
-    {
-
-    }
+    public function create() {}
 
     /**
      * Store a newly created resource in storage.
@@ -58,7 +54,6 @@ class ClassroomController extends Controller
                 $My_Classes->Grade_id = $List_Class['Grade_id'];
 
                 $My_Classes->save();
-
             }
 
             toastr()->success(trans('messages.success'));
@@ -66,7 +61,6 @@ class ClassroomController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
     }
 
 
@@ -82,10 +76,7 @@ class ClassroomController extends Controller
      * @param int $id
      * @return Response
      */
-    public function show($id)
-    {
-
-    }
+    public function show($id) {}
 
     /**
      * Show the form for editing the specified resource.
@@ -93,10 +84,7 @@ class ClassroomController extends Controller
      * @param int $id
      * @return Response
      */
-    public function edit($id)
-    {
-
-    }
+    public function edit($id) {}
 
     /**
      * Update the specified resource in storage.
@@ -118,14 +106,9 @@ class ClassroomController extends Controller
             ]);
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Classrooms.index');
-        }
-
-        catch
-        (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
-
     }
 
     /**
@@ -140,7 +123,6 @@ class ClassroomController extends Controller
         $Classrooms = Classroom::findOrFail($request->id)->delete();
         toastr()->error(trans('messages.Delete'));
         return redirect()->route('Classrooms.index');
-
     }
 
 
@@ -157,12 +139,7 @@ class ClassroomController extends Controller
     public function Filter_Classes(Request $request)
     {
         $Grades = Grade::all();
-        $Search = Classroom::select('*')->where('Grade_id','=',$request->Grade_id)->get();
-        return view('pages.My_Classes.My_Classes',compact('Grades'))->withDetails($Search);
-
+        $Search = Classroom::select('*')->where('Grade_id', '=', $request->Grade_id)->get();
+        return view('pages.My_Classes.My_Classes', compact('Grades'))->withDetails($Search);
     }
-
-
 }
-
-?>

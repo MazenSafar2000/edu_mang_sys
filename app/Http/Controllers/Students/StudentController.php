@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStudentsRequest;
+use App\Http\Requests\UpdateStudentRequest;
 use App\Models\Student;
 use App\Repository\StudentRepositoryInterface;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class StudentController extends Controller
     }
 
 
-    public function update(StoreStudentsRequest $request)
+    public function update(UpdateStudentRequest $request)
     {
         return $this->Student->Update_Student($request);
     }
@@ -84,5 +85,5 @@ class StudentController extends Controller
         return $this->Student->Delete_attachment($request);
     }
 
-    
+
 }

@@ -17,10 +17,11 @@ class CreateSectionsTable extends Migration
             $table->id();
             $table->string('Name_Section');
             $table->integer('Status');
-            $table->bigInteger('Grade_id')->unsigned();
-            $table->bigInteger('Class_id')->unsigned();
+            $table->foreignId('Grade_id')->constrained('grades')->onDelete('cascade'); 
+            $table->foreignId('Class_id')->constrained('classrooms')->onDelete('cascade');
             $table->timestamps();
         });
+
     }
 
     /**

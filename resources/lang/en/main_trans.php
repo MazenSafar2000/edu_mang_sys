@@ -14,6 +14,7 @@ return
         'About_pargraph' => 'We are a comprehensive digital educational platform aimed at enabling students to continue their education anytime and anywhere, especially during challenging times such as wars, natural disasters, and health crises. We strive to provide a flexible learning environment that supports distance learning through virtual classrooms, recorded lessons, and offline access to content. We also offer advanced tools to help teachers efficiently manage educational content, along with interactive features to enhance communication between students and teachers. We believe that education is a fundamental right for all, which is why we are committed to delivering innovative technological solutions to ensure the continuity of learning under all circumstances, with a focus on security, privacy, and ease of use. Our goal is to build a sustainable digital educational future that provides opportunities for everyone without geographical or technical limitations.',
         'teacher-login' => 'Teacher Login',
         'manager-login' => 'Manager Login',
+        'Welcome' => 'Welcome',
 
 
         'System_users' => 'Who are the users of the system?',
@@ -35,14 +36,19 @@ return
         'List_classes' => 'List Classes',
         'sections' => 'Sections',
         'List_sections' => 'List Sections',
+        'Number_sections' => 'Number Of Sections',
         'Students' => 'Students',
         'add_student' => 'Add student',
         'list_students' => 'list Students',
         'Student_information' => 'students information',
         'Students_Promotions' => 'Students Promotions',
+        'add_Promotion' => 'Add Promotion',
+        'list_Promotions' => 'List Promotions',
         'information_student' => 'Information Students',
         'Students_upgrade' => 'Students Upgrade',
         'Graduate_students' => 'Graduate Students',
+        'add_Graduate' => 'Add Graduate',
+        'list_Graduate' => 'List Graduate',
         'Teachers' => 'Teachers',
         'List_Teachers' => 'List Teachers',
         'Parents' => 'Parents',
@@ -57,5 +63,39 @@ return
         'Users' => 'Users',
         // 'Copyright' => 'Copyright',
         'Name_Programer' => 'Mazen Abu Safar All Rights Reserved',
+
+        'Reports' => 'Reports',
+        'exam_reports' => 'Exam Report',
+        'profile' => 'profile',
+        'Date_of_appointment' => 'Date of appointment',
+        'specialization' => 'specialization',
+        'no_data'=>'No Data',
+        'View_student_data'=>'View student data',
+        'Modify_student_data'=> 'Modify student data',
+        'Delete_student_data' => 'Delete student data',
+        'Old_school_stage' => 'Old school stage',
+        'New_academic_stage'=> 'New academic stage',
+        'rollback_all' => 'Rollback All',
+        'academic_year' => 'Academic Year',
+        'old_academic_year' => 'Old Academic Year',
+        'old_classroom' => 'Old Clssroom',
+        'old_section' => 'Old Section',
+        'current_grade' => 'Current School Stage',
+        'current_academic_year' => 'Current Academic Year',
+        'current_classroom' => 'Current Classroom',
+        'current_section' => 'Current Section',
+        'rollback_student' => 'Rollback Student',
+        'graduate_student' => 'Graduate Student',
+        'sure_rollback_all' => 'You sure you want to Rollbak All Students ?',
+        'sure_rollback_this_std' => 'You sure you want to Rollback this Student ?',
+        'sure_graduate_this_std' => 'You sure you want to Graduate this Student ?',
+        'gradate_one' => 'Graduate this Student',
+
+
+
+
+
+
+
 
     ];

@@ -30,7 +30,7 @@ return [
     'children' => 'الابناء',
     'attendance_report' => 'تقرير الحضور والغياب',
     'financial_report' => 'تقرير المالية',
-    'profile' => 'الملف الشخصي',    
+    'profile' => 'الملف الشخصي',
     'operations' => 'العمليات',
     'view_exams_results' => 'عرض نتائج الاختبارات',
     'student_information' => 'معلومات الطالب',
@@ -54,10 +54,12 @@ return [
     'show_password' => 'اضهار كلمة المرور',
     'profile' => 'الملف الشخصي',
     'welcome' => 'مرحباً بك',
+    'ID'=>'رقم الهوية',
 
 
 
-    
+
+
 
 
 ];

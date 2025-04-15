@@ -20,5 +20,7 @@ interface StudentGraduatedRepositoryInterface
     // destroy Students
     public function destroy($request);
 
+    public function graduateOne($request);
+
 
 }

@@ -22,7 +22,7 @@ class CreateLibraryTable extends Migration
             $table->foreignId('section_id')->references('id')->on('sections')->onDelete('cascade');
             $table->foreignId('teacher_id')->references('id')->on('teachers')->onDelete('cascade');
             $table->timestamps();
-        });
+        }); 
     }
 
     /**

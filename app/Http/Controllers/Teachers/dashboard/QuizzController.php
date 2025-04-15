@@ -41,7 +41,9 @@ class QuizzController extends Controller
             $quizzes->classroom_id = $request->Classroom_id;
             $quizzes->section_id = $request->section_id;
             $quizzes->teacher_id = auth()->user()->id;
+            $quizzes->duration = $request->duration;
             $quizzes->save();
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('quizzes.create');
         }

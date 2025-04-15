@@ -4,7 +4,7 @@ Template:  Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template
 Author: potenzaglobalsolutions.com
 Design and Developed by: potenzaglobalsolutions.com
 
-NOTE: 
+NOTE:
 
 */
 
@@ -24,8 +24,7 @@ NOTE:
     $( document ).ready( function () {
       $( "#signupForm" ).validate( {
         rules: {
-          fname: "required",
-          lname: "required",
+          name: "required",
           uname: {
             required: true,
             minlength: 2
@@ -46,8 +45,7 @@ NOTE:
           uagree: "required"
         },
         messages: {
-          fname: "Please enter your firstname",
-          lname: "Please enter your lastname",
+          name: "Please enter your name",
           uname: {
             required: "Please enter a username",
             minlength: "Your username must consist of at least 2 characters"

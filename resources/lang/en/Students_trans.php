@@ -15,7 +15,7 @@ return [
     'classrooms' => 'classrooms',
     'section' => 'section',
     'parent' => 'parent',
-    'academic_year' => 'academic_year',
+    'academic_year' => 'Academic Year',
     'Processes' => 'Processes',
     'submit' => 'submit',
     'Close' => 'Close',
@@ -44,5 +44,6 @@ return [
     'welcome' => 'Welcome',
     'Father_Phone' => 'Father Phone Number',
     'subjects' => 'Subjects',
+
 
 ];

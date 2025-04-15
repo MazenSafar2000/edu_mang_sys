@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use Illuminate\Http\Request;
+
 interface LibraryRepositoryInterface
 {
     public function index();
@@ -14,7 +16,7 @@ interface LibraryRepositoryInterface
 
     public function update($request);
 
-    public function destroy($request);
+    public function destroy(Request $request, $id);
 
     public function download($filename);
 }

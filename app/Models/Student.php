@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class Student extends Authenticatable
@@ -13,7 +14,7 @@ class Student extends Authenticatable
 
     use HasTranslations;
     public $translatable = ['name'];
-    protected $guarded =[];
+    protected $guarded = [];
 
     // علاقة بين الطلاب والانواع لجلب اسم النوع في جدول الطلاب
 
@@ -58,7 +59,7 @@ class Student extends Authenticatable
         return $this->belongsTo('App\Models\My_Parent', 'parent_id');
     }
 
-   // علاقة بين جدول الطلاب وجدول الحضور والغياب
+    // علاقة بين جدول الطلاب وجدول الحضور والغياب
     public function attendance()
     {
         return $this->hasMany('App\Models\Attendance', 'student_id');
@@ -69,4 +70,16 @@ class Student extends Authenticatable
         return $this->belongsToMany('App\Models\Teacher', 'teacher_section', 'section_id', 'teacher_id');
     }
 
+    protected static function booted()
+    {
+        static::deleting(function ($student) {
+            // Delete image files
+            foreach ($student->images as $image) {
+                Storage::disk('upload_attachments')->delete('attachments/students/' . $student->name['en'] . '/' . $image->filename);
+            }
+
+            // Delete image records
+            $student->images()->delete();
+        });
+    }
 }
