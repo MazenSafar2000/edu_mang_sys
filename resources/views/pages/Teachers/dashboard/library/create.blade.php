@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    اضافة كتاب جديد
+    {{ trans('Teacher_trans.add_new_book') }}
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    اضافة كتاب جديد
+    {{ trans('Teacher_trans.add_new_book') }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -36,7 +36,7 @@
                             <div class="form-row">
 
                                 <div class="col">
-                                    <label for="title">اسم الكتاب</label>
+                                    <label for="title">{{ trans('Teacher_trans.book_name') }}</label>
                                     <input type="text" name="title" class="form-control">
                                 </div>
 
@@ -69,7 +69,8 @@
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="section_id">{{trans('Students_trans.section')}} : <span class="text-danger">*</span></label>
+                                        <label for="section_id">{{ trans('Students_trans.section') }} : <span
+                                                class="text-danger">*</span></label>
                                         <select class="custom-select mr-sm-2" name="section_id">
 
                                         </select>
@@ -80,7 +81,7 @@
                             <div class="form-row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="file_name">المرفقات : <span class="text-danger">*</span></label>
+                                        <label for="file_name">{{ trans('Parent_trans.Attachments') }} : <span class="text-danger">*</span></label>
                                         <input type="file" accept="application/pdf" name="file_name" required>
                                     </div>
                                 </div>
@@ -96,8 +97,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">حفظ
-                                البيانات</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{ trans('Teacher_trans.save_data') }}</button>
                         </form>
                     </div>
                 </div>

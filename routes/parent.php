@@ -32,10 +32,9 @@ Route::group(
     Route::group(['namespace' => 'Parents\dashboard'], function () {
         Route::get('children', 'ChildrenController@index')->name('sons.index');
         Route::get('results/{id}', 'ChildrenController@results')->name('sons.results');
-        Route::get('attendances', 'ChildrenController@attendances')->name('sons.attendances');
-        Route::post('attendances','ChildrenController@attendanceSearch')->name('sons.attendance.search');
         Route::get('profile/parent', 'ChildrenController@profile')->name('profile.show.parent');
         Route::post('profile/parent/{id}', 'ChildrenController@update')->name('profile.update.parent');
+        Route::get('profile/parent/{id}', 'ChildrenController@student_info')->name('profile.student_info');
     });
 
 });

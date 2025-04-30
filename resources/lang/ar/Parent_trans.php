@@ -10,6 +10,7 @@ return [
     'Email' => 'البريد الالكتروني',
     //معلومات الاب
     'Password' => 'كلمة المرور',
+    'name_father' => 'اسم الاب',
     'Name_Father' => 'اسم الاب باللغة العربية',
     'Name_Father_en' => 'اسم الاب  باللغة الانجليزية',
     'Job_Father' => 'اسم الوظيفة باللغة العربية',
@@ -28,7 +29,6 @@ return [
     // Dashboard
     'children_list' => 'قائمة الابناء',
     'children' => 'الابناء',
-    'attendance_report' => 'تقرير الحضور والغياب',
     'financial_report' => 'تقرير المالية',
     'profile' => 'الملف الشخصي',
     'operations' => 'العمليات',
@@ -44,7 +44,6 @@ return [
     'start_date' => 'تاريخ البداية',
     'end_date' => 'تاريخ النهاية',
     'name' => 'الاسم',
-    'fee_type' => 'نوع الرسوم',
     'amount' => 'المبلغ',
     'Statement' => 'البيان',
     'date' => 'التاريخ',
@@ -55,6 +54,10 @@ return [
     'profile' => 'الملف الشخصي',
     'welcome' => 'مرحباً بك',
     'ID'=>'رقم الهوية',
+    'num_xams'=>'عدد الاختبارات',
+    
+
+    'Update_Father' => 'تم تعديل البينات بنجاح',
 
 
 

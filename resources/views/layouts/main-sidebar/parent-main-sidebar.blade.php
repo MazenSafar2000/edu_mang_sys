@@ -18,12 +18,6 @@
                     class="right-nav-text">{{ __('Parent_trans.children')}}</span></a>
         </li>
 
-        <!-- تقرير الحضور والغياب-->
-        <li>
-            <a href="{{route('sons.attendances')}}"><i class="fas fa-book-open"></i><span
-                    class="right-nav-text">{{ __('Parent_trans.attendance_report')}}</span></a>
-        </li>
-
         <!-- Profile-->
         <li>
             <a href="{{route('profile.show.parent')}}"><i class="fas fa-id-card-alt"></i><span

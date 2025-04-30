@@ -27,6 +27,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>{{ trans('Teacher_trans.grade') }}</th>
+                                <th>{{ trans('Teacher_trans.classroom') }}</th>
                                 <th>{{ trans('Teacher_trans.section') }}</th>
                             </tr>
                         </thead>
@@ -35,6 +36,7 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $section->Grades->Name }}</td>
+                                    <td>{{ $section->My_classs->Name_Class }}</td>
                                     <td>{{ $section->Name_Section }}</td>
                                 </tr>
                             @endforeach

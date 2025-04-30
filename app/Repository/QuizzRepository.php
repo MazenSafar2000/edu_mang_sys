@@ -34,12 +34,15 @@ class QuizzRepository implements QuizzRepositoryInterface
             $quizzes->grade_id = $request->Grade_id;
             $quizzes->classroom_id = $request->Classroom_id;
             $quizzes->section_id = $request->section_id;
-            $quizzes->teacher_id = $request->teacher_id;
+            $quizzes->teacher_id = auth()->user()->id;
+            $quizzes->duration = $request->duration;
+            $quizzes->start_at = $request->start_at;
+            $quizzes->end_at = $request->end_at;
             $quizzes->save();
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('Quizzes.create');
-        }
-        catch (\Exception $e) {
+        } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
@@ -50,6 +53,7 @@ class QuizzRepository implements QuizzRepositoryInterface
         $data['grades'] = Grade::all();
         $data['subjects'] = Subject::all();
         $data['teachers'] = Teacher::all();
+        
         return view('pages.Quizzes.edit', $data, compact('quizz'));
     }
 
@@ -62,7 +66,10 @@ class QuizzRepository implements QuizzRepositoryInterface
             $quizz->grade_id = $request->Grade_id;
             $quizz->classroom_id = $request->Classroom_id;
             $quizz->section_id = $request->section_id;
-            $quizz->teacher_id = $request->teacher_id;
+            $quizz->duration = $request->duration;
+            $quizz->teacher_id = auth()->user()->id;
+            $quizz->start_at = $request->start_at;
+            $quizz->end_at = $request->end_at;
             $quizz->save();
             toastr()->success(trans('messages.Update'));
             return redirect()->route('Quizzes.index');

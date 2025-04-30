@@ -35,16 +35,16 @@
                              @csrf
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="title">{{trans('Teacher_trans.Email')}}</label>
+                                    <label for="Email">{{trans('Teacher_trans.Email')}}</label>
                                     <input type="hidden" value="{{$Teachers->id}}" name="id">
-                                    <input type="email" name="Email" value="{{$Teachers->email}}" class="form-control">
+                                    <input type="email" name="Email" class="form-control @error('Email') is-invalid @enderror" value="{{$Teachers->email}}" required>
                                     @error('Email')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col">
-                                    <label for="title">{{trans('Teacher_trans.Password')}}</label>
-                                    <input type="password" name="Password" value="{{$Teachers->Password}}" class="form-control">
+                                    <label for="Password">{{trans('Teacher_trans.Password')}}</label>
+                                    <input type="password" name="Password" class="form-control @error('Password') is-invalid @enderror" value="{{$Teachers->Password}}" >
                                     @error('Password')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -55,15 +55,15 @@
 
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="title">{{trans('Teacher_trans.Name_ar')}}</label>
-                                    <input type="text" name="Name_ar" value="{{ $Teachers->getTranslation('Name', 'ar') }}" class="form-control">
+                                    <label for="Name_ar">{{trans('Teacher_trans.Name_ar')}}</label>
+                                    <input type="text" name="Name_ar" class="form-control @error('Name_ar') is-invalid @enderror" value="{{ $Teachers->getTranslation('Name', 'ar') }}" required>
                                     @error('Name_ar')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col">
                                     <label for="title">{{trans('Teacher_trans.Name_en')}}</label>
-                                    <input type="text" name="Name_en" value="{{ $Teachers->getTranslation('Name', 'en') }}" class="form-control">
+                                    <input type="text" name="Name_en" class="form-control @error('Name_en') is-invalid @enderror"  value="{{ $Teachers->getTranslation('Name', 'en') }}" required>
                                     @error('Name_en')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -72,27 +72,27 @@
                             <br>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <label for="inputCity">{{trans('Teacher_trans.specialization')}}</label>
-                                    <select class="custom-select my-1 mr-sm-2" name="Specialization_id">
+                                    <label for="Specialization_id">{{trans('Teacher_trans.specialization')}}</label>
+                                    <select class="custom-select my-1 mr-sm-2 @error('Specialization_id') is-invalid @enderror" name="Specialization_id" required>
                                         <option value="{{$Teachers->Specialization_id}}">{{$Teachers->specializations->Name}}</option>
                                         @foreach($specializations as $specialization)
                                             <option value="{{$specialization->id}}">{{$specialization->Name}}</option>
                                         @endforeach
                                     </select>
                                     @error('Specialization_id')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <small class="alert alert-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                                 <div class="form-group col">
-                                    <label for="inputState">{{trans('Teacher_trans.Gender')}}</label>
-                                    <select class="custom-select my-1 mr-sm-2" name="Gender_id">
+                                    <label for="Gender_id">{{trans('Teacher_trans.Gender')}}</label>
+                                    <select class="custom-select my-1 mr-sm-2 @error('Gender_id') is-invalid @enderror" name="Gender_id" required>
                                         <option value="{{$Teachers->Gender_id}}">{{$Teachers->genders->Name}}</option>
                                         @foreach($genders as $gender)
                                             <option value="{{$gender->id}}">{{$gender->Name}}</option>
                                         @endforeach
                                     </select>
                                     @error('Gender_id')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <small class="alert alert-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
@@ -100,21 +100,21 @@
 
                             <div class="form-row">
                                 <div class="col">
-                                    <label for="title">{{trans('Teacher_trans.Joining_Date')}}</label>
+                                    <label for="Joining_Date">{{trans('Teacher_trans.Joining_Date')}}</label>
                                     <div class='input-group date'>
                                         <input class="form-control" type="text"  id="datepicker-action"  value="{{$Teachers->Joining_Date}}" name="Joining_Date" data-date-format="yyyy-mm-dd"  required>
                                     </div>
                                     @error('Joining_Date')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <small class="alert alert-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
                             <br>
 
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">{{trans('Teacher_trans.Address')}}</label>
-                                <textarea class="form-control" name="Address"
-                                          id="exampleFormControlTextarea1" rows="4">{{$Teachers->Address}}</textarea>
+                                <label for="Address">{{trans('Teacher_trans.Address')}}</label>
+                                <textarea class="form-control @error('Address') is-invalid @enderror" name="Address"
+                                          id="Address" rows="4">{{$Teachers->Address}}</textarea>
                                 @error('Address')
                                 <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror

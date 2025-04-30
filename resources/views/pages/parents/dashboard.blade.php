@@ -53,7 +53,7 @@
                     <div class="row justify-content-center">
                         @foreach ($sons as $son)
                             <div class="col-md-8 col-lg-6 col-xl-4 mb-3">
-                                <a href="">
+                                <a href="{{ route('profile.student_info', $son->id) }}">
                                     <div class="card text-black" style="width: 20rem;">
                                         <img src="{{ URL::asset('assets/images/my_son.png') }}" />
                                         <div class="card-body">
@@ -74,15 +74,15 @@
                                                     <span>{{ __('Parent_trans.section') }}</span><span>{{ $son->section->Name_Section }}</span>
                                                 </div>
 
-                                                {{-- <div class="d-flex justify-content-between">
+                                                <div class="d-flex justify-content-between">
                                                     @if (\App\Models\Degree::where('student_id', $son->id)->count() == 0)
-                                                        <span>عدد الاختبارات</span><span
+                                                        <span>{{ trans('Parent_trans.num_exams') }}</span><span
                                                             class="text-danger">{{ \App\Models\Degree::where('student_id', $son->id)->count() }}</span>
                                                     @else
-                                                        <span>عدد الاختبارات</span><span
+                                                        <span>{{ trans('Parent_trans.num_exams') }}</span><span
                                                             class="text-success">{{ \App\Models\Degree::where('student_id', $son->id)->count() }}</span>
                                                     @endif
-                                                </div> --}}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

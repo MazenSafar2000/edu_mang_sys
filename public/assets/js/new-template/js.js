@@ -86,9 +86,8 @@ toggleBtn.onclick = (e) => {
     }
 }
 
-// script for login teacher and admin page
 function showForm(userType, element) {
-    // إخفاء جميع النماذج مع تأثير سلس
+    // Step 1: Hide all forms
     document.querySelectorAll('.form').forEach(form => {
         form.style.opacity = '0';
         form.style.transform = 'translateY(-10px)';
@@ -97,28 +96,41 @@ function showForm(userType, element) {
         }, 300);
     });
 
-    // إظهار النموذج المطلوب مع تأثير
+    // Step 2: Show the selected form
     setTimeout(() => {
-        let activeForm = userType === 'teacher' ? document.getElementById('teacherForm') : document.getElementById('adminForm');
-        activeForm.style.display = 'block';
-        setTimeout(() => {
-            activeForm.style.opacity = '1';
-            activeForm.style.transform = 'translateY(0)';
-        }, 50);
+        let activeForm = document.getElementById(userType + '-form');
+        if (activeForm) {
+            activeForm.style.display = 'block';
+            setTimeout(() => {
+                activeForm.style.opacity = '1';
+                activeForm.style.transform = 'translateY(0)';
+            }, 50);
+        }
     }, 300);
 
-    // تحديث الأيقونات (إزالة التفعيل عن الجميع)
+    // Step 3: Update active icon
     document.querySelectorAll('.icon').forEach(icon => {
         icon.classList.remove('active-icon');
     });
 
-    // تفعيل الأيقونة المختارة
     element.classList.add('active-icon');
 
-    // تغيير صور الأيقونات بناءً على الاختيار
-    document.getElementById('icon1').querySelector('img').src =
-        userType === 'teacher' ? "/assets/images/teacher.png" : "/assets/images/teacher-off.png";
-
-    document.getElementById('icon2').querySelector('img').src =
-        userType === 'admin' ? "/assets/images/manager.png" : "/assets/images/manager-off.png";
+    // Step 4: Change icon images dynamically
+    document.querySelectorAll('.icon').forEach(icon => {
+        let img = icon.querySelector('img');
+        if (img) {
+            if (icon === element) {
+                if (userType === 'student') img.src = "/assets/images/std-on.png";
+                else if (userType === 'parent') img.src = "/assets/images/par-on.png";
+                else if (userType === 'teacher') img.src = "/assets/images/teacher.png";
+                else if (userType === 'admin') img.src = "/assets/images/manager.png";
+            } else {
+                if (img.alt.toLowerCase().includes('student')) img.src = "/assets/images/std-off.png";
+                else if (img.alt.toLowerCase().includes('parent')) img.src = "/assets/images/par-off.png";
+                else if (img.alt.toLowerCase().includes('teacher')) img.src = "/assets/images/teacher-off.png";
+                else if (img.alt.toLowerCase().includes('admin') || img.alt.toLowerCase().includes('manager')) img.src = "/assets/images/manager-off.png";
+            }
+        }
+    });
 }
+

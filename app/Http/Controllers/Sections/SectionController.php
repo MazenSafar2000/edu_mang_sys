@@ -83,9 +83,8 @@ class SectionController extends Controller
             } else {
                 $Sections->teachers()->sync(array());
             }
-
-
             $Sections->save();
+            
             toastr()->success(trans('messages.Update'));
 
             return redirect()->route('Sections.index');

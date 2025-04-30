@@ -42,10 +42,7 @@ Route::group(
             //==============================students============================
             Route::get('student', 'StudentController@index')->name('student.index');
             Route::get('sections', 'StudentController@sections')->name('sections');
-            Route::post('attendance', 'StudentController@attendance')->name('attendance');
-            Route::post('edit_attendance', 'StudentController@editAttendance')->name('attendance.edit');
-            Route::get('attendance_report', 'StudentController@attendanceReport')->name('attendance.report');
-            Route::post('attendance_report', 'StudentController@attendanceSearch')->name('attendance.search');
+            Route::get('/teacher/student/{id}', 'StudentController@studentInformation')->name('teacher.student.info');
             Route::resource('quizzes', 'QuizzController');
             Route::resource('questions', 'QuestionController');
             Route::resource('online_zoom_classes', 'OnlineZoomClassesController');
@@ -54,7 +51,27 @@ Route::group(
             Route::get('profile', 'ProfileController@index')->name('profile.show');
             Route::post('profile/{id}', 'ProfileController@update')->name('profile.update');
             Route::get('student_quizze/{id}', 'QuizzController@student_quizze')->name('student.quizze');
-            Route::post('repeat_quizze', 'QuizzController@repeat_quizze')->name('repeat.quizze');
+            Route::post('repeat_quizze/{quizze_id}', 'QuizzController@repeat_quizze')->name('repeat.quizze');
+            // Homework Routes (for teachers)
+            Route::prefix('teacher/homeworks')->name('teacher.homeworks.')->group(function () {
+                Route::get('/filter-classrooms/{grade_id}', 'HomeworkController@getClassrooms')->name('getClassrooms');
+                Route::get('/filter-sections/{class_id}', 'HomeworkController@getSections')->name('getSections');
+                Route::get('/', 'HomeworkController@index')->name('index');
+                Route::get('/create', 'HomeworkController@create')->name('create');
+                Route::post('/', 'HomeworkController@store')->name('store');
+                Route::get('/{homework}', 'HomeworkController@show')->name('show');
+
+                Route::get('homeworks/{homework}/submissions', 'HomeworkController@showSubmissions')->name('submissions');
+                // Route::put('homeworks/submissions/{submission}/grade', 'HomeworkController@gradeSubmission')->name('grade');
+                Route::post('homeworks/{homework}/grade/{student}', 'HomeworkController@gradeStudent')->name('grade');
+
+
+
+                Route::get('teacher/homeworks/{id}/edit', 'HomeworkController@edit')->name('edit');
+                Route::put('teacher/homeworks/{id}', 'HomeworkController@update')->name('update');
+                Route::delete('teacher/homeworks/{id}', 'HomeworkController@destroy')->name('destroy');
+
+            });
         });
 
         Route::group(['namespace' => 'Students'], function () {

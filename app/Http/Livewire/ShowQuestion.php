@@ -13,19 +13,34 @@ class ShowQuestion extends Component
     public $quizze_id, $student_id, $data, $counter = 0, $questioncount = 0;
     public $answers = [];
     public $timeLeft; // Time remaining in seconds
+    protected $listeners = ['autoSubmitQuiz'];
+
+
 
     public function mount()
     {
         $quiz = Quizze::findOrFail($this->quizze_id);
-        $this->timeLeft = $quiz->duration * 60; // Convert minutes to seconds
 
-        // Store the timer in session so it doesn't reset on page refresh
+        // Check quiz access period
+        if (now()->lt($quiz->start_at)) {
+            session()->flash('message', 'الاختبار لم يبدأ بعد.');
+            redirect()->to('student_exams')->send();
+        }
+
+        if (now()->gt($quiz->end_at)) {
+            session()->flash('message', 'انتهى وقت الاختبار.');
+            redirect()->to('student_exams')->send();
+        }
+
+        $this->timeLeft = $quiz->duration * 60;
+
         if (Session::has("timer_{$this->quizze_id}_{$this->student_id}")) {
             $this->timeLeft = Session::get("timer_{$this->quizze_id}_{$this->student_id}");
         } else {
             Session::put("timer_{$this->quizze_id}_{$this->student_id}", $this->timeLeft);
         }
     }
+
 
     public function render()
     {
@@ -50,6 +65,12 @@ class ShowQuestion extends Component
 
     public function finishQuiz()
     {
+        $quiz = Quizze::findOrFail($this->quizze_id);
+
+        if (now()->gt($quiz->end_at)) {
+            session()->flash('message', 'انتهى وقت الاختبار ولا يمكن تسليمه.');
+            return redirect('student_exams');
+        }
         $totalScore = 0;
         $answered = false;
 
@@ -90,5 +111,18 @@ class ShowQuestion extends Component
         } else {
             $this->finishQuiz(); // Auto-submit when time reaches zero
         }
+    }
+
+/////////////////////////////////////////////////////////////////////
+    public function goToQuestion($index)
+    {
+        if ($index >= 0 && $index < $this->questioncount) {
+            $this->counter = $index;
+        }
+    }
+
+    public function autoSubmitQuiz()
+    {
+        $this->finishQuiz();
     }
 }

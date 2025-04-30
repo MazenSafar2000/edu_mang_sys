@@ -24,6 +24,12 @@
                     class="right-nav-text">{{ __('Students_trans.exams') }}</span></a>
         </li>
 
+        <!-- Homework -->
+        <li>
+            <a href="{{ route('student.submissions.index')}}"><i class="fas fa-book-open"></i><span
+                    class="right-nav-text">{{ __('Students_trans.Homeworks') }}</span></a>
+        </li>
+
         <!-- Revision -->
         <li>
             <a href=""><i class="fas fa-book-open"></i><span

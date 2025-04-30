@@ -33,7 +33,7 @@
                                             <th>{{ trans('Teacher_trans.Gender') }}</th>
                                             <th>{{ trans('Teacher_trans.Joining_Date') }}</th>
                                             <th>{{ trans('Teacher_trans.specialization') }}</th>
-                                            <th>العمليات</th>
+                                            <th>{{ trans('Teacher_trans.operations') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -49,7 +49,8 @@
                                                 <td>
                                                     <a href="{{ route('Teachers.edit', $Teacher->id) }}"
                                                         class="btn btn-info btn-sm" role="button"
-                                                        aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                                        aria-pressed="true"><i class="fa fa-edit"
+                                                        title="{{ trans('Teacher_trans.edit')}}"></i></a>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"
                                                         data-target="#delete_Teacher{{ $Teacher->id }}"

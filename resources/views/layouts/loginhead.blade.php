@@ -30,11 +30,11 @@
             <button id="menu-btn" type="button" class="menu-icon fas fa-bars"></button>
             <nav class="navbar">
                 <a href="{{ LaravelLocalization::getLocalizedURL(App::getLocale() == 'ar' ? 'en' : 'ar', null, [], true) }}"
-                    id="lang-btn" title="تغيير اللغة" class="fas fa-language">
+                    id="lang-btn" title="{{ trans('main_trans.change_lang')}}" class="fas fa-language">
                 </a>
-                <a href="{{ route('aboutUs') }}" id="about-btn" title="من نحن"
+                <a href="{{ route('aboutUs') }}" id="about-btn" title="{{ trans('main_trans.About_us')}}"
                     class="fas fa-question {{ request()->routeIs('aboutUs') ? 'active' : '' }}"></a>
-                <a href="contact.html" id="contact-btn" title="اتصل بنا" class="fas fa-phone"></a>
+                <a href="contact.html" id="contact-btn" title="{{ trans('main_trans.Contact_us')}}" class="fas fa-phone"></a>
             </nav>
             <a href="{{ route('loginpage') }}" class="logo"><img src="{{ URL::asset('assets/images/spark.png') }}"
                     alt="spark education"></a>

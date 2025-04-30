@@ -7,6 +7,7 @@ return [
     'Step3' => 'Confirm information',
     'Email' => 'Email',
     'Password' => 'Password',
+    'name_father' => 'Father Name',
     'Name_Father' => 'Father Name Arabic',
     'Name_Father_en' => 'Father Name English',
     'Job_Father' => 'Job Title Arabic',
@@ -24,7 +25,6 @@ return [
     // Dashboard
     'children_list' => 'Children list',
     'children' => 'Children',
-    'attendance_report' => 'Attendance report',
     'financial_report' => 'Financial report',
     'profile' => 'profile',
     'operations' => 'operations',
@@ -50,6 +50,9 @@ return [
     'profile' => 'profile',
     'welcome' => 'Welcome',
     'ID'=>'ID Number',
+    'num_xams'=>'Number of exams',
+
+    'Update_Father' => 'Update Father Sucess'
 
 
 

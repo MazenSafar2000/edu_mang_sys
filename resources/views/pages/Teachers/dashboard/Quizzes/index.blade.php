@@ -9,7 +9,6 @@
 <!-- breadcrumb -->
 @section('PageTitle')
     {{ trans('Teacher_trans.exams_list') }}
-
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -32,11 +31,12 @@
                                         <tr>
                                             <th>#</th>
                                             <th>{{ trans('Teacher_trans.quizz_name') }}</th>
-                                            <th>{{ trans('Teacher_trans.teacher_name') }}</th>
                                             <th>{{ trans('Teacher_trans.grade') }}</th>
                                             <th>{{ trans('Teacher_trans.classroom') }}</th>
                                             <th>{{ trans('Teacher_trans.section') }}</th>
                                             <th>{{ trans('Teacher_trans.durartion') }} </th>
+                                            <th>{{ trans('Teacher_trans.start_at') }} </th>
+                                            <th>{{ trans('Teacher_trans.end_at') }} </th>
                                             <th>{{ trans('Teacher_trans.operations') }}</th>
                                         </tr>
                                     </thead>
@@ -45,36 +45,37 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $quizze->name }}</td>
-                                                <td>{{ $quizze->teacher->Name }}</td>
                                                 <td>{{ $quizze->grade->Name }}</td>
                                                 <td>{{ $quizze->classroom->Name_Class }}</td>
                                                 <td>{{ $quizze->section->Name_Section }}</td>
                                                 <td>{{ $quizze->duration }} minutes</td>
+                                                <td>{{ $quizze->start_at }}</td>
+                                                <td>{{ $quizze->end_at }}</td>
                                                 <td>
                                                     <a href="{{ route('quizzes.edit', $quizze->id) }}"
                                                         class="btn btn-info btn-sm" role="button"
-                                                        title="{{ trans('Teacher_trans.edit') }}" aria-pressed="true"><i class="fa fa-edit"></i></a>
+                                                        title="{{ trans('Teacher_trans.edit') }}"
+                                                        aria-pressed="true"><i class="fa fa-edit"></i></a>
 
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"
-                                                        data-target="#delete_exam{{ $quizze->id }}" title="{{ trans('Teacher_trans.delete') }}"><i
+                                                        data-target="#delete_exam{{ $quizze->id }}"
+                                                        title="{{ trans('Teacher_trans.delete') }}"><i
                                                             class="fa fa-trash"></i></button>
 
                                                     <a href="{{ route('quizzes.show', $quizze->id) }}"
-                                                        class="btn btn-warning btn-sm" title="{{ trans('Teacher_trans.Show_questions') }}"
+                                                        class="btn btn-warning btn-sm"
+                                                        title="{{ trans('Teacher_trans.Show_questions') }}"
                                                         role="button" aria-pressed="true"><i
                                                             class="fa fa-binoculars"></i></a>
 
                                                     <a href="{{ route('student.quizze', $quizze->id) }}"
-                                                        class="btn btn-primary btn-sm" title="{{ trans('Teacher_trans.Display_Tested_Students') }}"
+                                                        class="btn btn-primary btn-sm"
+                                                        title="{{ trans('Teacher_trans.Display_Tested_Students') }}"
                                                         role="button" aria-pressed="true"><i
                                                             class="fa fa-street-view"></i></a>
-
-
-
                                                 </td>
                                             </tr>
-
                                             <div class="modal fade" id="delete_exam{{ $quizze->id }}" tabindex="-1"
                                                 role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">

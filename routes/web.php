@@ -83,7 +83,6 @@ Route::group(
                 Route::resource('Graduated', 'GraduatedController');
                 Route::post('/Graduated/one', 'GraduatedController@graduateOne')->name('Graduated.one');
                 Route::resource('Promotion', 'PromotionController');
-                Route::resource('Attendance', 'AttendanceController');
                 Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
                 Route::resource('library', 'LibraryController');
                 Route::post('Upload_attachment', 'StudentController@Upload_attachment')->name('Upload_attachment');

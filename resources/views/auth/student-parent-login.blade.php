@@ -1,6 +1,5 @@
 @extends('layouts.loginhead')
 @section('content')
-
     <!-- Login Section -->
     <section class="login">
         <div class="container">
@@ -18,7 +17,9 @@
                         </div>
                     @endif
 
-                    <form id="student-form" method="POST" action="{{ route('login') }}">
+                    <!-- Student Login Form-->
+                    <form id="student-form" class="form" style="display: block;" method="POST"
+                        action="{{ route('login') }}">
                         @csrf
                         <h2> {{ trans('main_trans.Student_Login') }} </h2>
                         <input type="hidden" value="student" name="type">
@@ -44,7 +45,9 @@
                         <button type="submit" class="login-btn"> {{ trans('main_trans.Login') }} </button>
                     </form>
 
-                    <form id="parent-form" method="POST" action="{{ route('login') }}" style="display: none;">
+                    <!-- Parent Login Form-->
+                    <form id="parent-form" class="form" method="POST" action="{{ route('login') }}"
+                        style="display: none;">
                         @csrf
 
                         <h2> {{ trans('main_trans.Parent_Login') }} </h2>
@@ -71,14 +74,15 @@
                     </form>
 
                     <div class="icons">
-                        <img src="{{ URL::asset('assets/images/std-on.png') }}" alt="Student" title="تسجيل دخول الطالب"
-                            id="student-btn">
-                        <img src="{{ URL::asset('assets/images/par-off.png') }}" alt="Parent"
-                            title="تسجيل دخول ولي الأمر" id="parent-btn">
+                        <a href="#" class="icon active-icon" id="icon1" onclick="showForm('student',this)"><img
+                                src="{{ asset('assets/images/std-on.png') }}" alt="Student"
+                                title="{{ trans('main_trans.Student_Login') }}"></a>
+                        <a href="#" class="icon" id="icon2" onclick="showForm('parent', this)"><img
+                                src="{{ asset('assets/images/par-off.png') }}" alt="Parent"
+                                title="{{ trans('main_trans.Parent_Login') }}"></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 @endsection

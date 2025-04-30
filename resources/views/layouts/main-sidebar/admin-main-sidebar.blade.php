@@ -113,40 +113,28 @@
             </ul>
         </li>
 
-        <!-- Attendance-->
-        <li>
-            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Attendance-icon">
-                <div class="pull-left"><i class="fas fa-calendar-alt"></i><span class="right-nav-text">{{trans('main_trans.Attendance')}}</span></div>
-                <div class="pull-right"><i class="ti-plus"></i></div>
-                <div class="clearfix"></div>
-            </a>
-            <ul id="Attendance-icon" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="{{route('Attendance.index')}}">قائمة الطلاب</a> </li>
-            </ul>
-        </li>
-
         <!-- Subjects-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#Subjects">
-                <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">المواد الدراسية</span></div>
+                <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">{{ trans('main_trans.subjects') }}</span></div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
             </a>
             <ul id="Subjects" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="{{route('subjects.index')}}">قائمة المواد</a> </li>
+                <li> <a href="{{route('subjects.index')}}">{{ trans('main_trans.list_subjects') }}</a> </li>
             </ul>
         </li>
 
         <!-- Quizzes-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#Exams-icon">
-                <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">الاختبارات</span></div>
+                <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">{{ trans('main_trans.Exams') }}</span></div>
                 <div class="pull-right"><i class="ti-plus"></i></div>
                 <div class="clearfix"></div>
             </a>
             <ul id="Exams-icon" class="collapse" data-parent="#sidebarnav">
-                <li> <a href="{{route('Quizzes.index')}}">قائمة الاختبارات</a> </li>
-                <li> <a href="{{route('questions.index')}}">قائمة الاسئلة</a> </li>
+                <li> <a href="{{route('Quizzes.index')}}">{{ trans('main_trans.list_exams') }}</a> </li>
+                <li> <a href="{{route('questions.index')}}">{{ trans('main_trans.question_list') }}</a> </li>
             </ul>
         </li>
 

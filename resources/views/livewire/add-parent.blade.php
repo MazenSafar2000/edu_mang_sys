@@ -1,5 +1,5 @@
-
 <div>
+    {{-- Success Message --}}
     @if (!empty($successMessage))
         <div class="alert alert-success" id="success-alert">
             <button type="button" class="close" data-dismiss="alert">x</button>
@@ -7,6 +7,7 @@
         </div>
     @endif
 
+    {{-- Error Message --}}
     @if ($catchError)
         <div class="alert alert-danger" id="success-danger">
             <button type="button" class="close" data-dismiss="alert">x</button>
@@ -14,53 +15,86 @@
         </div>
     @endif
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
+    {{-- Table of Parents --}}
     @if ($show_table)
         @include('livewire.Parent_Table')
     @else
-        <div class="stepwizard">
-            <div class="stepwizard-row setup-panel">
-                <div class="stepwizard-step">
-                    <a href="#step-1" type="button"
-                        class="btn btn-circle {{ $currentStep != 1 ? 'btn-default' : 'btn-success' }}">1</a>
-                    <p>{{ trans('Parent_trans.Step1') }}</p>
+        {{-- Father Input Form --}}
+        <div class="row">
+            <div class="col-md-12">
+                <label>{{ trans('Parent_trans.Father_Info') }}</label>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Email') }}</label>
+                    <input type="email" wire:model="email" class="form-control @error('email') is-invalid @enderror"
+                        required>
+                    @error('email')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                 </div>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Password') }}</label>
+                    <input type="password" wire:model="password" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Name_Father') }} (Arabic)</label>
+                    <input type="text" wire:model="Name_Father" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Name_Father') }} (English)</label>
+                    <input type="text" wire:model="Name_Father_en" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Job_Father') }} (Arabic)</label>
+                    <input type="text" wire:model="Job_Father" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Job_Father') }} (English)</label>
+                    <input type="text" wire:model="Job_Father_en" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Phone_Father') }}</label>
+                    <input type="text" wire:model="Phone_Father" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label>{{ trans('Parent_trans.Address_Father') }}</label>
+                    <input type="text" wire:model="Address_Father" class="form-control" required>
+                </div>
+
+                <input type="hidden" wire:model="Parent_id">
+
+                {{-- Submit Buttons --}}
+                @if ($updateMode)
+                    <button class="btn btn-primary" wire:click="submitForm_edit" type="button">
+                        {{ trans('Parent_trans.Finish') }}
+                    </button>
+                @else
+                    <button class="btn btn-success" wire:click="submitForm" type="button">
+                        {{ trans('Parent_trans.Finish') }}
+                    </button>
+                @endif
+
+                {{-- <button class="btn btn-secondary" wire:click="showformadd">
+                    {{ trans('Parent_trans.Back') }}
+                </button> --}}
             </div>
         </div>
-
-        @include('livewire.Father_Form')
-
-        <div class="row setup-content {{ $currentStep != 3 ? 'displayNone' : '' }}" id="step-3">
-            @if ($currentStep != 3)
-                <div style="display: none" class="row setup-content" id="step-3">
-            @endif
-
-            <div class="col-xs-12">
-                <div class="col-md-12"><br>
-                    <label style="color: red">{{ trans('Parent_trans.Attachments') }}</label>
-                    <div class="form-group">
-                        <input type="file" wire:model="photos" accept="image/*" multiple>
-                    </div>
-                    <br>
-
-                    <input type="hidden" wire:model="Parent_id">
-
-                    <button class="btn btn-danger btn-sm nextBtn btn-lg pull-right" type="button"
-                        wire:click="back(2)">{{ trans('Parent_trans.Back') }}</button>
-
-                    @if ($updateMode)
-                        <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" wire:click="submitForm_edit"
-                            type="button">{{ trans('Parent_trans.Finish') }}
-                        </button>
-                    @else
-                        <button class="btn btn-success btn-sm btn-lg pull-right" wire:click="submitForm"
-                            type="button">{{ trans('Parent_trans.Finish') }}</button>
-                    @endif
-
-                </div>
-            </div>
-        </div>
-
     @endif
-
 </div>
