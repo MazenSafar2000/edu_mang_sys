@@ -30,7 +30,7 @@
                                         <tr>
                                             <th>#</th>
                                             <th>{{ trans('Teacher_trans.book_name') }}</th>
-                                            <th>{{ trans('Teacher_trans.teacher_name') }}</th>
+                                            <th>{{ trans('Teacher_trans.subject') }}</th>
                                             <th>{{ trans('Teacher_trans.grade') }}</th>
                                             <th>{{ trans('Teacher_trans.classroom') }}</th>
                                             <th>{{ trans('Teacher_trans.section') }}</th>
@@ -42,7 +42,7 @@
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $book->title }}</td>
-                                                <td>{{ $book->teacher->Name }}</td>
+                                                <td>{{ $book->subject->name }}</td>
                                                 <td>{{ $book->grade->Name }}</td>
                                                 <td>{{ $book->classroom->Name_Class }}</td>
                                                 <td>{{ $book->section->Name_Section }}</td>

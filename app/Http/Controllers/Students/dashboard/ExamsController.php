@@ -35,10 +35,20 @@ class ExamsController extends Controller
 
     public function show($quizze_id)
     {
-
         $student_id = Auth::user()->id;
-        return view('pages.Students.dashboard.exams.show',compact('quizze_id','student_id'));
+
+        return view('pages.Students.dashboard.exams.show', compact('quizze_id', 'student_id'));
     }
+
+    
+    public function preview($quiz_id)
+    {
+        $quiz = Quizze::with('subject')->findOrFail($quiz_id);
+        $student_id = Auth::id();
+
+        return view('pages.Students.dashboard.exams.preview', compact('quiz', 'student_id'));
+    }
+
 
 
     public function edit($id)

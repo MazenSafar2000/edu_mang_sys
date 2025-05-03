@@ -6,13 +6,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Library extends Model
 {
-    protected $table="library";
+    protected $table = "library";
+    protected $fillable = [
+        'id',
+        'title',
+        'fiel_name',
+        'Grade_id',
+        'Classroom_id',
+        'section_id',
+        'teacher_id',
+        'subject_id'
+    ];
 
     public function grade()
     {
         return $this->belongsTo('App\Models\Grade', 'Grade_id');
     }
-
 
     public function classroom()
     {
@@ -29,5 +38,9 @@ class Library extends Model
         return $this->belongsTo('App\Models\Teacher', 'teacher_id');
     }
 
+    public function subject()
+    {
+        return $this->belongsTo('App\Models\Subject', 'subject_id');
+    }
 
 }

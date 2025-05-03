@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Teachers\dashboard\RecordedClassController;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +41,7 @@ Route::group(
 
         Route::group(['namespace' => 'Teachers\dashboard'], function () {
             //==============================students============================
+            Route::resource('recorded-classes', 'RecordedClassController');
             Route::get('student', 'StudentController@index')->name('student.index');
             Route::get('sections', 'StudentController@sections')->name('sections');
             Route::get('/teacher/student/{id}', 'StudentController@studentInformation')->name('teacher.student.info');
@@ -56,6 +58,8 @@ Route::group(
             Route::prefix('teacher/homeworks')->name('teacher.homeworks.')->group(function () {
                 Route::get('/filter-classrooms/{grade_id}', 'HomeworkController@getClassrooms')->name('getClassrooms');
                 Route::get('/filter-sections/{class_id}', 'HomeworkController@getSections')->name('getSections');
+                Route::get('/filter-subjects/{grade_id}/{class_id}/{section_id}', 'HomeworkController@getSubjects')->name('getSubjects');
+
                 Route::get('/', 'HomeworkController@index')->name('index');
                 Route::get('/create', 'HomeworkController@create')->name('create');
                 Route::post('/', 'HomeworkController@store')->name('store');
@@ -65,18 +69,17 @@ Route::group(
                 // Route::put('homeworks/submissions/{submission}/grade', 'HomeworkController@gradeSubmission')->name('grade');
                 Route::post('homeworks/{homework}/grade/{student}', 'HomeworkController@gradeStudent')->name('grade');
 
-
-
                 Route::get('teacher/homeworks/{id}/edit', 'HomeworkController@edit')->name('edit');
                 Route::put('teacher/homeworks/{id}', 'HomeworkController@update')->name('update');
                 Route::delete('teacher/homeworks/{id}', 'HomeworkController@destroy')->name('destroy');
 
             });
+            Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
+            Route::resource('library', 'LibraryController');
         });
 
         Route::group(['namespace' => 'Students'], function () {
-            Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
-            Route::resource('library', 'LibraryController');
+
         });
     }
 );

@@ -30,10 +30,10 @@
                     class="right-nav-text">{{ __('Students_trans.Homeworks') }}</span></a>
         </li>
 
-        <!-- Revision -->
+        <!-- Books -->
         <li>
-            <a href=""><i class="fas fa-book-open"></i><span
-                    class="right-nav-text">{{ __('Students_trans.revision') }}</span></a>
+            <a href="{{ route('student.library.index')}}"><i class="fas fa-book-open"></i><span
+                    class="right-nav-text">{{ __('Students_trans.Books') }}</span></a>
         </li>
 
 

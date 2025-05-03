@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Students;
 
 use App\Http\Controllers\Controller;
-use App\Http\Traits\MeetingZoomTrait;
 use App\Models\Grade;
 use App\Models\online_classe;
 use Illuminate\Http\Request;
@@ -11,7 +10,6 @@ use MacsiDigital\Zoom\Facades\Zoom;
 
 class OnlineClasseController extends Controller
 {
-    use MeetingZoomTrait;
     public function index()
     {
         $online_classes = online_classe::where('created_by',auth()->user()->email)->get();

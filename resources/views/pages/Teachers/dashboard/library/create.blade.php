@@ -46,9 +46,9 @@
                             <div class="form-row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="Grade_id">{{ trans('Students_trans.Grade') }} : <span
+                                        <label for="grade_id">{{ trans('Students_trans.Grade') }} : <span
                                                 class="text-danger">*</span></label>
-                                        <select class="custom-select mr-sm-2" name="Grade_id">
+                                        <select class="custom-select mr-sm-2" name="grade_id" id="grade-select">
                                             <option selected disabled>{{ trans('Parent_trans.Choose') }}...</option>
                                             @foreach ($grades as $grade)
                                                 <option value="{{ $grade->id }}">{{ $grade->Name }}</option>
@@ -59,10 +59,10 @@
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="Classroom_id">{{ trans('Students_trans.classrooms') }} : <span
+                                        <label for="classroom_id">{{ trans('Students_trans.classrooms') }} : <span
                                                 class="text-danger">*</span></label>
-                                        <select class="custom-select mr-sm-2" name="Classroom_id">
-
+                                        <select class="custom-select mr-sm-2" name="classroom_id" id="classroom-select">
+                                            <option value="">{{ trans('Teacher_trans.select_class') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -71,8 +71,18 @@
                                     <div class="form-group">
                                         <label for="section_id">{{ trans('Students_trans.section') }} : <span
                                                 class="text-danger">*</span></label>
-                                        <select class="custom-select mr-sm-2" name="section_id">
+                                        <select class="custom-select mr-sm-2" name="section_id" id="section-select">
+                                            <option value="">{{ trans('Teacher_trans.select_section') }}</option>
+                                        </select>
+                                    </div>
+                                </div>
 
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="subject_id">{{ trans('Students_trans.subjects') }} : <span
+                                                class="text-danger">*</span></label>
+                                        <select class="custom-select mr-sm-2" name="subject_id" id="subject-select">
+                                            <option value="">{{ trans('Teacher_trans.select_subject') }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -81,7 +91,8 @@
                             <div class="form-row">
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="file_name">{{ trans('Parent_trans.Attachments') }} : <span class="text-danger">*</span></label>
+                                        <label for="file_name">{{ trans('Parent_trans.Attachments') }} : <span
+                                                class="text-danger">*</span></label>
                                         <input type="file" accept="application/pdf" name="file_name" required>
                                     </div>
                                 </div>
@@ -89,7 +100,7 @@
 
                             <div class="form-row" hidden>
                                 <div class="col">
-                                    <div class="form-group">
+                                    <div>
                                         <label for="teacher_name"></label>
                                         <input type="text" name="teacher_name"
                                             value="{{ Auth::user()->getTranslation('Name', 'en') }}">
@@ -97,7 +108,8 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right" type="submit">{{ trans('Teacher_trans.save_data') }}</button>
+                            <button class="btn btn-success btn-sm nextBtn btn-lg pull-right"
+                                type="submit">{{ trans('Teacher_trans.save_data') }}</button>
                         </form>
                     </div>
                 </div>
@@ -110,4 +122,62 @@
 @section('js')
 @toastr_js
 @toastr_render
+<script>
+    $('#grade-select').on('change', function() {
+        var gradeId = $(this).val();
+        if (gradeId) {
+            $.get('/teacher/homeworks/filter-classrooms/' + gradeId, function(data) {
+                $('#classroom-select').empty().append(
+                    '<option value="">{{ trans('Teacher_trans.select_class') }}</option>');
+                $('#section-select').empty().append(
+                    '<option value="">{{ trans('Teacher_trans.select_section') }}</option>');
+                $('#subject-select').empty().append(
+                    '<option value="">{{ trans('Teacher_trans.select_subject') }}</option>');
+                $.each(data, function(key, classroom) {
+                    $('#classroom-select').append('<option value="' + classroom.id + '">' +
+                        classroom.name + '</option>');
+                });
+            });
+        }
+    });
+
+    $('#classroom-select').on('change', function() {
+        var classId = $(this).val();
+        if (classId) {
+            $.get('/teacher/homeworks/filter-sections/' + classId, function(data) {
+                $('#section-select').empty().append(
+                    '<option value="">{{ trans('Teacher_trans.select_section') }}</option>');
+                $('#subject-select').empty().append(
+                    '<option value="">{{ trans('Teacher_trans.select_subject') }}</option>');
+                $.each(data, function(key, section) {
+                    $('#section-select').append('<option value="' + section.id + '">' + section
+                        .name + '</option>');
+                });
+            });
+        }
+    });
+
+    $('#section-select').on('change', function() {
+        let gradeID = $('#grade-select').val();
+        let classID = $('#classroom-select').val();
+        let sectionID = $(this).val();
+
+        if (gradeID && classID && sectionID) {
+            $.ajax({
+                url: `/teacher/homeworks/filter-subjects/${gradeID}/${classID}/${sectionID}`,
+                type: 'GET',
+                success: function(data) {
+                    console.log(data);
+                    $('#subject-select').empty().append(
+                        '<option value="">{{ trans('Teacher_trans.select_subject') }}</option>'
+                    );
+                    $.each(data, function(key, subject) {
+                        $('#subject-select').append(
+                            `<option value="${subject.id}">${subject.name}</option>`);
+                    });
+                }
+            });
+        }
+    });
+</script>
 @endsection

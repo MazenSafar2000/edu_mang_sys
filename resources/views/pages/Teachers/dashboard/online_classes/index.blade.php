@@ -14,16 +14,27 @@
 @endsection
 @section('content')
 <!-- row -->
+
 <div class="row">
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="col-xl-12 mb-30">
                     <div class="card card-statistics h-100">
                         <div class="card-body">
                             <a href="{{ route('online_zoom_classes.create') }}" class="btn btn-success" role="button"
                                 aria-pressed="true">{{ trans('Teacher_trans.Add_new_onlineclass') }}</a>
-                            <a class="btn btn-warning" href="{{ route('indirect.teacher.create') }}">{{ trans('Teacher_trans.Add_new_offlineclass') }}</a>
+                            <a class="btn btn-warning"
+                                href="{{ route('indirect.teacher.create') }}">{{ trans('Teacher_trans.Add_new_offlineclass') }}</a>
                             <div class="table-responsive">
                                 <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
                                     data-page-length="50" style="text-align: center">
@@ -49,11 +60,11 @@
                                                 <td>{{ $online_classe->classroom->Name_Class }}</td>
                                                 <td>{{ $online_classe->section->Name_Section }}</td>
                                                 <td>{{ $online_classe->created_by }}</td>
-                                                <td>{{ $online_classe->topic }}</td>
+                                                <td style="max-width: 100px">{{ $online_classe->topic }}</td>
                                                 <td>{{ $online_classe->start_at }}</td>
                                                 <td>{{ $online_classe->duration }}</td>
                                                 <td class="text-danger"><a href="{{ $online_classe->join_url }}"
-                                                        target="_blank">انضم الان</a></td>
+                                                        target="_blank">{{ trans('Teacher_trans.join_now') }}</a></td>
                                                 <td>
                                                     <button type="button" class="btn btn-danger btn-sm"
                                                         data-toggle="modal"

@@ -76,11 +76,22 @@
 
                                 <div class="col">
                                     <div class="form-group">
-                                        <label for="section_id">{{ trans('Students_trans.classrooms') }} : <span
+                                        <label for="section_id">{{ trans('Students_trans.section') }} : <span
                                                 class="text-danger">*</span></label>
                                         <select class="custom-select mr-sm-2" name="section_id">
                                             <option value="{{ $book->section_id }}">
                                                 {{ $book->section->Name_Section }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="subject_id">{{ trans('Students_trans.subjects') }} : <span
+                                                class="text-danger">*</span></label>
+                                        <select class="custom-select mr-sm-2" name="subject_id" id="subject-select" required>
+                                            <option value="{{ $book->subject_id }}">
+                                                {{ $book->subject->name }}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -137,7 +148,7 @@
 @toastr_render
 <script>
     $('#pdfModal').on('show.bs.modal', function(event) {
-        var button = $(event.relatedTarget); //Button that triggered the modal
+        var button = $(event.relatedTarget);
         var pdfUrl =
             "{{ URL::asset('attachments/library/teachers/' . $teacherName . '/' . $book->file_name) }}";
         $('#pdfFrame').attr('src', pdfUrl);

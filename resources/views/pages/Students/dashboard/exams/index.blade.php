@@ -91,7 +91,7 @@
                                                             </a>
                                                         @else
                                                             <button class="btn btn-secondary btn-sm" disabled>
-                                                                غير متاح
+                                                                {{ trans('Students_trans.not_available') }}
                                                             </button>
                                                         @endif
                                                     @endif

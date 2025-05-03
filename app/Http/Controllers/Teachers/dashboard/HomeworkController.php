@@ -15,6 +15,7 @@ use App\Models\Subject;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeworkController extends Controller
 {
@@ -154,32 +155,33 @@ class HomeworkController extends Controller
             $homework = Homework::findOrFail($id);
 
             $request->validate([
+                'subject_id' => 'required|exists:subjects,id',
                 'title' => 'required|string|max:255',
                 'description' => 'nullable|string',
-                'subject_id' => 'required|exists:subjects,id',
                 'grade_id' => 'required|exists:grades,id',
                 'classroom_id' => 'required|exists:classrooms,id',
                 'section_id' => 'required|exists:sections,id',
-                'due_date' => 'required|date|after_or_equal:today',
+                'total_degree' => 'required|numeric|min:0|max:100',
                 'allowed_file_types' => 'required|array',
                 'allowed_file_types.*' => 'in:pdf,doc,docx,jpg,png,rar,zip',
-                'total_degree' => 'required|numeric|min:0|max:100',
+                'due_date' => 'required|date',
+                'attachment' => 'nullable|file|mimes:pdf,doc,docx,jpg,png,zip,rar|max:2048',
+
             ]);
 
             $homework->update([
+                'subject_id' => $request->subject_id,
                 'title' => $request->title,
                 'description' => $request->description,
-                'subject_id' => $request->subject_id,
                 'total_degree' => $request->total_degree,
-                'allowed_file_types' => $request->allowed_file_types,
-                'allow_multiple_submissions' => $request->has('allow_multiple_submissions') ? true : false,
-                'due_date' => $request->due_date,
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
                 'section_id' => $request->section_id,
-
-
+                'allowed_file_types' => $request->allowed_file_types,
+                'allow_multiple_submissions' => $request->has('allow_multiple_submissions') ? true : false,
+                'due_date' => $request->due_date,
             ]);
+
             if ($request->has('remove_attachment') && $homework->attachment_path) {
                 $this->deleteHomeworkFile($homework->attachment_path);
                 $homework->update(['attachment_path' => null]);
@@ -195,7 +197,6 @@ class HomeworkController extends Controller
                 $path = $this->uploadHomeworkFile($request, $teacherName);
                 $homework->update(['attachment_path' => $path]);
             }
-
 
             toastr()->success(trans('messages.Update'));
             return redirect()->route('teacher.homeworks.index');
@@ -268,5 +269,35 @@ class HomeworkController extends Controller
         });
 
         return response()->json($sections);
+    }
+
+    public function getSubjects($grade_id, $class_id, $section_id)
+    {
+        $teacher_id = Auth::id();
+        $locale = App::getLocale();
+
+        // Verify the teacher is assigned to this section
+        $sectionAssigned = DB::table('teacher_section')
+            ->where('teacher_id', $teacher_id)
+            ->where('section_id', $section_id)
+            ->exists();
+
+        if (!$sectionAssigned) {
+            return response()->json([], 403); // Forbidden
+        }
+
+        $subjects = Subject::where('teacher_id', $teacher_id)
+            ->where('grade_id', $grade_id)
+            ->where('classroom_id', $class_id)
+            ->get();
+
+        $subjects = $subjects->map(function ($subject) use ($locale) {
+            return [
+                'id' => $subject->id,
+                'name' => $subject->getTranslation('name', $locale), // assuming you don't use translations
+            ];
+        });
+
+        return response()->json($subjects);
     }
 }

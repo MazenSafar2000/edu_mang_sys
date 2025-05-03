@@ -8,13 +8,22 @@ use App\Models\Grade;
 use App\Models\online_classe;
 use Illuminate\Http\Request;
 use MacsiDigital\Zoom\Facades\Zoom;
+use App\Services\ZoomService;
+use Carbon\Carbon;
 
 class OnlineZoomClassesController extends Controller
 {
-    use MeetingZoomTrait;
+
+    protected $zoomService;
+
+    public function __construct(ZoomService $zoomService)
+    {
+        $this->zoomService = $zoomService;
+    }
+
     public function index()
     {
-        $online_classes = online_classe::where('created_by',auth()->user()->email)->get();
+        $online_classes = online_classe::where('created_by', auth()->user()->email)->get();
         return view('pages.Teachers.dashboard.online_classes.index', compact('online_classes'));
     }
 
@@ -36,8 +45,8 @@ class OnlineZoomClassesController extends Controller
     public function store(Request $request)
     {
         try {
-
-            $meeting = $this->createMeeting($request);
+            $startTime = Carbon::parse($request->start_time, 'Asia/Gaza')->toDateTimeString();
+            $meeting = $this->zoomService->createMeeting($request);
 
             online_classe::create([
                 'integration' => true,
@@ -45,20 +54,22 @@ class OnlineZoomClassesController extends Controller
                 'Classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
                 'created_by' => auth()->user()->email,
-                'meeting_id' => $meeting->id,
-                'topic' => $request->topic,
-                'start_at' => $request->start_time,
-                'duration' => $meeting->duration,
-                'password' => $meeting->password,
-                'start_url' => $meeting->start_url,
-                'join_url' => $meeting->join_url,
+                'meeting_id' => $meeting['id'],
+                'topic' => $meeting['topic'],
+                'start_at' => $startTime,
+                'duration' => $meeting['duration'],
+                'password' => $meeting['password'],
+                'start_url' => $meeting['start_url'],
+                'join_url' => $meeting['join_url'],
             ]);
+
             toastr()->success(trans('messages.success'));
             return redirect()->route('online_zoom_classes.index');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
 
     public function storeIndirect(Request $request)
     {
@@ -82,27 +93,21 @@ class OnlineZoomClassesController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
         }
-
     }
 
 
-    public function destroy(Request $request,$id)
+    public function destroy($id)
     {
         try {
+            $info = online_classe::findOrFail($id);
 
-            $info = online_classe::find($id);
-
-            if($info->integration == true){
-                $meeting = Zoom::meeting()->find($request->meeting_id);
-                $meeting->delete();
-                online_classe::destroy($id);
-            }
-            else{
-
-                online_classe::destroy($id);
+            if ($info->integration) {
+                $this->zoomService->deleteMeeting($info->meeting_id);
             }
 
-            toastr()->success(trans('messages.Delete'));
+            $info->delete();
+
+            toastr()->error(trans('messages.Delete'));
             return redirect()->route('online_zoom_classes.index');
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);

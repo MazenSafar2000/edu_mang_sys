@@ -20,22 +20,13 @@
 
     <div class="wrapper" style="font-family: 'Cairo', sans-serif">
 
-        <!--=================================
- preloader -->
-
-        {{-- <div id="pre-loader">
-     <img src="{{ URL::asset('assets/images/pre-loader/loader-01.png') }}" alt="">
- </div> --}}
-
-        <!--=================================
- preloader -->
+        <!--================================= preloader -->
 
         @include('layouts.main-header')
 
         @include('layouts.main-sidebar')
 
-        <!--=================================
- Main content -->
+        <!--================================= Main content -->
         <!-- main-content -->
         <div class="content-wrapper">
             <div class="page-title">
@@ -50,22 +41,22 @@
                     </div>
                 </div>
             </div>
+            <livewire:student-subjects />
             <div class="calendar-main mb-30">
                 <livewire:calendar-student />
             </div>
-            <!--=================================
- wrapper -->
 
-            <!--=================================
- footer -->
+            <!--================================= wrapper -->
+
+            <!--================================= footer -->
 
             @include('layouts.footer')
-        </div><!-- main content wrapper end-->
+        </div>
+        <!-- main content wrapper end-->
     </div>
     </div>
     </div>
-    <!--=================================
- footer -->
+    <!--================================= footer -->
 
     @include('layouts.footer-scripts')
     @livewireScripts

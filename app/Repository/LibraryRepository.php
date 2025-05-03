@@ -15,12 +15,9 @@ class LibraryRepository implements LibraryRepositoryInterface
 
     public function index()
     {
-        // $books = Library::all();
-        // return view('pages.library.index',compact('books'));
-
         $teacher = Auth::user();
-        // dd($teacher);
         $books = Library::where('teacher_id', $teacher->id)->get();
+
         return view('pages.Teachers.dashboard.library.index', compact('books'));
     }
 
@@ -39,18 +36,17 @@ class LibraryRepository implements LibraryRepositoryInterface
 
             // $teacherName = $request->teacher_name;
             $teacherName = Auth::user()->Name;
-            // dd($teacherName);
-
             $books = new Library();
 
             $books->title = $request->title;
             $books->file_name =  $request->file('file_name')->getClientOriginalName();
-            $books->Grade_id = $request->Grade_id;
-            $books->Classroom_id = $request->Classroom_id;
+            $books->Grade_id = $request->grade_id;
+            $books->Classroom_id = $request->classroom_id;
             $books->teacher_id = Auth::user()->id;
             $books->section_id = $request->section_id;
-            // $books->path = $request->teacher_name;
+            $books->subject_id = $request->subject_id;
             $books->save();
+
             $this->uploadFile($request, $teacherName, 'file_name');
             toastr()->success(trans('messages.success'));
             return redirect()->route('library.create');
@@ -61,8 +57,8 @@ class LibraryRepository implements LibraryRepositoryInterface
 
     public function edit($id)
     {
-        $grades = Grade::all();
         $book = library::findorFail($id);
+        $grades = Grade::all();
         $teacherName = Auth::user()->Name;
         return view('pages.teachers.dashboard.library.edit', compact('book', 'grades', 'teacherName'));
     }
@@ -103,7 +99,6 @@ class LibraryRepository implements LibraryRepositoryInterface
 
             $fileName = $book->file_name;
             $fileFolder = Auth::user()->Name;
-            // dd($fileName, $fileFolder);
 
             $this->deleteFile($fileFolder, $fileName);
             $book->delete();
@@ -121,4 +116,6 @@ class LibraryRepository implements LibraryRepositoryInterface
         // return response()->download(public_path('attachments/library/' . $filename));
         return response()->download(public_path('attachments/library/teachers/' . Auth::user()->Name . '/' . $file_name));
     }
+
+
 }

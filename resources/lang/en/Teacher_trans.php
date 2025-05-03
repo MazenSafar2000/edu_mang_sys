@@ -117,6 +117,16 @@ return [
     'grade_homework' => 'Grade Homework',
     'no_students' => 'No Students',
     'Display_Delivered_Students' => 'Display Delivered Students',
+    'join_now' => 'Join Now',
+    'recorded_classes' => 'Recorded Classes',
+    'Add_new_recordedClass' => 'Add New Recorded Class',
+    'recorded_at' => 'Recorded At',
+    'class_description_optional' => 'Class Description (Optional)',
+    'video_types' => '(YouTube / Google Drive / Vimeo...)',
+    'Watch_the_class' => 'Watch the class',
+    'Update_recordedClass' => 'Update Recorded Class',
+    'Live_classes' => 'Live Classes',
+    'Videoclasses' => 'Video Classes',
 
 
 

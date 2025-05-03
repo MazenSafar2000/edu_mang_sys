@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Students;
+namespace App\Http\Controllers\Teachers\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Repository\LibraryRepositoryInterface;

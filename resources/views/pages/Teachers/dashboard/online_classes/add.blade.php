@@ -69,20 +69,23 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label> {{ trans('Teacher_trans.Class_title') }} : <span class="text-danger">*</span></label>
+                                <label> {{ trans('Teacher_trans.Class_title') }} : <span
+                                        class="text-danger">*</span></label>
                                 <input class="form-control" name="topic" type="text">
                             </div>
                         </div>
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>  {{ trans('Teacher_trans.Date_and_time_class') }} : <span class="text-danger">*</span></label>
-                                <input class="form-control" type="datetime-local" name="start_time">
+                                <label> {{ trans('Teacher_trans.Date_and_time_class') }} : <span
+                                        class="text-danger">*</span></label>
+                                <input class="form-control" name="start_time" type="datetime-local">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>  {{ trans('Teacher_trans.Class_duration_minutes') }} : <span class="text-danger">*</span></label>
+                                <label> {{ trans('Teacher_trans.Class_duration_minutes') }} : <span
+                                        class="text-danger">*</span></label>
                                 <input class="form-control" name="duration" type="text">
                             </div>
                         </div>

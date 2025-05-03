@@ -31,4 +31,9 @@ class Teacher extends  Authenticatable
     {
         return $this->hasMany('App\Models\Subject', 'teacher_id');
     }
+
+    public function libraries()
+    {
+        return $this->hasMany(Library::class);
+    }
 }

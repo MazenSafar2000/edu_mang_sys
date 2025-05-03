@@ -11,27 +11,36 @@ class Subject extends Model
 
     public $translatable = ['name'];
 
-    protected $fillable = ['name','grade_id','classroom_id','teacher_id'];
+    protected $fillable = ['name', 'grade_id', 'classroom_id', 'teacher_id'];
 
-
-    // جلب اسم المراحل الدراسية
 
     public function grade()
     {
         return $this->belongsTo('App\Models\Grade', 'grade_id');
     }
 
-    // جلب اسم الصفوف الدراسية
     public function classroom()
     {
         return $this->belongsTo('App\Models\Classroom', 'classroom_id');
     }
 
-    // جلب اسم المعلم
     public function teacher()
     {
         return $this->belongsTo('App\Models\Teacher', 'teacher_id');
     }
 
+    public function books()
+    {
+        return $this->hasMany(Library::class);
+    }
 
+    public function homeworks()
+    {
+        return $this->hasMany(Homework::class);
+    }
+
+    public function exams()
+    {
+        return $this->hasMany(Quizze::class);
+    }
 }

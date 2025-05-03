@@ -54,7 +54,7 @@ return [
     'Class_title' => 'عنوان الحصة',
     'Start_date' => 'تاريخ البداية',
     'Class_time' => 'وقت الحصة',
-    'Class_link' => 'وقت الحصة',
+    'Class_link' => 'رابط الحصة',
     'Date_and_time_class' => 'تاريخ ووقت الحصة',
     'Class_duration_minutes' => 'مدة الحصة بالدقائق',
     'Meeting_number' => 'رقم الاجتماع',
@@ -117,8 +117,16 @@ return [
     'grade_homework' => 'تقدير الواجب',
     'no_students' => 'لا يوجد طلاب',
     'Display_Delivered_Students' => 'عرض الطلاب المقدمين',
-
-
+    'join_now' => 'انضم الآن',
+    'recorded_classes' => 'حصص مسجلة',
+    'Add_new_recordedClass' => 'اضافة حصة مسجلة جديدة',
+    'recorded_at'  => 'تاريخ التسجيل',
+    'class_description_optional' => 'وصف الحصة (اختياري)',
+    'video_types' => '(يوتيوب / Google Drive / Vimeo...)',
+    'Watch_the_class' => 'مشاهدة الحصة',
+    'Update_recordedClass' => 'تعديل الحصة المسجلة',
+    'Live_classes' => 'حصص مباشرة',
+    'Videoclasses' => 'حصص فيديو',
 
 
 
