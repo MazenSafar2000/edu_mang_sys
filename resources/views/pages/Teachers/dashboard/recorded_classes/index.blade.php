@@ -55,16 +55,21 @@
                                                 <td>{{ $class->section->Name_Section }}</td>
                                                 <td>{{ $class->subject->name }}</td>
                                                 <td>{{ $class->title }}</td>
-                                                <td><a href="{{ $class->video_url }}" target="_blank">{{ trans('Teacher_trans.Watch_the_class') }}</a></td>
+                                                <td><a href="{{ $class->video_url }}"
+                                                        target="_blank">{{ trans('Teacher_trans.Watch_the_class') }}</a>
+                                                </td>
                                                 <td>
                                                     <a href="{{ route('recorded-classes.edit', $class->id) }}"
-                                                        class="btn btn-info btn-sm" title="{{ trans('Teacher_trans.Update_recordedClass') }}"><i class="fa fa-edit"></i></a>
+                                                        class="btn btn-info btn-sm"
+                                                        title="{{ trans('Teacher_trans.Update_recordedClass') }}"><i
+                                                            class="fa fa-edit"></i></a>
                                                     <form action="{{ route('recorded-classes.destroy', $class->id) }}"
                                                         method="POST" style="display:inline;">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-danger btn-sm"  title="{{ trans('Teacher_trans.delete') }} "><i class="fa fa-trash"></i> </button>
+                                                        <button type="submit" class="btn btn-danger btn-sm"
+                                                            title="{{ trans('Teacher_trans.delete') }} "><i
+                                                                class="fa fa-trash"></i> </button>
                                                     </form>
                                                 </td>
                                             </tr>

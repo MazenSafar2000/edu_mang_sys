@@ -43,4 +43,5 @@ class Library extends Model
         return $this->belongsTo('App\Models\Subject', 'subject_id');
     }
 
+
 }

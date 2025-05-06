@@ -45,6 +45,7 @@ Route::group(
             Route::get('student', 'StudentController@index')->name('student.index');
             Route::get('sections', 'StudentController@sections')->name('sections');
             Route::get('/teacher/student/{id}', 'StudentController@studentInformation')->name('teacher.student.info');
+            Route::get('/teacher/sections/{section}/materials', 'StudentController@showMaterials')->name('materials');
             Route::resource('quizzes', 'QuizzController');
             Route::resource('questions', 'QuestionController');
             Route::resource('online_zoom_classes', 'OnlineZoomClassesController');

@@ -549,9 +549,7 @@ body.dark {
     opacity: 1;
     transform: scale(1.1);
 }
-
 /**login page teacher ends**/
-
 
 .alert {
     position: relative;
@@ -758,7 +756,6 @@ body.dark {
 
 
 }
-
 
 @media (max-width:991px) {
     html {

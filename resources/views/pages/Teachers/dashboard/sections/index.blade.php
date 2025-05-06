@@ -33,13 +33,14 @@
                         </thead>
                         <tbody>
                             @foreach ($sections as $section)
-                                <tr>
+                                <tr class="clickable-row"  data-href="{{ route('materials', $section->id) }}" style="cursor: pointer;">
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $section->Grades->Name }}</td>
                                     <td>{{ $section->My_classs->Name_Class }}</td>
                                     <td>{{ $section->Name_Section }}</td>
                                 </tr>
                             @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -49,4 +50,13 @@
 </div>
 @endsection
 @section('js')
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.querySelectorAll(".clickable-row").forEach(function(row) {
+                row.addEventListener("click", function() {
+                    window.location = this.dataset.href;
+                });
+            });
+        });
+    </script>
 @endsection

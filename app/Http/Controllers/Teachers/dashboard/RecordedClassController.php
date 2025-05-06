@@ -107,6 +107,9 @@ class RecordedClassController extends Controller
 
     public function destroy($id)
     {
-        //
+        $recordedClass = RecordedClass::findOrFail($id);
+        $recordedClass->delete();
+        toastr()->error('mesages.Delete');
+        return redirect()->route('recorded-classes.index');
     }
 }
