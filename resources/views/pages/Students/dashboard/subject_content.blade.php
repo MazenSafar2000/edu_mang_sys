@@ -34,6 +34,7 @@
                                         @case('homework') border-warning @break
                                         @case('exam') border-danger @break
                                         @case('VideoClass') border-primary @break
+                                        @case('live_classes') border-primary @break
                                     @endswitch
                                 ">
                                 <div class="card-body">
@@ -46,6 +47,7 @@
                                                     @case('homework') text-white bg-warning @break
                                                     @case('exam') text-white bg-danger @break
                                                     @case('VideoClass') text-white bg-info @break
+                                                    @case('live_classes') text-white bg-info @break
                                                 @endswitch
                                             ">
                                             @switch($material['type'])
@@ -64,6 +66,10 @@
                                                 @case('VideoClass')
                                                     {{ trans('Students_trans.VideoClass') }}
                                                 @break
+
+                                                @case('live_classes')
+                                                    {{ trans('Students_trans.live_classes') }}
+                                                @break
                                             @endswitch
                                         </span>
                                     </div>
@@ -73,7 +79,7 @@
 
                                     <div class="d-grid gap-2">
                                         @if ($material['type'] == 'book')
-                                            <a href="#" class="btn btn-outline-primary btn-sm"
+                                            <a href="{{ route('student.library.preview', $material['data']->id) }}" class="btn btn-outline-primary btn-sm"
                                                 title="{{ trans('Students_trans.view_book') }}">
                                                 <i class="fas fa-book me-1"></i> {{ trans('Students_trans.view') }}
                                             </a>
@@ -91,6 +97,12 @@
                                             </a>
                                         @elseif($material['type'] == 'VideoClass')
                                             <a href="{{ route('student.VideoClass.preview', $material['data']->id) }}"
+                                                class="btn btn-outline-info btn-sm"
+                                                title="{{ trans('Students_trans.view_class') }}">
+                                                <i class="fas fa-file-alt me-1"></i> {{ trans('Students_trans.view') }}
+                                            </a>
+                                        @elseif($material['type'] == 'live_classes')
+                                            <a href="{{ route('student.LiveClass.preview', $material['data']->id) }}"
                                                 class="btn btn-outline-info btn-sm"
                                                 title="{{ trans('Students_trans.view_class') }}">
                                                 <i class="fas fa-file-alt me-1"></i> {{ trans('Students_trans.view') }}

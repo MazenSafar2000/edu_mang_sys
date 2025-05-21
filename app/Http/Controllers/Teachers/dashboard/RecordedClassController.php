@@ -7,7 +7,9 @@ use App\Models\Classroom;
 use App\Models\Grade;
 use App\Models\RecordedClass;
 use App\Models\Section;
+use App\Models\Student;
 use App\Models\Subject;
+use App\Notifications\Student\NewRecordedClassAdded;
 use Illuminate\Http\Request;
 
 class RecordedClassController extends Controller
@@ -38,7 +40,7 @@ class RecordedClassController extends Controller
         ]);
 
         try {
-            RecordedClass::create([
+            $recordedClass = RecordedClass::create([
                 'teacher_id' => auth()->user()->id,
                 'grade_id' => $request->grade_id,
                 'classroom_id' => $request->classroom_id,
@@ -49,6 +51,17 @@ class RecordedClassController extends Controller
                 'video_url' => $request->video_url,
                 'created_by' => auth()->user()->email,
             ]);
+
+            $students = Student::where('grade_id', $request->grade_id)
+                ->where('classroom_id', $request->classroom_id)
+                ->where('section_id', $request->section_id)
+                ->get();
+
+            $recordedClassId = $recordedClass->id;
+
+            foreach ($students as $student) {
+                $student->notify(new NewRecordedClassAdded($recordedClassId, $request->title, auth()->user()->Name));
+            }
 
             toastr()->success(trans('messages.success'));
             return redirect()->route('recorded-classes.index');

@@ -2,13 +2,13 @@
 @section('css')
     @toastr_css
 @section('title')
-    {{ trans('Students_trans.exam_details') }} : {{ $quiz->subject->name ?? '-' }}
+    {{ trans('Students_trans.exam_details') }} : {{ $quiz->name ?? '-' }}
 @stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
 @section('PageTitle')
-    {{ trans('Students_trans.exam_details') }} : {{ $quiz->subject->name ?? '-' }}
+    {{ trans('Students_trans.exam_details') }} : {{ $quiz->name ?? '-' }}
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -85,9 +85,18 @@
                                                 $can_start = $now >= $quiz->start_at && $now <= $quiz->end_at;
                                             @endphp
 
-                                            @if ($quiz->degree->count() > 0 && $quiz->id == $quiz->degree[0]->quizze_id)
+                                            @if ($studentDegree)
                                                 <strong>{{ trans('Students_trans.degree') }} : </strong>
-                                                {{ $quiz->degree[0]->score }}
+                                                {{ $studentDegree->score }}
+
+                                                @if (!empty($studentDegree->feedback))
+                                                    <div class="mt-2">
+                                                        <strong>{{ trans('Teacher_trans.Feedback') }}:</strong>
+                                                        <div class="alert alert-info mt-1 mb-0">
+                                                            {{ $studentDegree->feedback }}
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             @else
                                                 @if ($now->between($quiz->start_at, $quiz->end_at))
                                                     <a href="{{ route('student_exams.show', $quiz->id) }}"
@@ -101,6 +110,7 @@
                                                     </button>
                                                 @endif
                                             @endif
+
                                         </li>
                                     </ul>
                                 </div>

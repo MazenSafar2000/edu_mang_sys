@@ -100,7 +100,7 @@
 
 
 
-            <livewire:calendar />
+            {{-- <livewire:calendar /> --}}
 
             <!--=================================
  wrapper -->

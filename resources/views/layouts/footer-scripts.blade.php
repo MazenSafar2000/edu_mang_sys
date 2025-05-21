@@ -45,7 +45,6 @@
 @endif
 
 
-
 <script>
     function CheckAll(className, elem) {
         var elements = document.getElementsByClassName(className);
@@ -62,7 +61,6 @@
         }
     }
 </script>
-
 
 <script>
     $(document).ready(function () {
@@ -91,7 +89,6 @@
     });
 </script>
 
-
 <script>
     $(document).ready(function () {
         $('select[name="Classroom_id"]').on('change', function () {
@@ -119,10 +116,6 @@
     });
 </script>
 
-
-
-
-
 <script>
     $(document).ready(function () {
         $('select[name="Grade_id_new"]').on('change', function () {
@@ -149,7 +142,6 @@
         });
     });
 </script>
-
 
 <script>
     $(document).ready(function () {

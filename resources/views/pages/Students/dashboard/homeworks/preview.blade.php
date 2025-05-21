@@ -66,6 +66,34 @@
                                         <a href="{{ route('student.submissions.create', $homework->id) }}"
                                             class="btn btn-warning btn-sm">{{ __('Students_trans.Resubmit') }}</a>
                                     @endif
+                                    @if ($submission && ($submission->degree !== null || $submission->feedback))
+                                        <div class="mt-4">
+                                            <div class="card border-success shadow-sm">
+                                                <div class="card-header bg-success text-white">
+                                                    <h5 class="mb-0">{{ __('Students_trans.Grading_Feedback') }}</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    @if ($submission->degree !== null)
+                                                        <p class="mb-2">
+                                                            <strong>{{ __('Students_trans.degree') }}:</strong>
+                                                            <span class="badge badge-pill badge-primary px-3 py-2"
+                                                                style="font-size: 16px;">
+                                                                {{ $submission->degree }} /
+                                                                {{ $homework->total_degree }}
+                                                            </span>
+                                                        </p>
+                                                    @endif
+
+                                                    @if ($submission->feedback)
+                                                        <p class="mt-3 mb-0">
+                                                            <strong>{{ __('Students_trans.Feedback') }}:
+                                                            </strong><span> {{ $submission->feedback }}</span>
+                                                        </p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
                                 @else
                                     <a href="{{ route('student.submissions.create', $homework->id) }}"
                                         class="btn btn-primary">

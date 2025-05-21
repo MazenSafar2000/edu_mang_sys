@@ -32,6 +32,7 @@ Route::group(
             Route::resource('student_exams', 'ExamsController');
             Route::get('student/exams/{id}/preview', 'ExamsController@preview')->name('student.exams.preview');
             Route::get('student/videoClass/{id}/preview', 'RecordedClassController@preview')->name('student.VideoClass.preview');
+            Route::get('student/liveClasses/{id}/preview', 'LiveClassesController@preview')->name('student.LiveClass.preview');
             Route::resource('profile-student', 'ProfileController');
             Route::prefix('student/homework-submissions')->name('student.submissions.')->group(function () {
                 Route::get('/', 'HomeworkSubmissionController@index')->name('index'); // List of assigned homeworks
@@ -43,11 +44,14 @@ Route::group(
             Route::prefix('student/library')->name('student.library.')->group(function () {
                 Route::get('/', 'LibraryController@index')->name('index'); // List of library books
                 Route::get('/{book}/download', 'LibraryController@download')->name('download'); // Download book
+                Route::get('/{book}/preview', 'LibraryController@preview')->name('preview'); // Preview book
             });
         });
 
         Route::group(['namespace' => 'Students'], function () {
             Route::get('student/subjects/{id}/materials', 'SubjectController@showSubjectContent')->name('student.subject.materials');
         });
+
+        Route::get('notification/{id}', 'NotificationController@read')->name('student.notification.read');
     }
 );

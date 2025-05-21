@@ -9,7 +9,9 @@ use App\Models\Grade;
 use App\Models\Question;
 use App\Models\Quizze;
 use App\Models\Section;
+use App\Models\Student;
 use App\Models\Subject;
+use App\Notifications\Student\NewExamAdded;
 use Illuminate\Http\Request;
 
 class QuizzController extends Controller
@@ -45,6 +47,18 @@ class QuizzController extends Controller
             $quizzes->start_at = $request->start_at;
             $quizzes->end_at = $request->end_at;
             $quizzes->save();
+
+            $students = Student::where('grade_id', $request->Grade_id)
+                ->where('classroom_id', $request->Classroom_id)
+                ->where('section_id', $request->section_id)
+                ->get();
+
+
+            $examTitle = $quizzes->getTranslation('name', app()->getLocale());
+
+            foreach ($students as $student) {
+                $student->notify(new NewExamAdded($quizzes->id, $examTitle, auth()->user()->Name));
+            }
 
             toastr()->success(trans('messages.success'));
             return redirect()->route('quizzes.create');
@@ -107,22 +121,65 @@ class QuizzController extends Controller
 
     public function student_quizze($quizze_id)
     {
+        $quiz = Quizze::findOrFail($quizze_id);
+
+        // Get all students in the quiz's section
+        $students = Student::where('section_id', $quiz->section_id)->get();
+
+        // Get degrees for this quiz
         $degrees = Degree::where('quizze_id', $quizze_id)->get();
-        return view('pages.Teachers.dashboard.Quizzes.student_quizze', compact('degrees'));
+
+        // Pass all data to the view
+        return view('pages.Teachers.dashboard.Quizzes.student_quizze', compact('students', 'degrees', 'quiz'));
     }
+
+    public function storeManualDegree(Request $request)
+    {
+        $request->validate([
+            'student_id' => 'required|exists:students,id',
+            'quizze_id' => 'required|exists:quizzes,id',
+            'score' => 'required|numeric|min:0',
+            'feedback' => 'nullable|string',
+        ]);
+
+        $degree = Degree::where('student_id', $request->student_id)
+            ->where('quizze_id', $request->quizze_id)
+            ->first();
+
+        if ($degree) {
+            $degree->update([
+                'score' => $request->score,
+                'feedback' => $request->feedback,
+                'date' => now(),
+            ]);
+        } else {
+            Degree::create([
+                'student_id' => $request->student_id,
+                'quizze_id' => $request->quizze_id,
+                'score' => $request->score,
+                'feedback' => $request->feedback,
+                'abuse' => '0',
+                'date' => now(),
+            ]);
+        }
+
+        return back()->with('success', trans('teacher_trans.score_saved'));
+    }
+
+
 
     public function repeat_quizze(Request $request, $quizze_id)
     {
         $quiz = Quizze::findOrFail($quizze_id);
 
         if (now()->greaterThan($quiz->end_at)) {
-            return redirect()->back()->with('error', "{{ trans('teacher_trans.plz_update_end_at') }}");
+            return redirect()->back()->with('error', trans('teacher_trans.plz_update_end_at'));
         }
 
         Degree::where('student_id', $request->student_id)
             ->where('quizze_id', $quizze_id)
             ->delete();
 
-        return redirect()->back()->with('success', " {{ trans('teacher_trans.reopen_success') }} ");
+        return redirect()->back()->with('success', trans('teacher_trans.reopen_success'));
     }
 }

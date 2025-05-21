@@ -116,6 +116,8 @@ return [
     'select_subject' => 'Select Subject ...',
     'select_teacher_name' => 'Select A Teacher ...',
 
+    'no_notifications' => 'No Notifications',
+
 
 
 

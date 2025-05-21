@@ -40,13 +40,16 @@ class ExamsController extends Controller
         return view('pages.Students.dashboard.exams.show', compact('quizze_id', 'student_id'));
     }
 
-    
+
     public function preview($quiz_id)
     {
         $quiz = Quizze::with('subject')->findOrFail($quiz_id);
         $student_id = Auth::id();
+        $studentDegree = $quiz->degree()
+            ->where('student_id', $student_id)
+            ->first();
 
-        return view('pages.Students.dashboard.exams.preview', compact('quiz', 'student_id'));
+        return view('pages.Students.dashboard.exams.preview', compact('quiz', 'student_id', 'studentDegree'));
     }
 
 

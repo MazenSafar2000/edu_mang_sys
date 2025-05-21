@@ -14,6 +14,7 @@ return [
     'Joining_Date' => 'Joining_Date',
     'Address' => 'Address',
     'save_data' => 'Save Data',
+    'save' => 'Save',
     'viewBook' => 'View Book',
     'exams_list' => 'exams list',
 
@@ -147,6 +148,26 @@ return [
     'RecordClassDetails' => 'Record Class Details',
     'No_online_classes_available' => 'No online classes available.',
     'No_recorded_classes_available' => 'No recorded classes available.',
+
+    'change_language' => 'Change Language',
+    'search' => 'Search',
+    'user' => 'User',
+    'notifications' => 'Notifications',
+    'teacher' => 'Teacher',
+    'logout' => 'Logout',
+    'dashboard' => 'Dashboard',
+    'students' => 'Students',
+    'profile' => 'Profile',
+
+    'not_taken' => 'Not Taken',
+    'assign_score' => 'Assign Score',
+
+    'Feedback' => 'Feedback',
+    'Close' => 'Close',
+    'Save_changes' => 'Save changes',
+    'grade_exam' => 'Grade Exam',
+
+
 
 
 

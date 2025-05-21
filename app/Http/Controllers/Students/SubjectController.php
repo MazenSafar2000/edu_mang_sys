@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Students;
 use App\Http\Controllers\Controller;
 use App\Models\Homework;
 use App\Models\Library;
+use App\Models\online_classe;
 use App\Models\Quizze;
 use App\Models\RecordedClass;
 use App\Models\Subject;
@@ -126,6 +127,15 @@ class SubjectController extends Controller
             ['subject_id', $subject_id],
         ])->orderBy('created_at', 'asc')->get();
 
+        $live_classes = online_classe::where([
+            ['grade_id', $grade_id],
+            ['classroom_id', $classroom_id],
+            ['teacher_id', $teacher_id],
+            ['subject_id', $subject_id],
+        ])->orderBy('created_at', 'asc')->get();
+
+
+
         // Merge all in a single collection
         $materials = collect()
             ->merge($books->map(fn($item) => [
@@ -152,9 +162,15 @@ class SubjectController extends Controller
                 'created_at' => $item->created_at,
                 'data' => $item,
             ]))
+            ->merge($live_classes->map(fn($item) => [
+                'type' => 'live_classes',
+                'title' => $item->topic,
+                'created_at' => $item->created_at,
+                'data' => $item,
+            ]))
             ->sortBy('created_at')
             ->values();
 
-        return view('pages.Students.subject_content', compact('subject', 'materials'));
+        return view('pages.Students.dashboard.subject_content', compact('subject', 'materials'));
     }
 }

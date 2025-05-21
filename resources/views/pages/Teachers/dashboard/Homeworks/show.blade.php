@@ -71,17 +71,56 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <form
-                                            action="{{ route('teacher.homeworks.grade', [$homework->id, $student->id]) }}"
-                                            method="POST" style="display: flex; gap: 5px;">
-                                            @csrf
-                                            <input type="number" name="degree"
-                                                value="{{ $submission?->degree ?? 0 }}" min="0"
-                                                max="{{ $homework->total_degree }}" class="form-control"
-                                                style="width: 80px;" required>
-                                            <button type="submit"
-                                                class="btn btn-success btn-sm">{{ trans('Teacher_trans.grade_homework') }}</button>
-                                        </form>
+                                        <button class="btn btn-success btn-sm" data-toggle="modal"
+                                            data-target="#gradeModal-{{ $student->id }}">
+                                            {{ trans('Teacher_trans.grade_homework') }}
+                                        </button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="gradeModal-{{ $student->id }}" tabindex="-1"
+                                            role="dialog" aria-labelledby="gradeModalLabel-{{ $student->id }}"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <form
+                                                    action="{{ route('teacher.homeworks.grade', [$homework->id, $student->id]) }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <div class="modal-content">
+                                                        <div class="modal-header bg-success text-white">
+                                                            <h5 class="modal-title"
+                                                                id="gradeModalLabel-{{ $student->id }}">
+                                                                {{ trans('Teacher_trans.grade_homework') }} -
+                                                                {{ $student->name }}
+                                                            </h5>
+                                                            <button type="button" class="close text-white"
+                                                                data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="form-group">
+                                                                <label>{{ trans('Teacher_trans.degree') }}</label>
+                                                                <input type="number" name="degree"
+                                                                    class="form-control"
+                                                                    value="{{ $submission?->degree ?? '' }}"
+                                                                    max="{{ $homework->total_degree }}" min="0"
+                                                                    required>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label>{{ trans('Teacher_trans.Feedback') }}</label>
+                                                                <textarea name="feedback" rows="4" class="form-control">{{ $submission?->feedback ?? '' }}</textarea>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">{{ trans('Teacher_trans.Close') }}</button>
+                                                            <button type="submit"
+                                                                class="btn btn-success">{{ trans('Teacher_trans.Save_changes') }}</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @empty
@@ -99,6 +138,9 @@
         </div>
     </div>
 </div>
+
+
+
 <!-- row closed -->
 @endsection
 

@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Traits\MeetingZoomTrait;
 use App\Models\Grade;
 use App\Models\online_classe;
+use App\Models\Section;
+use App\Models\Student;
+use App\Models\Subject;
+use App\Notifications\Student\NewLiveClassAdded;
 use Illuminate\Http\Request;
 use MacsiDigital\Zoom\Facades\Zoom;
 use App\Services\ZoomService;
@@ -27,11 +31,11 @@ class OnlineZoomClassesController extends Controller
         return view('pages.Teachers.dashboard.online_classes.index', compact('online_classes'));
     }
 
-
     public function create()
     {
         $Grades = Grade::all();
-        return view('pages.Teachers.dashboard.online_classes.add', compact('Grades'));
+        $subjects = Subject::all();
+        return view('pages.Teachers.dashboard.online_classes.add', compact('Grades', 'subjects'));
     }
 
     public function indirectCreate()
@@ -48,12 +52,14 @@ class OnlineZoomClassesController extends Controller
             $startTime = Carbon::parse($request->start_time, 'Asia/Gaza')->toDateTimeString();
             $meeting = $this->zoomService->createMeeting($request);
 
-            online_classe::create([
+            $onlineClass = online_classe::create([
                 'integration' => true,
                 'Grade_id' => $request->Grade_id,
                 'Classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
                 'created_by' => auth()->user()->email,
+                'teacher_id' => auth()->user()->id,
+                'subject_id' => $request->subject_id,
                 'meeting_id' => $meeting['id'],
                 'topic' => $meeting['topic'],
                 'start_at' => $startTime,
@@ -62,6 +68,19 @@ class OnlineZoomClassesController extends Controller
                 'start_url' => $meeting['start_url'],
                 'join_url' => $meeting['join_url'],
             ]);
+
+
+            $students = Student::where('grade_id', $request->Grade_id)
+                ->where('Classroom_id', $request->Classroom_id)
+                ->where('section_id', $request->section_id)
+                ->get();
+
+            $onlineClassId = $onlineClass->id;
+
+            foreach ($students as $student) {
+                $student->notify(new NewLiveClassAdded($onlineClassId, $meeting['topic'], auth()->user()->Name));
+            }
+
 
             toastr()->success(trans('messages.success'));
             return redirect()->route('online_zoom_classes.index');
@@ -80,6 +99,8 @@ class OnlineZoomClassesController extends Controller
                 'Classroom_id' => $request->Classroom_id,
                 'section_id' => $request->section_id,
                 'created_by' => auth()->user()->email,
+                'teacher_id' => auth()->user()->id,
+                'subject_id' => $request->subject_id,
                 'meeting_id' => $request->meeting_id,
                 'topic' => $request->topic,
                 'start_at' => $request->start_time,

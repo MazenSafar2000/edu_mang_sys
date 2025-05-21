@@ -14,3 +14,9 @@
    </div>
 </footer>
 <!-- Footer closed -->
+
+{{-- <footer class="footer">
+
+    &copy; جميع الحقوق محفوظة | <span>spark eucation</span> حقوق الطبع والنشر بواسطة
+
+</footer> --}}

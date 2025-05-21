@@ -4,11 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 use Spatie\Translatable\HasTranslations;
 
 class Teacher extends  Authenticatable
 {
     use HasTranslations;
+    use Notifiable;
+
     public $translatable = ['Name'];
     protected $guarded = [];
 

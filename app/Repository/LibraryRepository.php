@@ -5,6 +5,8 @@ namespace App\Repository;
 use App\Http\Traits\AttachFilesTrait;
 use App\Models\Grade;
 use App\Models\Library;
+use App\Models\Student;
+use App\Notifications\Student\NewBookAdded;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,8 +35,6 @@ class LibraryRepository implements LibraryRepositoryInterface
     public function store($request)
     {
         try {
-
-            // $teacherName = $request->teacher_name;
             $teacherName = Auth::user()->Name;
             $books = new Library();
 
@@ -49,6 +49,16 @@ class LibraryRepository implements LibraryRepositoryInterface
 
             $this->uploadFile($request, $teacherName, 'file_name');
             toastr()->success(trans('messages.success'));
+
+            $students = Student::where('grade_id', $request->grade_id)
+                ->where('classroom_id', $request->classroom_id)
+                ->where('section_id', $request->section_id)
+                ->get();
+
+            foreach ($students as $student) {
+                $student->notify(new NewBookAdded($books->id ,$books->title, auth()->user()->Name));
+            }
+
             return redirect()->route('library.create');
         } catch (\Exception $e) {
             return redirect()->back()->with(['error' => $e->getMessage()]);
@@ -82,7 +92,7 @@ class LibraryRepository implements LibraryRepositoryInterface
 
             $book->Grade_id = $request->Grade_id;
             $book->Classroom_id = $request->Classroom_id;
-            $book-> section_id = $request->section_id;
+            $book->section_id = $request->section_id;
             $book->teacher_id =  Auth::user()->id;
             $book->save();
             toastr()->success(trans('messages.Update'));
@@ -116,6 +126,4 @@ class LibraryRepository implements LibraryRepositoryInterface
         // return response()->download(public_path('attachments/library/' . $filename));
         return response()->download(public_path('attachments/library/teachers/' . Auth::user()->Name . '/' . $file_name));
     }
-
-
 }

@@ -12,6 +12,8 @@ use App\Models\HomeworkSubmission;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Notifications\Student\NewBookAdded;
+use App\Notifications\Student\NewHomeworkAdded;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +73,16 @@ class HomeworkController extends Controller
             $homework->update(['attachment_path' => $path]);
         }
 
+        $students = Student::where('grade_id', $request->grade_id)
+            ->where('classroom_id', $request->classroom_id)
+            ->where('section_id', $request->section_id)
+            ->get();
+
+
+        foreach ($students as $student) {
+            $student->notify(new NewHomeworkAdded($homework->id, $homework->title, auth()->user()->Name));
+        }
+
 
         toastr()->success(trans('messages.success'));
         return redirect()->route('teacher.homeworks.index');
@@ -119,7 +131,8 @@ class HomeworkController extends Controller
             'status' => 'graded',
         ]);
 
-        return back()->with('success', __('Student graded successfully.'));
+        toastr()->success(trans('messages.Update'));
+        return back();
     }
 
 

@@ -109,7 +109,17 @@ return [
     'cant_open_youtube_video' => 'الرابط غير صالح لعرض YouTube.',
     'teacher_name' => 'اسم المعلم',
     'no_description' => 'لا يوجد وصف متاح.',
+    'live_classes' => 'حصص مباشرة',
+    'title' => 'العنوان',
+    'join' => 'الانضمام',
+    'join_now' => 'انضم الآن',
+    'not_started' => 'لم يبدأ بعد',
+    'class_ended' => 'انتهت الحصة',
+    'starts_in' => 'يبدأ في',
+    'live_now' => 'الآن مباشر',
+    'finished' => 'انتهت',
 
+    'Feedback' => 'التعليقات',
 
 
 

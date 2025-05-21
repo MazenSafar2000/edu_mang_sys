@@ -14,6 +14,8 @@ class online_classe extends Model
         'Classroom_id',
         'section_id',
         'created_by',
+        'teacher_id',
+        'subject_id',
         'meeting_id',
         'topic',
         'start_at',
@@ -38,6 +40,11 @@ class online_classe extends Model
     public function section()
     {
         return $this->belongsTo('App\Models\Section', 'section_id');
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo('App\Models\Subject', 'subject_id');
     }
 
     // public function user()

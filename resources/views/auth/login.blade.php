@@ -25,19 +25,7 @@
 <body>
 
     <div class="wrapper">
-        <!--=================================
-preloader -->
-
-        {{-- <div id="pre-loader">
-            <img src="{{ URL::asset('assets/images/pre-loader/loader-01.png') }}" alt="" width="20%">
-        </div> --}}
-
-        <!--=================================
-preloader -->
-
-        <!--=================================
-login-->
-
+      <!--================================= login-->
         <section class="height-100vh d-flex align-items-center page-section-ptb login"
             style="background-image: url('{{ asset('assets/images/sativa.png') }}');">
             <div class="container">
@@ -133,8 +121,6 @@ login-->
 
     <!-- chart -->
     <script src="{{ URL::asset('assets/js/chart-init.js') }}"></script>
-    <!-- calendar -->
-    <script src="{{ URL::asset('assets/js/calendar.init.js') }}"></script>
     <!-- charts sparkline -->
     <script src="{{ URL::asset('assets/js/sparkline.init.js') }}"></script>
     <!-- charts morris -->

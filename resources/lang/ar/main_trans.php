@@ -123,6 +123,8 @@ return [
     'select_subject' => 'حدد المادة الدراسية ...',
     'select_teacher_name' => 'حدد اسم المعلم...',
 
+    'no_notifications' => 'لا توجد اشعارات',
+    ''
 
 
 

@@ -65,6 +65,15 @@
                         </div>
                     </div><br>
 
+                    <div class="form-group">
+                        <label for="subject_id"> {{ trans('Teacher_trans.Sections')}} </label>
+                        <select name="subject_id" id="subject">
+                            @foreach ($subjects as $subject)
+                                <option value="{{ $subject->id }}">{{ $subject->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div class="row">
 
                         <div class="col-md-4">

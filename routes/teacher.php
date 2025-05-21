@@ -54,6 +54,7 @@ Route::group(
             Route::get('profile', 'ProfileController@index')->name('profile.show');
             Route::post('profile/{id}', 'ProfileController@update')->name('profile.update');
             Route::get('student_quizze/{id}', 'QuizzController@student_quizze')->name('student.quizze');
+            Route::post('/manual-degree', 'QuizzController@storeManualDegree')->name('manual.degree.store');
             Route::post('repeat_quizze/{quizze_id}', 'QuizzController@repeat_quizze')->name('repeat.quizze');
             // Homework Routes (for teachers)
             Route::prefix('teacher/homeworks')->name('teacher.homeworks.')->group(function () {
@@ -73,14 +74,11 @@ Route::group(
                 Route::get('teacher/homeworks/{id}/edit', 'HomeworkController@edit')->name('edit');
                 Route::put('teacher/homeworks/{id}', 'HomeworkController@update')->name('update');
                 Route::delete('teacher/homeworks/{id}', 'HomeworkController@destroy')->name('destroy');
-
             });
             Route::get('download_file/{filename}', 'LibraryController@downloadAttachment')->name('downloadAttachment');
             Route::resource('library', 'LibraryController');
         });
 
-        Route::group(['namespace' => 'Students'], function () {
-
-        });
+        Route::get('teacher/notification/{id}', 'NotificationController@teacherRead')->name('teacher.notification.read');
     }
 );

@@ -23,6 +23,12 @@ class LibraryController extends Controller
         return view('pages.Students.dashboard.library.index', compact('books'));
     }
 
+    public function preview($id)
+    {
+        $book = Library::findOrFail($id);
+        return view('pages.Students.dashboard.library.preview', compact('book'));
+    }
+
 
     public function create()
     {

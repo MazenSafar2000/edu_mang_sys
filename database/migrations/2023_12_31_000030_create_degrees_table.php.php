@@ -17,6 +17,7 @@ class CreateDegreesTable extends Migration
             $table->id();
             $table->foreignId('quizze_id')->references('id')->on('quizzes')->onDelete('cascade');
             $table->foreignId('student_id')->references('id')->on('students')->onDelete('cascade');
+            $table->text('feedback')->nullable();
             $table->float('score');
             $table->enum('abuse',['0', '1'])->default(0);
             $table->date('date');

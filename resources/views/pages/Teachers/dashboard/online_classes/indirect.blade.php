@@ -65,6 +65,15 @@
                         </div>
                     </div><br>
 
+                    <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="section_id">{{ trans('Students_trans.section') }} : </label>
+                                <select class="custom-select mr-sm-2" name="section_id">
+
+                                </select>
+                            </div>
+                        </div>
+
                     <div class="row">
 
                         <div class="col-md-2">

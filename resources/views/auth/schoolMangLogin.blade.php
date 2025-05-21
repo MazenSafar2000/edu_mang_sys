@@ -1,7 +1,6 @@
 @extends('layouts.school-head')
 @section('content')
     <section class="login0">
-
         <div class="form-container3">
             @if (\Session::has('message'))
                 <div class="alert alert-danger">
@@ -47,7 +46,7 @@
                 @error('password')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
-                    </span>
+                    </span>4
                 @enderror
                 <button type="submit" class="login-btn-teacher">{{ trans('main_trans.Login') }}</button>
             </form>
@@ -60,7 +59,6 @@
                         src="{{ asset('assets/images/manager-off.png') }}" alt="Admin"
                         title="{{ trans('main_trans.manager_login') }}"></a>
             </div>
-
 
         </div>
     </section>

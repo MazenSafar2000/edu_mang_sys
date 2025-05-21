@@ -14,6 +14,7 @@ return [
     'Joining_Date' => 'تاريخ التعين',
     'Address' => 'العنوان',
     'save_data' => 'حفظ البيانات',
+    'save' => 'حفظ',
     'viewBook' => 'عرض الكتاب',
 
     'exams_list' => 'قائمة الاختبارات',
@@ -147,6 +148,24 @@ return [
     'RecordClassDetails' => 'تفاصيل الحصة المسجلة',
     'No_online_classes_available' => 'لا توجد حصص اونلاين متاحة',
     'No_recorded_classes_available' => 'لا توجد حصص مسجلة متاحة',
+
+    'change_language' => 'تغيير اللغة',
+    'search' => 'بحث',
+    'user' => 'المستخدم',
+    'notifications' => 'الإشعارات',
+    'teacher' => 'معلم',
+    'logout' => 'تسجيل الخروج',
+    'dashboard' => 'لوحة التحكم',
+    'students' => 'الطلاب',
+    'profile' => 'الملف الشخصي',
+
+    'not_taken' => 'لم يتم الاختبار',
+    'assign_score' => 'تعيين درجة',
+
+    'Feedback' => 'التعليقات',
+    'Close' => 'إغلاق',
+    'Save_changes' => 'حفظ التغييرات',
+    'grade_exam' => 'تقييم الاختبار',
 
 
 

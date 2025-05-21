@@ -110,5 +110,17 @@ return [
     'cant_open_youtube_video' => 'The link is not valid for YouTube viewing.',
     'teacher_name' => 'Teacher Name',
     'no_description' => 'No description available.',
+    'live_classes' => 'Live Classes',
+    'live_class' => 'Live Class',
+    'title' => 'Title',
+    'join' => 'Join',
+    'join_now' => 'Join Now',
+    'not_started' => 'Not Started',
+    'class_ended' => 'Class Ended',
+    'starts_in' => 'Starts In',
+    'live_now' => 'Live Now',
+    'finished' => 'Finished',
+
+    'Feedback' => 'Feedback',
 
 ];
