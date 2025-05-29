@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Parents\dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Degree;
+use App\Models\Homework;
+use App\Models\HomeworkSubmission;
 use App\Models\My_Parent;
+use App\Models\Quizze;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\Teacher;
@@ -74,5 +77,38 @@ class ChildrenController extends Controller
         $teachers = Teacher::whereIn('id', $teacher_ids)->get();
 
         return view('pages.parents.children.student_info', compact('student', 'subjects', 'teachers'));
+    }
+
+    public function subjectDetails($student_id, $subject_id)
+    {
+        $student = Student::findOrFail($student_id);
+        $subject = Subject::findOrFail($subject_id);
+
+        $quizzes = Quizze::where('subject_id', $subject_id)->where('grade_id', $student->Grade_id)->get();
+        $homeworks = Homework::where('subject_id', $subject_id)->where('grade_id', $student->Grade_id)->get();
+
+        return view('pages.parents.children.subject_details', compact('student', 'subject', 'quizzes', 'homeworks'));
+    }
+
+    public function previewQuiz($quiz_id, $student_id)
+    {
+        $quiz = Quizze::with('subject')->findOrFail($quiz_id);
+
+        $studentDegree = Degree::where('quizze_id', $quiz->id)
+            ->where('student_id', $student_id)
+            ->first();
+
+        return view('pages.parents.children.preview_quiz', compact('quiz', 'studentDegree'));
+    }
+
+    public function previewHomework($homework_id, $student_id)
+    {
+        $homework = Homework::findOrFail($homework_id);
+
+        $submission = HomeworkSubmission::where('homework_id', $homework_id)
+            ->where('student_id', $student_id)
+            ->first();
+
+        return view('pages.parents.children.preview_homework', compact('homework', 'submission'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Quizze;
 use App\Models\Student;
+use App\Notifications\Parent\ExamStartReminder as ParentExamStartReminder;
 use App\Notifications\Student\ExamEndedReminder;
 use App\Notifications\Student\ExamStartReminder;
 use App\Notifications\Teacher\ExamEnded;

@@ -15,7 +15,7 @@ trait AuthTrait
             'student' => 'student',
             'parent' => 'parent',
             'teacher' => 'teacher',
-            default => 'web',
+            default => 'manager',
         };
     }
 

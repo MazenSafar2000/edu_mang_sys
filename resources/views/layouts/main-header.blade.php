@@ -55,11 +55,14 @@
             } elseif (auth('teacher')->check()) {
                 $user = auth('teacher')->user();
                 $routePrefix = 'teacher';
-            } elseif (auth('web')->check()) {
-                $user = auth('web')->user();
+            } elseif (auth('parent')->check()) {
+                $user = auth('parent')->user();
+                $routePrefix = 'parent';
+            } elseif (auth('manager')->check()) {
+                $user = auth('manager')->user();
                 $routePrefix = 'admin';
             }
-            
+
             $unreadNotifications = $user ? $user->unreadNotifications : collect();
             $allNotifications = $user ? $user->notifications()->limit(10)->get() : collect();
         @endphp
@@ -144,7 +147,7 @@
                         @elseif(auth('parent')->check())
                             <form method="GET" action="{{ route('logout', 'parent') }}">
                             @else
-                                <form method="GET" action="{{ route('logout', 'web') }}">
+                                <form method="GET" action="{{ route('logout', 'manager') }}">
                 @endif
 
                 @csrf

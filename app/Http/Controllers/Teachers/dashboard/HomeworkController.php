@@ -12,7 +12,7 @@ use App\Models\HomeworkSubmission;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Subject;
-use App\Notifications\Student\NewBookAdded;
+use App\Notifications\Parent\NewHomeworkAdded as ParentNewHomeworkAdded;
 use App\Notifications\Student\NewHomeworkAdded;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -81,6 +81,7 @@ class HomeworkController extends Controller
 
         foreach ($students as $student) {
             $student->notify(new NewHomeworkAdded($homework->id, $homework->title, auth()->user()->Name));
+            $student->myparent->notify(new ParentNewHomeworkAdded($homework, $student));
         }
 
 

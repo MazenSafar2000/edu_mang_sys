@@ -11,6 +11,7 @@ use App\Models\Quizze;
 use App\Models\Section;
 use App\Models\Student;
 use App\Models\Subject;
+use App\Notifications\Parent\NewExamAdded as ParentNewExamAdded;
 use App\Notifications\Student\NewExamAdded;
 use Illuminate\Http\Request;
 
@@ -58,6 +59,7 @@ class QuizzController extends Controller
 
             foreach ($students as $student) {
                 $student->notify(new NewExamAdded($quizzes->id, $examTitle, auth()->user()->Name));
+                $student->myparent->notify(new ParentNewExamAdded($quizzes, $student));
             }
 
             toastr()->success(trans('messages.success'));
@@ -84,7 +86,6 @@ class QuizzController extends Controller
         return view('pages.Teachers.dashboard.Questions.index', compact('questions', 'quizz'));
     }
 
-
     public function update(Request $request)
     {
         try {
@@ -106,7 +107,6 @@ class QuizzController extends Controller
             return redirect()->back()->with(['error' => $e->getMessage()]);
         }
     }
-
 
     public function destroy($id)
     {
@@ -165,8 +165,6 @@ class QuizzController extends Controller
 
         return back()->with('success', trans('teacher_trans.score_saved'));
     }
-
-
 
     public function repeat_quizze(Request $request, $quizze_id)
     {

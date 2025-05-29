@@ -46,7 +46,7 @@
                                                 <td>{{ $student->grade->Name }}</td>
                                                 <td>{{ $student->classroom->Name_Class }}</td>
                                                 <td>{{ $student->section->Name_Section }}</td>
-                                                {{-- <td>
+                                                <td>
                                                     <div class="dropdown show">
                                                         <a class="btn btn-success btn-sm dropdown-toggle" href="#"
                                                             role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -60,7 +60,7 @@
                                                                     class="far fa-eye "></i>&nbsp;{{ __('Parent_trans.view_exams_results')}}</a>
                                                         </div>
                                                     </div>
-                                                </td> --}}
+                                                </td>
                                             </tr>
                                         @endforeach
                                 </table>

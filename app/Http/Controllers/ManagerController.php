@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class NotificationController extends Controller
+class ManagerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,30 +14,6 @@ class NotificationController extends Controller
     public function index()
     {
         //
-    }
-
-    public function read($id)
-    {
-        $notification = auth('student')->user()->notifications()->findOrFail($id);
-        $notification->markAsRead();
-
-        return redirect($notification->data['url']);
-    }
-
-    public function teacherRead($id)
-    {
-        $notification = auth('teacher')->user()->notifications()->findOrFail($id);
-        $notification->markAsRead();
-
-        return redirect($notification->data['url']);
-    }
-
-    public function parentRead($id)
-    {
-        $notification = auth('parent')->user()->notifications()->findOrFail($id);
-        $notification->markAsRead();
-
-        return redirect($notification->data['url']);
     }
 
     /**
