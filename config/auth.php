@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'manager',
+        'guard' => 'web',
         'passwords' => 'users',
     ],
 
@@ -37,6 +37,11 @@ return [
 
     'guards' => [
 
+        'web' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+
         'student' => [
             'driver' => 'session',
             'provider' => 'students',
@@ -50,11 +55,6 @@ return [
         'parent' => [
             'driver' => 'session',
             'provider' => 'my__parents',
-        ],
-
-        'manager' => [
-            'driver' => 'session',
-            'provider' => 'managers',
         ],
 
 
@@ -84,6 +84,11 @@ return [
 
     'providers' => [
 
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\User::class,
+        ],
+
         'students' => [
             'driver' => 'eloquent',
             'model' => App\Models\Student::class,
@@ -97,11 +102,6 @@ return [
         'my__parents' => [
             'driver' => 'eloquent',
             'model' => App\Models\My_Parent::class,
-        ],
-
-        'managers' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Manager::class,
         ],
 
 
@@ -124,7 +124,7 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'managers',
+            'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

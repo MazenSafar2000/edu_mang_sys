@@ -3,7 +3,7 @@
         <!-- Left Sidebar start-->
         <div class="side-menu-fixed">
 
-            @if (auth('manager')->check())
+            @if (auth('web')->check())
                 @include('layouts.main-sidebar.admin-main-sidebar')
             @endif
 

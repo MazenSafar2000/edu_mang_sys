@@ -58,8 +58,8 @@
             } elseif (auth('parent')->check()) {
                 $user = auth('parent')->user();
                 $routePrefix = 'parent';
-            } elseif (auth('manager')->check()) {
-                $user = auth('manager')->user();
+            } elseif (auth('web')->check()) {
+                $user = auth('web')->user();
                 $routePrefix = 'admin';
             }
 
@@ -147,7 +147,7 @@
                         @elseif(auth('parent')->check())
                             <form method="GET" action="{{ route('logout', 'parent') }}">
                             @else
-                                <form method="GET" action="{{ route('logout', 'manager') }}">
+                                <form method="GET" action="{{ route('logout', 'web') }}">
                 @endif
 
                 @csrf
